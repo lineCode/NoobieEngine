@@ -33,4 +33,5 @@
 
 #exclude dirs
 /.idea/*
+/cmake-build-*
 
