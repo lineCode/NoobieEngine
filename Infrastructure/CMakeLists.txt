@@ -1,9 +1,13 @@
 target_sources(noobyLib
         PRIVATE
+        GLUtils.cpp
+        GLSafe.cpp
         GLFWContext.cpp
         ShaderLoader.cpp
         FileUtils.cpp
         PUBLIC
+        GLSafe.h
+        GLUtils.h
         ShaderLoader.h
         GLFWContext.h
         FileUtils.h

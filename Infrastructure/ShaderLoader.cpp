@@ -4,9 +4,9 @@
 
 #include "ShaderLoader.h"
 #include "Core/GLResource.h"
-#include "Core/GLUtils.h"
+#include "GLUtils.h"
 #include "Infrastructure/FileUtils.h"
-#include "Core/GLSafe.h"
+#include "GLSafe.h"
 
 void compileSource(const std::string & source, unsigned int shaderId);
 void linkProgram(unsigned int programId, unsigned int shaderId);

@@ -1,17 +1,12 @@
 target_sources(noobyLib
         PRIVATE
-        GLUtils.cpp
         GLResource.cpp
         VertexBuffer.cpp
         VertexArray.cpp
         Renderer.cpp
-        GLSafe.cpp
         PUBLIC
         GLResource.h
-        GLSafe.h
-        GLUtils.h
         VertexBuffer.h
         VertexArray.h
         Renderer.h
-        GLSafe.h
         )
