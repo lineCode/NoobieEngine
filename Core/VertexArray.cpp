@@ -5,19 +5,18 @@
 #include "VertexArray.h"
 #include "GLSafe.h"
 
-VertexArray::VertexArray(const std::vector<glm::vec3> & vertices)
+std::atomic<unsigned int> VertexArray::m_Atrib {0};
+
+VertexArray::VertexArray()
 {
-    m_VertexBuffer = std::make_unique<VertexBuffer>(vertices);
-    m_ArrayBuffer = arrayBuffer(m_VertexBuffer.get());
-    m_Count = static_cast<unsigned int>(vertices.size());
+    m_ArrayBuffer = makeArrayBuffer();
 }
 
-std::unique_ptr<GLResource> VertexArray::arrayBuffer(VertexBuffer * vertexBuffer)
+std::unique_ptr<GLResource> VertexArray::makeArrayBuffer()
 {
     GLuint vertexArrayId;
     GLCall(glGenVertexArrays(1, &vertexArrayId));
     GLCall(glBindVertexArray(vertexArrayId));
-    GLCall(glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->handle()));
     return std::make_unique<GLResource>(vertexArrayId, [vertexArrayId]()
     {
         glDeleteVertexArrays(1, &vertexArrayId);
@@ -29,7 +28,26 @@ GLuint VertexArray::handle()
     return m_ArrayBuffer->resourceId();
 }
 
-unsigned int VertexArray::count()
+template<typename T> void VertexArray::addBuffer(const T & buffer, GLuint bufferType)
 {
-    return m_Count;
+    auto vbo = std::make_unique<VertexBuffer>();
+    vbo->makeBuffer(buffer, bufferType, m_Atrib++);
+    m_VertexBuffer.push_back(std::move(vbo));
+}
+
+void VertexArray::onRender()
+{
+    for(auto & vertexBuffer : m_VertexBuffer)
+    {
+        glEnableVertexAttribArray(vertexBuffer->attributeIndex());
+        glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->handle());
+        glVertexAttribPointer(
+            vertexBuffer->attributeIndex(),
+            vertexBuffer->count(),                  // size
+            GL_FLOAT,           // type
+            GL_FALSE,           // normalized?
+            0,                  // stride
+            (void*)0            // array buffer offset
+        );
+    }
 }

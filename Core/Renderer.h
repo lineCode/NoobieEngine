@@ -7,18 +7,17 @@
 
 #include "GLResource.h"
 #include "VertexArray.h"
+#include "Mesh.h"
 #include "Interfaces/IContext.h"
 
 class Renderer
 {
 public:
-    Renderer(
-        std::unique_ptr<GLResource> programId,
-        std::unique_ptr<VertexArray> vertexArray);
-    void render(IContext * context);
+    Renderer(GLuint program);
+
+    void render(IContext * context, IRenderable * renderable);
 private:
-    std::unique_ptr<GLResource> m_ProgramId;
-    std::unique_ptr<VertexArray> m_VertexArray;
+    GLuint m_ProgramId;
 };
 
 

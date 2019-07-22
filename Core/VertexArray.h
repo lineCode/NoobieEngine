@@ -6,19 +6,22 @@
 #define NOOBYENGINE_VERTEXTARRAY_H
 
 #include "VertexBuffer.h"
+#include "Interfaces/IRenderable.h"
 
-class VertexArray
+class VertexArray : IRenderable
 {
 public:
-    VertexArray(const std::vector<glm::vec3> & vertices);
+    VertexArray();
     GLuint handle();
-    unsigned int count();
+public:
+    template<typename T> void addBuffer(const T & buffer, GLuint bufferType);
+    void onRender() override;
 private:
-    std::unique_ptr<GLResource> arrayBuffer(VertexBuffer * vertexBuffer);
+    std::unique_ptr<GLResource> makeArrayBuffer();
 private:
-    unsigned int m_Count;
     std::unique_ptr<GLResource> m_ArrayBuffer;
-    std::unique_ptr<VertexBuffer> m_VertexBuffer;
+    std::vector<std::unique_ptr<VertexBuffer>> m_VertexBuffer;
+    static std::atomic<unsigned int> m_Atrib;
 };
 
 

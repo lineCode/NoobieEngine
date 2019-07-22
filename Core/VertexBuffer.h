@@ -6,17 +6,21 @@
 #define NOOBYENGINE_VERTEXBUFFER_H
 
 #include "Core/GLResource.h"
+#include "Interfaces/IRenderable.h"
 #include <glm/glm.hpp>
 #include <vector>
 
-class VertexBuffer {
+class VertexBuffer{
 public:
-    VertexBuffer(std::vector<glm::vec3> vertices);
+    VertexBuffer();
+    unsigned int count();
+    GLuint attributeIndex();
     GLuint handle();
-private:
-    std::unique_ptr<GLResource> makeBuffer(const std::vector<glm::vec3> vertices);
+    template<typename T> std::unique_ptr<GLResource> makeBuffer(const std::vector<T> & vertices, GLuint bufferType, GLuint attributeIndex);
 private:
     std::unique_ptr<GLResource> m_Buffer;
+    GLuint m_AttributeIndex;
+    unsigned int m_Count;
 };
 
 

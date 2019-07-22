@@ -4,9 +4,11 @@ target_sources(noobyLib
         VertexBuffer.cpp
         VertexArray.cpp
         Renderer.cpp
+        Mesh.cpp
         PUBLIC
         GLResource.h
         VertexBuffer.h
         VertexArray.h
         Renderer.h
+        Mesh.h
         )

@@ -5,14 +5,17 @@ target_sources(noobyLib
         GLFWContext.cpp
         ShaderLoader.cpp
         FileUtils.cpp
+        AssimpModelLoader.cpp
         PUBLIC
         GLSafe.h
         GLUtils.h
         ShaderLoader.h
         GLFWContext.h
         FileUtils.h
+        AssimpModelLoader.h
         )
 
+include_directories("../external/assimp-3.0.1270/include/")
 
 target_compile_definitions(noobyLib PUBLIC USE_NOOBY_LIB)
 target_include_directories(noobyLib PUBLIC ${CMAKE_CURRENT_LIST_DIR})
