@@ -7,6 +7,7 @@
 
 #include "VertexBuffer.h"
 #include "Interfaces/IRenderable.h"
+#include "GLSafe.h"
 
 class VertexArray : IRenderable
 {
@@ -19,10 +20,12 @@ public:
 private:
     std::unique_ptr<GLResource> makeArrayBuffer();
 private:
-    std::unique_ptr<GLResource> m_ArrayBuffer;
     std::vector<std::unique_ptr<VertexBuffer>> m_VertexBuffer;
+    std::unique_ptr<GLResource> m_ArrayBuffer;
     static std::atomic<unsigned int> m_Atrib;
 };
+
+#include "VertexArray.hpp"
 
 
 #endif //NOOBYENGINE_VERTEXTARRAY_H

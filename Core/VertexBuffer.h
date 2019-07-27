@@ -8,20 +8,26 @@
 #include "Core/GLResource.h"
 #include "Interfaces/IRenderable.h"
 #include <glm/glm.hpp>
+#include "GLSafe.h"
 #include <vector>
+#include <memory>
 
 class VertexBuffer{
 public:
-    VertexBuffer();
+    VertexBuffer() = default;
     unsigned int count();
     GLuint attributeIndex();
     GLuint handle();
-    template<typename T> std::unique_ptr<GLResource> makeBuffer(const std::vector<T> & vertices, GLuint bufferType, GLuint attributeIndex);
+    unsigned stride();
+public:
+    template<typename T> void makeBuffer(const std::vector<T> & vertices, GLuint bufferType, GLuint attributeIndex);
 private:
     std::unique_ptr<GLResource> m_Buffer;
     GLuint m_AttributeIndex;
     unsigned int m_Count;
+    unsigned int m_Stride;
 };
 
+#include "VertexBuffer.hpp"
 
 #endif //NOOBYENGINE_VERTEXBUFFER_H
