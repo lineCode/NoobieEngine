@@ -35,6 +35,9 @@ add_definitions(
         -D_CRT_SECURE_NO_WARNINGS
 )
 
+FILE(COPY SimpleTransform.vertexshader DESTINATION "${CMAKE_BINARY_DIR}")
+FILE(COPY SingleColor.fragmentshader DESTINATION "${CMAKE_BINARY_DIR}")
+
 add_executable(NoobyEngine main.cpp)
 
 target_link_libraries(NoobyEngine
