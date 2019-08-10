@@ -3,10 +3,10 @@
 //
 
 #include "ShaderLoader.h"
-#include "Core/GLResource.h"
-#include "GLUtils.h"
+#include "Infrastructure/GLResource.h"
 #include "Infrastructure/FileUtils.h"
 #include "GLSafe.h"
+#include "GLUtils.h"
 
 void compileSource(const std::string & source, unsigned int shaderId);
 void linkProgram(unsigned int programId, unsigned int shaderId);

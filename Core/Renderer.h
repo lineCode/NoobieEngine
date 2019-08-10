@@ -5,7 +5,7 @@
 #ifndef NOOBYENGINE_RENDERER_H
 #define NOOBYENGINE_RENDERER_H
 
-#include "GLResource.h"
+#include "../Infrastructure/GLResource.h"
 #include "VertexArray.h"
 #include "Mesh.h"
 #include "../Interfaces/IContext.h"

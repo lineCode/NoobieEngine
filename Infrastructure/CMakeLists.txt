@@ -6,6 +6,7 @@ target_sources(noobyLib
         ShaderLoader.cpp
         FileUtils.cpp
         AssimpModelLoader.cpp
+		GLResource.cpp
         PUBLIC
         GLSafe.h
         GLUtils.h
@@ -13,6 +14,7 @@ target_sources(noobyLib
         GLFWContext.h
         FileUtils.h
         AssimpModelLoader.h
+		GLResource.h
         )
 
 include_directories("../external/assimp-3.0.1270/include/")

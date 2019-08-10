@@ -2,14 +2,12 @@ add_library(Core)
 
 target_sources(Core
         PRIVATE
-        GLResource.cpp
         VertexBuffer.cpp
         VertexArray.cpp
         Renderer.cpp
         Mesh.cpp
         PUBLIC
-        GLResource.h
-        VertexBuffer.h
+		VertexBuffer.h
         VertexArray.h
         Renderer.h
         Mesh.h

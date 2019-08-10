@@ -5,7 +5,7 @@
 #ifndef TUTORIALS_SHADERLOADER_H
 #define TUTORIALS_SHADERLOADER_H
 
-#include "Core/GLResource.h"
+#include "../Infrastructure/GLResource.h"
 #include <vector>
 #include <memory>
 #include <string>
