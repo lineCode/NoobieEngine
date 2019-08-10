@@ -2,8 +2,8 @@
 #include "Infrastructure/ShaderLoader.h"
 #include "Infrastructure/GLFWContext.h"
 #include "Interfaces/IContext.h"
-#include "Core/VertexArray.h"
-#include "Core/Renderer.h"
+#include "Core/include/VertexArray.h"
+#include "Core/include/Renderer.h"
 #include "Interfaces/IRenderable.h"
 int main()
 {

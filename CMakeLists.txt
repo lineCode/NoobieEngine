@@ -41,7 +41,7 @@ FILE(COPY SingleColor.fragmentshader DESTINATION "${CMAKE_BINARY_DIR}")
 add_executable(NoobyEngine main.cpp)
 
 target_link_libraries(NoobyEngine
-		Core
+		Core.Graphics
 		Infrastructure
         ${ALL_LIBS}
         )
