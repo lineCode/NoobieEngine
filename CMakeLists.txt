@@ -11,6 +11,9 @@ add_subdirectory(Core)
 add_subdirectory(external)
 add_subdirectory(Interfaces)
 
+set_target_properties(noobyLib PROPERTIES LINKER_LANGUAGE CXX)
+
+
 find_package(OpenGL REQUIRED)
 
 include_directories(
@@ -43,5 +46,6 @@ add_executable(NoobyEngine main.cpp)
 target_link_libraries(NoobyEngine
         noobyLib
 		Core
+		Infrastructure
         ${ALL_LIBS}
         )

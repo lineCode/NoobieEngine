@@ -3,8 +3,8 @@
 //
 
 #include "ShaderLoader.h"
-#include "Infrastructure/GLResource.h"
-#include "Infrastructure/FileUtils.h"
+#include "../Infrastructure/GLResource.h"
+#include "../Infrastructure/FileUtils.h"
 #include "GLSafe.h"
 #include "GLUtils.h"
 
