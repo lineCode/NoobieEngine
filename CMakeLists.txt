@@ -42,5 +42,6 @@ add_executable(NoobyEngine main.cpp)
 
 target_link_libraries(NoobyEngine
         noobyLib
+		Core
         ${ALL_LIBS}
         )

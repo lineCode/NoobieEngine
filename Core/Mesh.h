@@ -8,8 +8,8 @@
 #include <vector>
 #include <glm/glm.hpp>
 #include <string>
-#include "Core/VertexArray.h"
-#include "Interfaces/IRenderable.h"
+#include "VertexArray.h"
+#include "../Interfaces/IRenderable.h"
 
 struct Vertex
 {

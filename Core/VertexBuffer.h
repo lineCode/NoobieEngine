@@ -5,10 +5,10 @@
 #ifndef NOOBYENGINE_VERTEXBUFFER_H
 #define NOOBYENGINE_VERTEXBUFFER_H
 
-#include "Core/GLResource.h"
-#include "Interfaces/IRenderable.h"
+#include "GLResource.h"
+#include "../Interfaces/IRenderable.h"
 #include <glm/glm.hpp>
-#include "GLSafe.h"
+#include "../Infrastructure/GLSafe.h"
 #include <vector>
 #include <memory>
 

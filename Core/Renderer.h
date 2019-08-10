@@ -8,7 +8,7 @@
 #include "GLResource.h"
 #include "VertexArray.h"
 #include "Mesh.h"
-#include "Interfaces/IContext.h"
+#include "../Interfaces/IContext.h"
 
 class Renderer
 {

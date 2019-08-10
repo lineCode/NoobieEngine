@@ -6,8 +6,8 @@
 #define NOOBYENGINE_VERTEXTARRAY_H
 
 #include "VertexBuffer.h"
-#include "Interfaces/IRenderable.h"
-#include "GLSafe.h"
+#include "../Interfaces/IRenderable.h"
+#include "../Infrastructure/GLSafe.h"
 #include <atomic>
 
 class VertexArray : IRenderable

@@ -1,4 +1,6 @@
-target_sources(noobyLib
+add_library(Core)
+
+target_sources(Core
         PRIVATE
         GLResource.cpp
         VertexBuffer.cpp
@@ -12,3 +14,14 @@ target_sources(noobyLib
         Renderer.h
         Mesh.h
         )
+include_directories(
+		../external/glfw-3.1.2/include/
+        ../external/glm-0.9.7.1/
+        ../external/glew-1.13.0/include/
+		.
+		)
+target_link_libraries(
+		Core
+		${OPENGL_LIBRARY}
+)
+		
