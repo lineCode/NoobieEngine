@@ -1,4 +1,6 @@
-target_sources(noobyLib
+add_library(Interfaces)
+
+target_sources(Interfaces
         PUBLIC
         IContext.h
         IModelLoader.h

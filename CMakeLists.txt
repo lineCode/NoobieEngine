@@ -2,16 +2,13 @@ cmake_minimum_required(VERSION 3.14)
 project(NoobyEngine)
 
 set(CMAKE_CXX_STANDARD 17)
-
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D__DEBUG__")
 
-add_library(noobyLib "")
 add_subdirectory(Infrastructure)
 add_subdirectory(Core)
 add_subdirectory(external)
 add_subdirectory(Interfaces)
-
-set_target_properties(noobyLib PROPERTIES LINKER_LANGUAGE CXX)
+set_target_properties(Interfaces PROPERTIES LINKER_LANGUAGE CXX)
 
 
 find_package(OpenGL REQUIRED)
@@ -44,7 +41,6 @@ FILE(COPY SingleColor.fragmentshader DESTINATION "${CMAKE_BINARY_DIR}")
 add_executable(NoobyEngine main.cpp)
 
 target_link_libraries(NoobyEngine
-        noobyLib
 		Core
 		Infrastructure
         ${ALL_LIBS}

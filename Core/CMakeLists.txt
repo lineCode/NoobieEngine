@@ -22,4 +22,3 @@ target_link_libraries(
 		Core
 		${OPENGL_LIBRARY}
 )
-		

@@ -5,11 +5,11 @@
 #ifndef NOOBYENGINE_MESH_H
 #define NOOBYENGINE_MESH_H
 
-#include <vector>
-#include <glm/glm.hpp>
-#include <string>
 #include "VertexArray.h"
 #include "../Interfaces/IRenderable.h"
+#include <glm/glm.hpp>
+#include <vector>
+#include <string>
 
 struct Vertex
 {
