@@ -8,6 +8,7 @@ class Camera
 public:
     Camera() = delete;
     explicit Camera(glm::vec3 location);
+    glm::vec3 location();
 private:
     glm::vec3 m_Location;
 };

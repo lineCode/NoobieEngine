@@ -16,10 +16,12 @@ class Renderer
 public:
     explicit Renderer(GLuint program);
 
-    void render(IContext * context, IRenderable * renderable);
+    void addRenderable(std::shared_ptr<IRenderable> );
+    void render(IContext * context);
     void setCamera(std::shared_ptr<Camera> camera);
 private:
     GLuint m_ProgramId;
+    std::vector<std::shared_ptr<IRenderable>> m_OrderedRenderables;
     std::shared_ptr<Camera> m_Camera;
 };
 

@@ -12,6 +12,7 @@ class DrawableObject : public IRenderable
 {
 public:
     DrawableObject(glm::vec3 location, std::vector<float> vertices);
+    glm::vec3 location();
     virtual void onRender() override;
 private:
     std::vector<float> m_Vertices;

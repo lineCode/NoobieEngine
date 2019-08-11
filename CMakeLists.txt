@@ -5,13 +5,18 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D__DEBUG__")
 
+add_executable(NoobyEngine main.cpp)
+
 add_subdirectory(Infrastructure)
 add_subdirectory(Core)
 add_subdirectory(external)
+add_subdirectory(Interfaces)
+add_subdirectory(Programs)
 
 find_package(OpenGL REQUIRED)
 
 include_directories(
+		Programs/Include
         external/glfw-3.3/include/
         external/glm-0.9.7.1/
         external/glew-2.1.0/include/
@@ -36,8 +41,6 @@ add_definitions(
 FILE(COPY SimpleTransform.vertexshader DESTINATION "${CMAKE_BINARY_DIR}")
 FILE(COPY SingleColor.fragmentshader DESTINATION "${CMAKE_BINARY_DIR}")
 
-add_executable(NoobyEngine main.cpp)
-add_subdirectory(Interfaces)
 
 target_link_libraries(NoobyEngine
 		Core.Graphics
