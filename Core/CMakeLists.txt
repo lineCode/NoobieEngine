@@ -3,6 +3,12 @@ project(core.graphics VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 add_library(Core.Graphics 
+		include/VertexBuffer.h
+        include/VertexArray.h
+        include/Renderer.h
+        include/Mesh.h
+		include/Camera.h
+		src/Camera.cpp
 		src/VertexBuffer.cpp
         src/VertexArray.cpp
         src/Renderer.cpp
