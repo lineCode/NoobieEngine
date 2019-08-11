@@ -5,6 +5,11 @@
 #include "VertexBuffer.h"
 #include <GL/glew.h>
 
+VertexBuffer::VertexBuffer()
+    :m_DrawMode(GL_TRIANGLES)
+{
+
+}
 
 GLuint VertexBuffer::handle()
 {
@@ -29,10 +34,4 @@ GLuint VertexBuffer::stride()
 GLuint VertexBuffer::drawMode()
 {
     return m_DrawMode;
-}
-
-VertexBuffer::VertexBuffer()
-:m_DrawMode(GL_TRIANGLES)
-{
-
 }

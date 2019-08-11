@@ -25,7 +25,7 @@ void VertexArray::onRender()
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->handle());
         glVertexAttribPointer(
             vertexBuffer->attributeIndex(),
-            elements,                  // size
+            vertexBuffer->stride(),                  // num components per vertex
             GL_FLOAT,           // type
             GL_FALSE,           // normalized?
             0,                  // stride

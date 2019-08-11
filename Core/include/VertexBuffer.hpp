@@ -8,7 +8,7 @@
 template<typename T> void VertexBuffer::makeBuffer(
     const std::vector<T> & vertices,
     unsigned int stride,
-    GLuint bufferType,
+    GLenum bufferType,
     GLuint attributeIndex,
     GLuint drawMode)
 {
