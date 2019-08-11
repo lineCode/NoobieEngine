@@ -34,7 +34,7 @@ target_include_directories(Core.Graphics
 
 
 include_directories(
-		../external/glfw-3.1.2/include/
+		../external/glfw-3.3/include/
         ../external/glm-0.9.7.1/
         ../external/glew-2.1.0/include/
 		.

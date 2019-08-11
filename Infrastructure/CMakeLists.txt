@@ -29,7 +29,7 @@ add_definitions(
 		
 include_directories("../external/assimp-3.0.1270/include/")
 include_directories("../external/glew-2.1.0/include/")
-include_directories("../external/glfw-3.1.2/include/")
+include_directories("../external/glfw-3.3/include/")
 include_directories("../external/glm-0.9.7.1/")
 
 target_compile_definitions(Infrastructure PUBLIC USE_NOOBY_LIB)
