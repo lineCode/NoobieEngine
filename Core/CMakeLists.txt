@@ -2,12 +2,22 @@ cmake_minimum_required(VERSION 3.14)
 project(core.graphics VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
+add_definitions(
+    -DTW_STATIC
+    -DTW_NO_LIB_PRAGMA
+    -DTW_NO_DIRECT3D
+    -DGLEW_STATIC
+    -D_CRT_SECURE_NO_WARNINGS
+)
+
 add_library(Core.Graphics 
 		include/VertexBuffer.h
         include/VertexArray.h
         include/Renderer.h
         include/Mesh.h
 		include/Camera.h
+		include/DrawableObject.h
+		src/DrawableObject.cpp
 		src/Camera.cpp
 		src/VertexBuffer.cpp
         src/VertexArray.cpp
@@ -22,9 +32,10 @@ target_include_directories(Core.Graphics
         ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
+
 include_directories(
 		../external/glfw-3.1.2/include/
         ../external/glm-0.9.7.1/
-        ../external/glew-1.13.0/include/
+        ../external/glew-2.1.0/include/
 		.
 		)

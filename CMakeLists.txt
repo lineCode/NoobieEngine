@@ -16,7 +16,7 @@ find_package(OpenGL REQUIRED)
 include_directories(
         external/glfw-3.1.2/include/
         external/glm-0.9.7.1/
-        external/glew-1.13.0/include/
+        external/glew-2.1.0/include/
         external/assimp-3.0.1270/include/
         .
 )
@@ -24,7 +24,7 @@ include_directories(
 set(ALL_LIBS
         ${OPENGL_LIBRARY}
         glfw
-        GLEW_1130
+        GLEW_210
         )
 
 add_definitions(
