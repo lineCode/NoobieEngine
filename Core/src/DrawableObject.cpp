@@ -2,7 +2,7 @@
 // Created by Rob on 2019-07-13.
 //
 
-#include "Object.h"
+#include "DrawableObject.h"
 
 DrawableObject::DrawableObject(std::vector<float> vertices):
     m_Vertices(vertices)
@@ -13,5 +13,5 @@ DrawableObject::DrawableObject(std::vector<float> vertices):
 
 void DrawableObject::onRender()
 {
-
+    m_Vao->onRender();
 }
