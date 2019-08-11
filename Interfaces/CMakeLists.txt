@@ -1,7 +1,7 @@
-add_library(Interfaces)
 
-target_sources(Interfaces
-        PUBLIC
+
+
+target_sources(NoobyEngine PUBLIC
         IContext.h
         IModelLoader.h
         IRenderable.h

@@ -1,15 +1,13 @@
 cmake_minimum_required(VERSION 3.14)
 project(NoobyEngine)
 
+set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D__DEBUG__")
 
 add_subdirectory(Infrastructure)
 add_subdirectory(Core)
 add_subdirectory(external)
-add_subdirectory(Interfaces)
-set_target_properties(Interfaces PROPERTIES LINKER_LANGUAGE CXX)
-
 
 find_package(OpenGL REQUIRED)
 
@@ -39,6 +37,7 @@ FILE(COPY SimpleTransform.vertexshader DESTINATION "${CMAKE_BINARY_DIR}")
 FILE(COPY SingleColor.fragmentshader DESTINATION "${CMAKE_BINARY_DIR}")
 
 add_executable(NoobyEngine main.cpp)
+add_subdirectory(Interfaces)
 
 target_link_libraries(NoobyEngine
 		Core.Graphics
