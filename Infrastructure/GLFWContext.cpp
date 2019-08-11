@@ -2,9 +2,7 @@
 // Created by Rob on 2019-07-13.
 //
 
-#include <GL/glew.h>
 #include "GLFWContext.h"
-#include "GLFW/glfw3.h"
 #include <stdio.h>
 #include <stdlib.h>
 
