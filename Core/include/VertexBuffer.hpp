@@ -5,11 +5,17 @@
 #ifndef NOOBYENGINE_VERTEXBUFFER_HPP
 #define NOOBYENGINE_VERTEXBUFFER_HPP
 
-template<typename T> void VertexBuffer::makeBuffer(const std::vector<T> & vertices, GLuint bufferType, GLuint attributeIndex)
+template<typename T> void VertexBuffer::makeBuffer(
+    const std::vector<T> & vertices,
+    unsigned int stride,
+    GLuint bufferType,
+    GLuint attributeIndex,
+    GLuint drawMode)
 {
     m_AttributeIndex = attributeIndex;
     m_Count = static_cast<unsigned int>(vertices.size());
-    m_Stride = 3;
+    m_Stride = stride;
+    m_DrawMode = drawMode;
     GLuint vertexbuffer;
     GLCall(glGenBuffers(1, &vertexbuffer))
     GLCall(glBindBuffer(bufferType, vertexbuffer))

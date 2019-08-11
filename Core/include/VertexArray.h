@@ -16,7 +16,11 @@ public:
     VertexArray();
     GLuint handle();
 public:
-    template<typename T> void addBuffer(const T & buffer, GLuint bufferType);
+    template<typename T> void addBuffer(
+        const T & buffer,
+        unsigned int stride,
+        GLuint bufferType,
+        GLuint drawMode);
     void onRender() override;
 private:
     std::unique_ptr<GLResource> makeArrayBuffer();

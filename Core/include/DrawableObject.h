@@ -11,12 +11,12 @@
 class DrawableObject : public IRenderable
 {
 public:
-    explicit DrawableObject(std::vector<float> vertices);
+    DrawableObject(glm::vec3 location, std::vector<float> vertices);
     virtual void onRender() override;
 private:
     std::vector<float> m_Vertices;
     std::unique_ptr<VertexArray> m_Vao;
-
+    glm::vec3 m_Location;
 };
 
 #endif // !Object_h

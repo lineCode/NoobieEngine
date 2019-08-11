@@ -15,8 +15,8 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std:
 void Mesh::setupMesh(const std::vector<Vertex> & vertices, std::vector<unsigned int> indices)
 {
     m_VertexArray = std::make_unique<VertexArray>();
-    m_VertexArray->addBuffer(vertices, GL_ARRAY_BUFFER);
-    m_VertexArray->addBuffer<std::vector<unsigned int>>(indices, GL_ELEMENT_ARRAY_BUFFER);
+    m_VertexArray->addBuffer(vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
+    m_VertexArray->addBuffer<std::vector<unsigned int>>(indices, 3, GL_ELEMENT_ARRAY_BUFFER, GL_TRIANGLES);
 }
 
 void Mesh::onRender()

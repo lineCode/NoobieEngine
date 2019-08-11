@@ -25,3 +25,14 @@ GLuint VertexBuffer::stride()
 {
     return m_Stride;
 }
+
+GLuint VertexBuffer::drawMode()
+{
+    return m_DrawMode;
+}
+
+VertexBuffer::VertexBuffer()
+:m_DrawMode(GL_TRIANGLES)
+{
+
+}

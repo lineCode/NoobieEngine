@@ -17,3 +17,8 @@ void Renderer::render(IContext * context, IRenderable * renderable)
     renderable->onRender();
     context->swapBuffer();
 }
+
+void Renderer::setCamera(std::shared_ptr<Camera> camera)
+{
+    m_Camera = camera;
+}

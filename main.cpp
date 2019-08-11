@@ -5,6 +5,7 @@
 #include "Core/include/DrawableObject.h"
 #include "Core/include/Renderer.h"
 #include "Interfaces/IRenderable.h"
+
 int main()
 {
     std::unique_ptr<IContext> context = std::make_unique<GLFWContext>();
@@ -18,13 +19,19 @@ int main()
 
 
     auto handle = static_cast<GLFWwindow*>(context->handle());
-    auto drawableObj = std::make_unique<DrawableObject>(std::initializer_list<float>{
-        0.0f, 1.0f, 0.0f,
-            -1.0f, -1.0f, 0.0f,
-            1.0f, -1.0f, 0.0f
-    });
 
+    auto objVertices = std::initializer_list<float>{
+        0.0f, 1.0f, 0.0f,
+        -1.0f, -1.0f, 0.0f,
+        1.0f, -1.0f, 0.0f
+
+    };
+    auto objLocation = glm::vec3{0.0f, -2.0f, 0.0f};
+    auto drawableObj = std::make_unique<DrawableObject>(objLocation, objVertices);
+
+    auto camera = std::make_shared<Camera>(glm::vec3{0.0f, 0.0f, 8.0f});
     Renderer renderer(program->resourceId());
+    renderer.setCamera(camera);
     do{
         renderer.render(context.get(), (IRenderable*)drawableObj.get());
     }while(glfwGetKey(handle, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(handle) == 0 );

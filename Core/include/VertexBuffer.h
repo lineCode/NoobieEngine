@@ -14,18 +14,26 @@
 
 class VertexBuffer{
 public:
-    VertexBuffer() = default;
+    VertexBuffer();
     unsigned int count();
     GLuint attributeIndex();
     GLuint handle();
     unsigned stride();
 public:
-    template<typename T> void makeBuffer(const std::vector<T> & vertices, GLuint bufferType, GLuint attributeIndex);
+    template<typename T> void makeBuffer(
+        const std::vector<T> & vertices,
+        unsigned int stride,
+        GLuint bufferType,
+        GLuint attributeIndex,
+        GLuint drawMode);
+
+    GLuint drawMode();
 private:
     std::unique_ptr<GLResource> m_Buffer;
     GLuint m_AttributeIndex;
     unsigned int m_Count;
     unsigned int m_Stride;
+    GLuint m_DrawMode;
 };
 
 #include "VertexBuffer.hpp"

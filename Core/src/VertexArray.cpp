@@ -31,7 +31,7 @@ void VertexArray::onRender()
             0,                  // stride
             (void*)0            // array buffer offset
         );
-        GLCall(glDrawArrays(GL_TRIANGLES, 0, elements));
+        GLCall(glDrawArrays(vertexBuffer->drawMode(), 0, elements));
         glDisableVertexAttribArray(vertexBuffer->attributeIndex());
     }
 }
