@@ -7,19 +7,6 @@
 #include "Interfaces/IRenderable.h"
 #include "Programs/include/CubeProgram.h"
 
-void GLAPIENTRY
-MessageCallback( GLenum source,
-                 GLenum type,
-                 GLuint id,
-                 GLenum severity,
-                 GLsizei length,
-                 const GLchar* message,
-                 const void* userParam )
-{
-    fprintf( stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
-             ( type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "" ),
-             type, severity, message );
-}
 
 int main()
 {
@@ -71,9 +58,6 @@ int main()
     -1.0f, 1.0f, 1.0f,
     1.0f,-1.0f, 1.0f
     };
-
-    glEnable( GL_DEBUG_OUTPUT );
-    glDebugMessageCallback(MessageCallback, 0 );
 
     auto camera = std::make_shared<Camera>(glm::vec3{0.0f, 0.0f, -8.0f});
     auto objLocation = glm::vec3{0.0f, -2.0f, 0.0f};

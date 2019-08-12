@@ -12,10 +12,9 @@ m_ProgramId(program)
 
 void Renderer::render(IContext * context)
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
     for(auto renderable : m_OrderedRenderables)
     {
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         renderable->onRender();
     }
 
