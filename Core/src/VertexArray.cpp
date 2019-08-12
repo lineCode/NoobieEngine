@@ -21,18 +21,18 @@ void VertexArray::onRender()
     for(auto & vertexBuffer : m_VertexBuffer)
     {
         auto elements = vertexBuffer->count() / vertexBuffer->stride();
-        glEnableVertexAttribArray(vertexBuffer->attributeIndex());
-        glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->handle());
-        glVertexAttribPointer(
+        GLCall(glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->handle()));
+        GLCall(glVertexAttribPointer(
             vertexBuffer->attributeIndex(),
             vertexBuffer->stride(),                  // num components per vertex
             GL_FLOAT,           // type
             GL_FALSE,           // normalized?
             0,                  // stride
             (void*)0            // array buffer offset
-        );
+        ));
+        GLCall(glEnableVertexAttribArray(vertexBuffer->attributeIndex()));
         GLCall(glDrawArrays(vertexBuffer->drawMode(), 0, elements));
-        glDisableVertexAttribArray(vertexBuffer->attributeIndex());
+        GLCall(glDisableVertexAttribArray(vertexBuffer->attributeIndex()));
     }
 }
 
