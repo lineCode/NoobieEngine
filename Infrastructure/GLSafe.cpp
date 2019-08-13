@@ -11,6 +11,7 @@ void GLClearError()
 
 bool GLCheckError(const char *file, const char * function, int line)
 {
+    std::cout<<"Executed: "<<function<<std::endl;
     if(GLenum err = glGetError())
     {
         std::cout<<"[OpenGL ERROR] "<< "(0x" <<std::hex<<err<<std::dec<<")"<<std::endl;

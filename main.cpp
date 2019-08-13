@@ -69,7 +69,9 @@ int main()
     renderer.addRenderable(cubeProgram);
     renderer.addRenderable(cubeObj);
     do{
+        std::cout<<"Start rendering"<<std::endl;
         renderer.render(context.get());
+        std::cout<<"Done rendering"<<std::endl;
     }while(glfwGetKey(handle, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(handle) == 0 );
 
     return 0;

@@ -13,8 +13,8 @@ DrawableObject::DrawableObject(glm::vec3 location, std::vector<float> vertices):
 
 void DrawableObject::onRender()
 {
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
+    GLCall(glEnable(GL_DEPTH_TEST));
+    GLCall(glDepthFunc(GL_LEQUAL));
     m_Vao->onRender();
 }
 

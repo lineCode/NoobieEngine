@@ -11,6 +11,17 @@ VertexArray::VertexArray()
     m_ArrayBuffer = makeArrayBuffer();
 }
 
+std::unique_ptr<GLResource> VertexArray::makeArrayBuffer()
+{
+    GLuint vertexArrayId;
+    GLCall(glGenVertexArrays(1, &vertexArrayId));
+    GLCall(glBindVertexArray(vertexArrayId));
+    return std::make_unique<GLResource>(vertexArrayId, [vertexArrayId]()
+    {
+        glDeleteVertexArrays(1, &vertexArrayId);
+    });
+}
+
 GLuint VertexArray::handle()
 {
     return m_ArrayBuffer->resourceId();
@@ -21,6 +32,7 @@ void VertexArray::onRender()
     for(auto & vertexBuffer : m_VertexBuffer)
     {
         auto elements = vertexBuffer->count() / vertexBuffer->stride();
+        GLCall(glEnableVertexAttribArray(vertexBuffer->attributeIndex()));
         GLCall(glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->handle()));
         GLCall(glVertexAttribPointer(
             vertexBuffer->attributeIndex(),
@@ -30,19 +42,7 @@ void VertexArray::onRender()
             0,                  // stride
             (void*)0            // array buffer offset
         ));
-        GLCall(glEnableVertexAttribArray(vertexBuffer->attributeIndex()));
         GLCall(glDrawArrays(vertexBuffer->drawMode(), 0, elements));
         GLCall(glDisableVertexAttribArray(vertexBuffer->attributeIndex()));
     }
-}
-
-std::unique_ptr<GLResource> VertexArray::makeArrayBuffer()
-{
-    GLuint vertexArrayId;
-    GLCall(glGenVertexArrays(1, &vertexArrayId));
-    GLCall(glBindVertexArray(vertexArrayId));
-    return std::make_unique<GLResource>(vertexArrayId, [vertexArrayId]()
-    {
-        glDeleteVertexArrays(1, &vertexArrayId);
-    });
 }
