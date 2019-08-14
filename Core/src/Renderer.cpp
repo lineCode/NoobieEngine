@@ -5,14 +5,12 @@
 #include "Renderer.h"
 #include "../Infrastructure/GLSafe.h"
 
-Renderer::Renderer(GLuint program):
-m_ProgramId(program)
+Renderer::Renderer()
 {
 }
 
 void Renderer::render(IContext * context)
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     for(auto renderable : m_OrderedRenderables)
     {
         renderable->onRender();

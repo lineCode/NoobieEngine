@@ -27,7 +27,7 @@ void GLFWContext::startContext() {
     }
 
     glfwMakeContextCurrent(window);
-
+    glfwSwapInterval(1);
     glewExperimental = true; // Needed for core profile
     if (glewInit() != GLEW_OK) {
         fprintf(stderr, "Failed to initialize GLEW\n");

@@ -14,7 +14,7 @@
 class Renderer
 {
 public:
-    explicit Renderer(GLuint program);
+    explicit Renderer();
 
     void addRenderable(std::shared_ptr<IRenderable> );
     void render(IContext * context);

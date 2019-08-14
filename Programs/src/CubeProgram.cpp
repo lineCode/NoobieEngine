@@ -10,34 +10,42 @@
 
 CubeProgram::CubeProgram(
     std::unique_ptr<GLResource> program,
-    GLFWwindow *window,
     std::shared_ptr<Camera> camera,
     std::shared_ptr<DrawableObject> cubeObject)
-:m_Program(std::move(program)), m_GlfwWindow(window), m_Camera(camera), m_CubeObject(cubeObject)
+:m_Program(std::move(program)), m_Camera(camera), m_CubeObject(cubeObject)
 {
-
 }
 
 void CubeProgram::onRender()
 {
-    glm::mat4 pMat, vMat, mMat, mvMat;
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glm::mat4 mvMat;
     GLCall(glUseProgram(m_Program->resourceId()));
-    auto cameraLocation = m_Camera->location();
-    auto cubeLocation = m_CubeObject->location();
+    for(int i=0; i < 24; i++)
+    {
+        GLint mvLoc;
+        GLint projLoc;
+        GLCall(mvLoc = glGetUniformLocation(m_Program->resourceId(), "mv_matrix"));
+        GLCall(projLoc = glGetUniformLocation(m_Program->resourceId(), "proj_matrix"));
+        GLCall(glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(modelView(i))));
+        GLCall(glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(m_Camera->perspectiveMatrix())));
+        m_CubeObject->onRender();
+    }
+}
 
-    GLint mvLoc;
-    GLint projLoc;
-    GLCall(mvLoc = glGetUniformLocation(m_Program->resourceId(), "mv_matrix"));
-    GLCall(projLoc = glGetUniformLocation(m_Program->resourceId(), "proj_matrix"));
-    int width, height;
-    glfwGetFramebufferSize(m_GlfwWindow, &width, &height);
-    auto aspect = static_cast<float>(width) / static_cast<float>(height);
-    pMat = glm::perspective(1.0472f, aspect, 0.1f, 1000.0f);
-    vMat = glm::translate(glm::mat4(1.0f), glm::vec3(cameraLocation[0], cameraLocation[1], cameraLocation[2]));
-    mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocation[0], cubeLocation[1], cubeLocation[2]));
-    mvMat = vMat * mMat;
-    GLCall(glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat)));
-    GLCall(glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat)));
+glm::mat4 CubeProgram::modelView(int offset)
+{
+    auto cameraLocation = m_Camera->location();
+    auto vMat = glm::translate(glm::mat4(1.0f), glm::vec3(cameraLocation[0], cameraLocation[1], cameraLocation[2]));
+    double currentTime = glfwGetTime();
+    auto tf = currentTime + offset;
+    glm::mat4 tMat = glm::translate(glm::mat4(1.0f), glm::vec3(sin(0.35f * tf) * 8.0f, cos(0.52f*tf) * 8.0f, sin(0.7f*tf)*8.0f));
+    glm::mat4 rMat = glm::rotate(glm::mat4(1.0f), 1.75f*(float)currentTime, glm::vec3(0.0f, 1.0f, 0.0f));
+    rMat = glm::rotate(rMat, 1.75f*(float)currentTime, glm::vec3(1.0f, 0.0f, 0.0f));
+    rMat = glm::rotate(rMat, 1.75f*(float)currentTime, glm::vec3(0.0f, 0.0f, 1.0f));
+    auto mMat = tMat * rMat;
+
+    return vMat * mMat;
 }
 
 GLuint CubeProgram::programId()

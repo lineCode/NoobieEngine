@@ -44,15 +44,15 @@ void cleanBuild(unsigned int programId, std::vector<GLuint> shaders)
 
 void linkProgram(unsigned int programId, unsigned int shaderId)
 {
-    glAttachShader(programId, shaderId);
-    glLinkProgram(programId);
+    GLCall(glAttachShader(programId, shaderId));
+    GLCall(glLinkProgram(programId));
     checkLinkerResult(programId);
 }
 
 void compileSource(const std::string & source, unsigned int shaderId)
 {
     const char * src = source.c_str();
-    glShaderSource(shaderId, 1, &src , nullptr);
-    glCompileShader(shaderId);
+    GLCall(glShaderSource(shaderId, 1, &src , nullptr));
+    GLCall(glCompileShader(shaderId));
     checkCompilationResult(shaderId);
 }

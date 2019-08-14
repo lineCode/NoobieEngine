@@ -4,12 +4,18 @@
 
 #include "Camera.h"
 
-Camera::Camera(glm::vec3 location):
-    m_Location(location)
+
+Camera::Camera(glm::vec3 location, float fov, float aspect, float nearPlane, float farPlane):
+    m_Location(location), m_Fov(fov), m_Aspect(aspect), m_NearPlane(nearPlane), m_FarPlane(farPlane)
 {
 }
 
 glm::vec3 Camera::location()
 {
     return m_Location;
+}
+
+glm::mat4 Camera::perspectiveMatrix()
+{
+    return glm::perspective(m_Fov, m_Aspect, m_NearPlane, m_FarPlane);
 }
