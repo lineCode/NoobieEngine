@@ -18,6 +18,7 @@ add_library(Core.Graphics
 		include/Camera.h
 		include/DrawableObject.h
 		include/VertexBufferScope.h
+		include/VertexBufferMode.h
 		src/VertexBufferScope.cpp
 		src/DrawableObject.cpp
 		src/Camera.cpp

@@ -8,7 +8,8 @@
 VertexBuffer::VertexBuffer()
     :m_DrawMode(GL_TRIANGLES)
 {
-
+    m_NumCopies = 1;
+    m_BufferMode = BufferMode::SingleCopy;
 }
 
 GLuint VertexBuffer::handle()
@@ -34,4 +35,14 @@ GLuint VertexBuffer::stride()
 GLuint VertexBuffer::drawMode()
 {
     return m_DrawMode;
+}
+
+void VertexBuffer::setNumberOfCoppies(unsigned int numCopies)
+{
+    m_NumCopies = numCopies;
+}
+
+unsigned int VertexBuffer::numberOfCopies()
+{
+    return m_NumCopies;
 }

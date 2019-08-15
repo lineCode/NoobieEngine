@@ -5,12 +5,14 @@
 #ifndef NOOBYENGINE_VERTEXBUFFERSCOPE_H
 #define NOOBYENGINE_VERTEXBUFFERSCOPE_H
 
+#include "VertexBufferMode.h"
 #include "VertexBuffer.h"
 
 class VertexBufferScope
 {
 public:
     VertexBufferScope(VertexBuffer * vertexBuffer);
+    void checkBuffer();
     ~VertexBufferScope();
 private:
     VertexBuffer * m_VertexBuffer;

@@ -12,6 +12,17 @@ template<typename T> void VertexBuffer::makeBuffer(
     GLuint attributeIndex,
     GLuint drawMode)
 {
+    makeBuffer(vertices, stride, bufferType, attributeIndex, drawMode, BufferMode::SingleCopy);
+}
+
+template<typename T> void VertexBuffer::makeBuffer(
+    const std::vector<T> & vertices,
+    unsigned int stride,
+    GLenum bufferType,
+    GLuint attributeIndex,
+    GLuint drawMode,
+    BufferMode bufferMode)
+{
     m_AttributeIndex = attributeIndex;
     m_Count = static_cast<unsigned int>(vertices.size());
     m_Stride = stride;

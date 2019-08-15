@@ -21,5 +21,22 @@ VertexBufferScope::VertexBufferScope(VertexBuffer * vertexBuffer)
 
 VertexBufferScope::~VertexBufferScope()
 {
+    checkBuffer();
     GLCall(glDisableVertexAttribArray(m_VertexBuffer->attributeIndex()));
+}
+
+void VertexBufferScope::checkBuffer()
+{
+    if (
+        m_VertexBuffer->bufferMode() == BufferMode::SingleCopy &&
+        m_VertexBuffer->numberOfCopies() != 1)
+    {
+        throw std::invalid_argument("SingleCopy mode number of copies must be 1");
+    }
+    else if(
+        m_VertexBuffer->bufferMode() == BufferMode::InstanceCopy &&
+        m_VertexBuffer->numberOfCopies() == 0)
+    {
+        throw std::invalid_argument("InstanceCopy mode number of copies must be greater than 0");
+    }
 }

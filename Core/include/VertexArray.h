@@ -5,6 +5,7 @@
 #ifndef NOOBYENGINE_VERTEXTARRAY_H
 #define NOOBYENGINE_VERTEXTARRAY_H
 
+#include "VertexBufferMode.h"
 #include "VertexBuffer.h"
 #include "../Interfaces/IRenderable.h"
 #include "../Infrastructure/GLSafe.h"
@@ -21,8 +22,15 @@ public:
         unsigned int stride,
         GLuint bufferType,
         GLuint drawMode);
+    template<typename T> void addBuffer(
+        const T & buffer,
+        unsigned int stride,
+        GLuint bufferType,
+        GLuint drawMode,
+        unsigned int numCopies);
     void onRender() override;
 private:
+    void drawArrays(VertexBuffer * vertexBuffer);
     std::unique_ptr<GLResource> makeArrayBuffer();
 private:
     std::vector<std::unique_ptr<VertexBuffer>> m_VertexBuffer;

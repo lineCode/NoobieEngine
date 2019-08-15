@@ -5,12 +5,14 @@
 #ifndef NOOBYENGINE_VERTEXBUFFER_H
 #define NOOBYENGINE_VERTEXBUFFER_H
 
+#include "VertexBufferMode.h"
 #include "../Infrastructure/GLResource.h"
 #include "../Interfaces/IRenderable.h"
 #include "../Infrastructure/GLSafe.h"
 #include <glm/glm.hpp>
 #include <vector>
 #include <memory>
+
 
 class VertexBuffer{
 public:
@@ -19,13 +21,22 @@ public:
     GLuint attributeIndex();
     GLuint handle();
     unsigned stride();
-public:
     template<typename T> void makeBuffer(
         const std::vector<T> & vertices,
         unsigned int stride,
         GLenum bufferType,
         GLuint attributeIndex,
         GLuint drawMode);
+    template<typename T> void makeBuffer(
+        const std::vector<T> & vertices,
+        unsigned int stride,
+        GLenum bufferType,
+        GLuint attributeIndex,
+        GLuint drawMode,
+        BufferMode bufferMode);
+    BufferMode bufferMode();
+    void setNumberOfCoppies(unsigned int numCopies);
+    unsigned int numberOfCopies();
 
     GLuint drawMode();
 private:
@@ -34,6 +45,8 @@ private:
     unsigned int m_Count;
     unsigned int m_Stride;
     GLuint m_DrawMode;
+    unsigned int m_NumCopies;
+    BufferMode m_BufferMode;
 };
 
 #include "VertexBuffer.hpp"

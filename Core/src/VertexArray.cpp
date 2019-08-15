@@ -32,8 +32,24 @@ void VertexArray::onRender()
 {
     for(auto & vertexBuffer : m_VertexBuffer)
     {
-        auto elements = vertexBuffer->count() / vertexBuffer->stride();
         VertexBufferScope vertexScope(vertexBuffer.get());
-        GLCall(glDrawArrays(vertexBuffer->drawMode(), 0, elements));
+        drawArrays(vertexBuffer.get());
     }
+}
+
+void VertexArray::drawArrays(VertexBuffer * vertexBuffer)
+{
+    auto elements = vertexBuffer->count() / vertexBuffer->stride();
+    switch (vertexBuffer->bufferMode())
+    {
+        case BufferMode::InstanceCopy:
+            GLCall(glDrawArraysInstanced(vertexBuffer->drawMode(), 0, elements, vertexBuffer->numberOfCopies()));
+            break;
+        case BufferMode::SingleCopy:
+            GLCall(glDrawArrays(vertexBuffer->drawMode(), 0, elements));
+            break;
+        default:
+            throw std::invalid_argument("Unknown BufferMode");
+    }
+
 }
