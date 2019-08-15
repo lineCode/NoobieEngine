@@ -3,6 +3,7 @@
 //
 
 #include "VertexArray.h"
+#include "VertexBufferScope.h"
 
 std::atomic<unsigned int> VertexArray::m_Atrib {0};
 
@@ -32,17 +33,7 @@ void VertexArray::onRender()
     for(auto & vertexBuffer : m_VertexBuffer)
     {
         auto elements = vertexBuffer->count() / vertexBuffer->stride();
-        GLCall(glEnableVertexAttribArray(vertexBuffer->attributeIndex()));
-        GLCall(glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->handle()));
-        GLCall(glVertexAttribPointer(
-            vertexBuffer->attributeIndex(),
-            vertexBuffer->stride(),                  // num components per vertex
-            GL_FLOAT,           // type
-            GL_FALSE,           // normalized?
-            0,                  // stride
-            (void*)0            // array buffer offset
-        ));
+        VertexBufferScope vertexScope(vertexBuffer.get());
         GLCall(glDrawArrays(vertexBuffer->drawMode(), 0, elements));
-        GLCall(glDisableVertexAttribArray(vertexBuffer->attributeIndex()));
     }
 }
