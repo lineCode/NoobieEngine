@@ -19,18 +19,14 @@ CubeProgram::CubeProgram(
 void CubeProgram::onRender()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glm::mat4 mvMat;
     GLCall(glUseProgram(m_Program->resourceId()));
-    for(int i=0; i < 24; i++)
-    {
-        GLint mvLoc;
-        GLint projLoc;
-        GLCall(mvLoc = glGetUniformLocation(m_Program->resourceId(), "mv_matrix"));
-        GLCall(projLoc = glGetUniformLocation(m_Program->resourceId(), "proj_matrix"));
-        GLCall(glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(modelView(i))));
-        GLCall(glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(m_Camera->perspectiveMatrix())));
-        m_CubeObject->onRender();
-    }
+    GLint vMat;
+    GLCall(vMat = glGetUniformLocation(m_Program->resourceId(), "v_matrix"));
+    double timeFactor = glfwGetTime();
+    auto tfLoc = glGetUniformLocation(m_Program->resourceId(), "tf");
+    glUniform1f(tfLoc, (float)timeFactor);
+
+    m_CubeObject->onRender();
 }
 
 glm::mat4 CubeProgram::modelView(int offset)

@@ -27,6 +27,7 @@ template<typename T> void VertexBuffer::makeBuffer(
     m_Count = static_cast<unsigned int>(vertices.size());
     m_Stride = stride;
     m_DrawMode = drawMode;
+    m_BufferMode = bufferMode;
     GLuint vertexbuffer;
     GLCall(glGenBuffers(1, &vertexbuffer))
     GLCall(glBindBuffer(bufferType, vertexbuffer))
