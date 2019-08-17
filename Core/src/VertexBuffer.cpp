@@ -37,6 +37,11 @@ GLuint VertexBuffer::drawMode()
     return m_DrawMode;
 }
 
+BufferMode VertexBuffer::bufferMode()
+{
+    return m_BufferMode;
+}
+
 void VertexBuffer::setNumberOfCoppies(unsigned int numCopies)
 {
     m_NumCopies = numCopies;

@@ -5,7 +5,7 @@
 #ifndef NOOBYENGINE_VERTEXTARRAY_H
 #define NOOBYENGINE_VERTEXTARRAY_H
 
-#include "VertexBufferMode.h"
+#include "BufferMode.h"
 #include "VertexBuffer.h"
 #include "../Interfaces/IRenderable.h"
 #include "../Infrastructure/GLSafe.h"

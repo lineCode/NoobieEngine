@@ -5,7 +5,7 @@
 #ifndef NOOBYENGINE_VERTEXBUFFER_H
 #define NOOBYENGINE_VERTEXBUFFER_H
 
-#include "VertexBufferMode.h"
+#include "BufferMode.h"
 #include "../Infrastructure/GLResource.h"
 #include "../Interfaces/IRenderable.h"
 #include "../Infrastructure/GLSafe.h"
