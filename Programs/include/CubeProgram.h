@@ -22,7 +22,8 @@ public:
     void onRender() override;
     GLuint programId();
 private:
-    glm::mat4 modelView(int offset);
+    glm::mat4 modelMat();
+    glm::mat4 viewMat();
 private:
     std::unique_ptr<GLResource> m_Program;
     std::shared_ptr<Camera> m_Camera;
