@@ -22,7 +22,6 @@ public:
     void onRender() override;
     GLuint programId();
 private:
-    glm::mat4 modelMat();
     glm::mat4 viewMat();
 private:
     std::unique_ptr<GLResource> m_Program;

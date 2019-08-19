@@ -62,8 +62,8 @@ int main()
     int width, height;
     glfwGetFramebufferSize(handle, &width, &height);
     auto camera = std::make_shared<Camera>(
-        glm::vec3{0.0f, 0.0f, -20.0f}, //location
-        glm::degrees<float>(60.0f), //field of view
+        glm::vec3{0.0f, 0.0f, -32.0f}, //location
+        glm::radians<float>(59.0f), //field of view
         (float)width/(float)height, //aspect ratio
         0.1f, //near plane
         1000.0f); //far plane
