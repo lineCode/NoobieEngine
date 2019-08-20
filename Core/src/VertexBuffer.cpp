@@ -3,6 +3,7 @@
 //
 
 #include "VertexBuffer.h"
+#include "VertexBufferScope.h"
 #include <GL/glew.h>
 
 VertexBuffer::VertexBuffer()
@@ -50,4 +51,26 @@ void VertexBuffer::setNumberOfCoppies(unsigned int numCopies)
 unsigned int VertexBuffer::numberOfCopies()
 {
     return m_NumCopies;
+}
+
+void VertexBuffer::onRender()
+{
+    VertexBufferScope vertexScope(this);
+    drawArrays();
+}
+
+void VertexBuffer::drawArrays()
+{
+    auto elements = count() / stride();
+    switch (bufferMode())
+    {
+        case BufferMode::InstanceCopy:
+            GLCall(glDrawArraysInstanced(drawMode(), 0, elements, numberOfCopies()));
+            break;
+        case BufferMode::SingleCopy:
+            GLCall(glDrawArrays(drawMode(), 0, elements));
+            break;
+        default:
+            throw std::invalid_argument("Unknown BufferMode");
+    }
 }

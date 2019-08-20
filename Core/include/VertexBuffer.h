@@ -14,7 +14,7 @@
 #include <memory>
 
 
-class VertexBuffer{
+class VertexBuffer : IRenderable{
 public:
     VertexBuffer();
     unsigned int count();
@@ -39,6 +39,9 @@ public:
     unsigned int numberOfCopies();
 
     GLuint drawMode();
+    void onRender() override;
+private:
+    void drawArrays();
 private:
     std::unique_ptr<GLResource> m_Buffer;
     GLuint m_AttributeIndex;

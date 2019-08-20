@@ -30,7 +30,6 @@ public:
         unsigned int numCopies);
     void onRender() override;
 private:
-    void drawArrays(VertexBuffer * vertexBuffer);
     std::unique_ptr<GLResource> makeArrayBuffer();
 private:
     std::vector<std::unique_ptr<VertexBuffer>> m_VertexBuffer;
