@@ -11,13 +11,17 @@
 CubeProgram::CubeProgram(
     std::unique_ptr<GLResource> program,
     std::shared_ptr<Camera> camera,
-    std::shared_ptr<DrawableObject> cubeObject)
-:m_Program(std::move(program)), m_Camera(camera), m_CubeObject(cubeObject)
+    std::shared_ptr<DrawableObject> cubeObject,
+    std::shared_ptr<DrawableObject> pyramidObject)
+:m_Program(std::move(program)), m_Camera(camera), m_CubeObject(cubeObject), m_PyramidObject(pyramidObject)
 {
 }
 
 void CubeProgram::onRender()
 {
+    GLCall(glEnable(GL_DEPTH_TEST));
+    GLCall(glDepthFunc(GL_LEQUAL));
+
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     GLCall(glUseProgram(m_Program->resourceId()));
@@ -35,6 +39,7 @@ void CubeProgram::onRender()
     glUniform1f(tfLoc, (float)tf);
 
     m_CubeObject->onRender();
+    m_PyramidObject->onRender();
 }
 
 glm::mat4 CubeProgram::viewMat()

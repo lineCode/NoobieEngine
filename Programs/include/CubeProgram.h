@@ -18,7 +18,8 @@ public:
     CubeProgram(
         std::unique_ptr<GLResource> program,
         std::shared_ptr<Camera> camera,
-        std::shared_ptr<DrawableObject> cubeObject);
+        std::shared_ptr<DrawableObject> cubeObject,
+        std::shared_ptr<DrawableObject> pyramidObj);
     void onRender() override;
     GLuint programId();
 private:
@@ -27,6 +28,7 @@ private:
     std::unique_ptr<GLResource> m_Program;
     std::shared_ptr<Camera> m_Camera;
     std::shared_ptr<DrawableObject> m_CubeObject;
+    std::shared_ptr<DrawableObject> m_PyramidObject;
 };
 
 

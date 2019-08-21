@@ -4,17 +4,15 @@
 
 #include "DrawableObject.h"
 
-DrawableObject::DrawableObject(glm::vec3 location, std::vector<float> vertices):
-    m_Location(location), m_Vertices(vertices)
+DrawableObject::DrawableObject(glm::vec3 location, std::vector<float> vertices, unsigned int numCopies):
+    m_Location(location), m_Vertices(vertices), m_NumCopies(numCopies)
 {
     m_Vao = std::make_unique<VertexArray>();
-    m_Vao->addBuffer(vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES, 100000);
+    m_Vao->addBuffer(vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES, numCopies);
 }
 
 void DrawableObject::onRender()
 {
-    GLCall(glEnable(GL_DEPTH_TEST));
-    GLCall(glDepthFunc(GL_LEQUAL));
     m_Vao->onRender();
 }
 
