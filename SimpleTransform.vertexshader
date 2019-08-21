@@ -2,8 +2,10 @@
 
 layout (location=0) in vec3 position;
 
+uniform mat4 t_matrix;
 uniform mat4 v_matrix;
 uniform mat4 proj_matrix;
+
 uniform float tf;
 
 out vec4 varyingColor;
@@ -29,7 +31,7 @@ void main(void)
 	mat4 localRotZ = buildRotateZ(1.75*x);
 	mat4 localTrans = buildTranslate(a,b,c);
 
-	mat4 newM_matrix = localTrans * localRotX * localRotY * localRotZ;
+	mat4 newM_matrix = localTrans * t_matrix * localRotX * localRotY * localRotZ;
 	mat4 mv_matrix = v_matrix * newM_matrix;
 	gl_Position = proj_matrix * mv_matrix * vec4(position,1.0);
 	varyingColor = vec4(position,1.0)*0.5 + vec4(0.5, 0.5, 0.5, 0.5);

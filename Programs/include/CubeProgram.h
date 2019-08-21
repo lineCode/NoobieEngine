@@ -24,6 +24,7 @@ public:
     GLuint programId();
 private:
     glm::mat4 viewMat();
+    glm::mat4 translationMat();
 private:
     std::unique_ptr<GLResource> m_Program;
     std::shared_ptr<Camera> m_Camera;

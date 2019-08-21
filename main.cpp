@@ -77,7 +77,7 @@ int main()
         1000.0f); //far plane
 
     auto objLocation = glm::vec3{0.0f, -2.0f, 0.0f};
-    auto pyramidLocation = glm::vec3{-2.0f, -8.0f, 0.0f};
+    auto pyramidLocation = glm::vec3{-8.0f, -8.0f, 0.0f};
     auto cubeObj = std::make_shared<DrawableObject>(objLocation, objVertices, 1);
     auto pyramidObj = std::make_shared<DrawableObject>(pyramidLocation, pyramidVertices, 1);
     auto cubeProgram = std::make_shared<CubeProgram>(std::move(program), camera, cubeObj, pyramidObj);

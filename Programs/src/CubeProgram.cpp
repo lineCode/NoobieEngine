@@ -28,8 +28,11 @@ void CubeProgram::onRender()
 
     GLint vLoc;
     GLint projLoc;
+    GLint tLoc;
+    GLCall(tLoc = glGetUniformLocation(m_Program->resourceId(), "t_matrix"));
     GLCall(vLoc = glGetUniformLocation(m_Program->resourceId(), "v_matrix"));
     GLCall(projLoc = glGetUniformLocation(m_Program->resourceId(), "proj_matrix"));
+    GLCall(glUniformMatrix4fv(tLoc, 1, GL_FALSE, glm::value_ptr(translationMat())));
     GLCall(glUniformMatrix4fv(vLoc, 1, GL_FALSE, glm::value_ptr(viewMat())));
     GLCall(glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(m_Camera->perspectiveMatrix())));
 
@@ -40,6 +43,11 @@ void CubeProgram::onRender()
 
     m_CubeObject->onRender();
     m_PyramidObject->onRender();
+}
+
+glm::mat4 CubeProgram::translationMat()
+{
+    return glm::translate(glm::mat4(1.0f), m_CubeObject->location());
 }
 
 glm::mat4 CubeProgram::viewMat()
