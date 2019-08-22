@@ -4,7 +4,7 @@
 
 #include "DrawableObject.h"
 
-DrawableObject::DrawableObject(glm::vec3 location, std::vector<float> vertices, unsigned int numCopies):
+DrawableObject::DrawableObject(glm::vec3 location, const std::vector<float> & vertices, unsigned int numCopies):
     m_Location(location), m_Vertices(vertices), m_NumCopies(numCopies)
 {
     m_Vao = std::make_unique<VertexArray>();
@@ -13,10 +13,16 @@ DrawableObject::DrawableObject(glm::vec3 location, std::vector<float> vertices, 
 
 void DrawableObject::onRender()
 {
+    m_Vao->setAttributeIndex(m_attributeIndex);
     m_Vao->onRender();
 }
 
 glm::vec3 DrawableObject::location()
 {
     return m_Location;
+}
+
+void DrawableObject::setAttributeIndex(GLuint attributeLocation)
+{
+    m_attributeIndex = attributeLocation;
 }

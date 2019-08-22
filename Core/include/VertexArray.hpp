@@ -22,8 +22,8 @@ template<typename T> void VertexArray::addBuffer(
     unsigned int numCopies)
 {
     auto vbo = std::make_unique<VertexBuffer>();
-    vbo->makeBuffer(buffer, stride, bufferType, m_Atrib, drawMode, BufferMode::InstanceCopy);
-    vbo->setNumberOfCoppies(numCopies);
+    vbo->makeBuffer(buffer, stride, bufferType, drawMode, BufferMode::InstanceCopy);
+    vbo->setNumberOfCopies(numCopies);
     m_VertexBuffer.push_back(std::move(vbo));
 }
 

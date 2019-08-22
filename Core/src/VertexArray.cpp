@@ -4,8 +4,6 @@
 
 #include "VertexArray.h"
 
-std::atomic<unsigned int> VertexArray::m_Atrib {0};
-
 VertexArray::VertexArray()
 {
     m_ArrayBuffer = makeArrayBuffer();
@@ -29,8 +27,15 @@ GLuint VertexArray::handle()
 
 void VertexArray::onRender()
 {
+    GLCall(glEnableVertexAttribArray(m_AttributeIndex));
     for(auto & vertexBuffer : m_VertexBuffer)
     {
+        vertexBuffer->setAttributeIndex(m_AttributeIndex);
         vertexBuffer->onRender();
     }
+}
+
+void VertexArray::setAttributeIndex(GLuint attributeIndex)
+{
+    m_AttributeIndex = attributeIndex;
 }

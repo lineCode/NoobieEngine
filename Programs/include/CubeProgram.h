@@ -17,19 +17,14 @@ class CubeProgram : public IRenderable
 public:
     CubeProgram(
         std::unique_ptr<GLResource> program,
-        std::shared_ptr<Camera> camera,
-        std::shared_ptr<DrawableObject> cubeObject,
-        std::shared_ptr<DrawableObject> pyramidObj);
+        std::shared_ptr<Camera> camera);
     void onRender() override;
     GLuint programId();
+    void addObject(std::shared_ptr<DrawableObject> object);
 private:
-    glm::mat4 viewMat();
-    glm::mat4 translationMat();
-private:
+    std::vector<std::shared_ptr<DrawableObject>> m_Objects;
     std::unique_ptr<GLResource> m_Program;
     std::shared_ptr<Camera> m_Camera;
-    std::shared_ptr<DrawableObject> m_CubeObject;
-    std::shared_ptr<DrawableObject> m_PyramidObject;
 };
 
 

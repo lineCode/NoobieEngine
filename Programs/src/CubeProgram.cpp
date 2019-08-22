@@ -10,10 +10,8 @@
 
 CubeProgram::CubeProgram(
     std::unique_ptr<GLResource> program,
-    std::shared_ptr<Camera> camera,
-    std::shared_ptr<DrawableObject> cubeObject,
-    std::shared_ptr<DrawableObject> pyramidObject)
-:m_Program(std::move(program)), m_Camera(camera), m_CubeObject(cubeObject), m_PyramidObject(pyramidObject)
+    std::shared_ptr<Camera> camera)
+:m_Program(std::move(program)), m_Camera(camera)
 {
 }
 
@@ -26,36 +24,37 @@ void CubeProgram::onRender()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     GLCall(glUseProgram(m_Program->resourceId()));
 
-    GLint vLoc;
-    GLint projLoc;
-    GLint tLoc;
-    GLCall(tLoc = glGetUniformLocation(m_Program->resourceId(), "t_matrix"));
-    GLCall(vLoc = glGetUniformLocation(m_Program->resourceId(), "v_matrix"));
-    GLCall(projLoc = glGetUniformLocation(m_Program->resourceId(), "proj_matrix"));
-    GLCall(glUniformMatrix4fv(tLoc, 1, GL_FALSE, glm::value_ptr(translationMat())));
-    GLCall(glUniformMatrix4fv(vLoc, 1, GL_FALSE, glm::value_ptr(viewMat())));
-    GLCall(glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(m_Camera->perspectiveMatrix())));
+    for (const auto & object : m_Objects)
+    {
+        GLint vLoc;
+        GLint projLoc;
+        GLint tLoc;
+        auto tmatrix = glm::translate(glm::mat4(1.0f), object->location());
+        auto vmatrix = glm::translate(glm::mat4(1.0f), m_Camera->location());
 
-    double currentTime = glfwGetTime();
-    auto tf = currentTime;
-    auto tfLoc = glGetUniformLocation(m_Program->resourceId(), "tf");
-    glUniform1f(tfLoc, (float)tf);
+        object->setAttributeIndex(0);
+        GLCall(tLoc = glGetUniformLocation(m_Program->resourceId(), "t_matrix"));
+        GLCall(vLoc = glGetUniformLocation(m_Program->resourceId(), "v_matrix"));
+        GLCall(projLoc = glGetUniformLocation(m_Program->resourceId(), "proj_matrix"));
+        GLCall(glUniformMatrix4fv(tLoc, 1, GL_FALSE, glm::value_ptr(tmatrix)));
+        GLCall(glUniformMatrix4fv(vLoc, 1, GL_FALSE, glm::value_ptr(vmatrix)));
+        GLCall(glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(m_Camera->perspectiveMatrix())));
 
-    m_CubeObject->onRender();
-    m_PyramidObject->onRender();
-}
-
-glm::mat4 CubeProgram::translationMat()
-{
-    return glm::translate(glm::mat4(1.0f), m_CubeObject->location());
-}
-
-glm::mat4 CubeProgram::viewMat()
-{
-    return glm::translate(glm::mat4(1.0f), m_Camera->location());
+        double currentTime = glfwGetTime();
+        auto tf = currentTime;
+        GLint tfLoc;
+        GLCall(tfLoc = glGetUniformLocation(m_Program->resourceId(), "tf"));
+        GLCall(glUniform1f(tfLoc, (float)tf));
+        object->onRender();
+    }
 }
 
 GLuint CubeProgram::programId()
 {
     return m_Program->resourceId();
+}
+
+void CubeProgram::addObject(std::shared_ptr<DrawableObject> object)
+{
+    m_Objects.push_back(std::move(object));
 }

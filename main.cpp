@@ -80,7 +80,10 @@ int main()
     auto pyramidLocation = glm::vec3{-8.0f, -8.0f, 0.0f};
     auto cubeObj = std::make_shared<DrawableObject>(objLocation, objVertices, 1);
     auto pyramidObj = std::make_shared<DrawableObject>(pyramidLocation, pyramidVertices, 1);
-    auto cubeProgram = std::make_shared<CubeProgram>(std::move(program), camera, cubeObj, pyramidObj);
+
+    auto cubeProgram = std::make_shared<CubeProgram>(std::move(program), camera);
+    cubeProgram->addObject(cubeObj);
+    cubeProgram->addObject(pyramidObj);
 
     Renderer renderer;
     renderer.setCamera(camera);

@@ -5,25 +5,24 @@
 #ifndef NOOBYENGINE_VERTEXBUFFER_HPP
 #define NOOBYENGINE_VERTEXBUFFER_HPP
 
+#include "VertexBuffer.h"
+
 template<typename T> void VertexBuffer::makeBuffer(
     const std::vector<T> & vertices,
     unsigned int stride,
     GLenum bufferType,
-    GLuint attributeIndex,
     GLuint drawMode)
 {
-    makeBuffer(vertices, stride, bufferType, attributeIndex, drawMode, BufferMode::SingleCopy);
+    makeBuffer(vertices, stride, bufferType, drawMode, BufferMode::SingleCopy);
 }
 
 template<typename T> void VertexBuffer::makeBuffer(
     const std::vector<T> & vertices,
     unsigned int stride,
     GLenum bufferType,
-    GLuint attributeIndex,
     GLuint drawMode,
     BufferMode bufferMode)
 {
-    m_AttributeIndex = attributeIndex;
     m_Count = static_cast<unsigned int>(vertices.size());
     m_Stride = stride;
     m_DrawMode = drawMode;

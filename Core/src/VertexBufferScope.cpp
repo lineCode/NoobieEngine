@@ -7,7 +7,6 @@
 VertexBufferScope::VertexBufferScope(VertexBuffer * vertexBuffer)
 :m_VertexBuffer(vertexBuffer)
 {
-    GLCall(glEnableVertexAttribArray(vertexBuffer->attributeIndex()));
     GLCall(glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer->handle()));
     GLCall(glVertexAttribPointer(
         vertexBuffer->attributeIndex(),

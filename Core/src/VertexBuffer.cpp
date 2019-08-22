@@ -18,11 +18,6 @@ GLuint VertexBuffer::handle()
     return m_Buffer->resourceId();
 }
 
-GLuint VertexBuffer::attributeIndex()
-{
-    return m_AttributeIndex;
-}
-
 unsigned int VertexBuffer::count()
 {
     return m_Count;
@@ -43,7 +38,7 @@ BufferMode VertexBuffer::bufferMode()
     return m_BufferMode;
 }
 
-void VertexBuffer::setNumberOfCoppies(unsigned int numCopies)
+void VertexBuffer::setNumberOfCopies(unsigned int numCopies)
 {
     m_NumCopies = numCopies;
 }
@@ -73,4 +68,14 @@ void VertexBuffer::drawArrays()
         default:
             throw std::invalid_argument("Unknown BufferMode");
     }
+}
+
+GLuint VertexBuffer::attributeIndex()
+{
+    return m_attributeIndex;
+}
+
+void VertexBuffer::setAttributeIndex(GLuint attributeIndex)
+{
+    m_attributeIndex = attributeIndex;
 }

@@ -9,7 +9,6 @@
 #include "VertexBuffer.h"
 #include "../Interfaces/IRenderable.h"
 #include "../Infrastructure/GLSafe.h"
-#include <atomic>
 
 class VertexArray : IRenderable
 {
@@ -29,12 +28,13 @@ public:
         GLuint drawMode,
         unsigned int numCopies);
     void onRender() override;
+    void setAttributeIndex(GLuint attributeIndex);
 private:
     std::unique_ptr<GLResource> makeArrayBuffer();
 private:
     std::vector<std::unique_ptr<VertexBuffer>> m_VertexBuffer;
     std::unique_ptr<GLResource> m_ArrayBuffer;
-    static std::atomic<unsigned int> m_Atrib;
+    GLuint m_AttributeIndex;
 };
 
 #include "VertexArray.hpp"

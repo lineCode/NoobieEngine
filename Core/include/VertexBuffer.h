@@ -18,25 +18,25 @@ class VertexBuffer : IRenderable{
 public:
     VertexBuffer();
     unsigned int count();
-    GLuint attributeIndex();
     GLuint handle();
     unsigned stride();
     template<typename T> void makeBuffer(
         const std::vector<T> & vertices,
         unsigned int stride,
         GLenum bufferType,
-        GLuint attributeIndex,
         GLuint drawMode);
     template<typename T> void makeBuffer(
         const std::vector<T> & vertices,
         unsigned int stride,
         GLenum bufferType,
-        GLuint attributeIndex,
         GLuint drawMode,
         BufferMode bufferMode);
     BufferMode bufferMode();
-    void setNumberOfCoppies(unsigned int numCopies);
+    void setNumberOfCopies(unsigned int numCopies);
     unsigned int numberOfCopies();
+
+    GLuint attributeIndex();
+    void setAttributeIndex(GLuint attributeIndex);
 
     GLuint drawMode();
     void onRender() override;
@@ -44,10 +44,10 @@ private:
     void drawArrays();
 private:
     std::unique_ptr<GLResource> m_Buffer;
-    GLuint m_AttributeIndex;
     unsigned int m_Count;
     unsigned int m_Stride;
     GLuint m_DrawMode;
+    GLuint m_attributeIndex;
     unsigned int m_NumCopies;
     BufferMode m_BufferMode;
 };
