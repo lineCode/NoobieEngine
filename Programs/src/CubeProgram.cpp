@@ -2,8 +2,6 @@
 // Created by Rob on 2019-08-11.
 //
 
-#include <Programs/include/CubeProgram.h>
-
 #include "CubeProgram.h"
 #include "external/glm-0.9.7.1/glm/gtc/matrix_transform.hpp"
 #include "external/glm-0.9.7.1/glm/gtc/type_ptr.hpp"
