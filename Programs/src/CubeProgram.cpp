@@ -2,8 +2,6 @@
 // Created by Rob on 2019-08-11.
 //
 
-#include <Programs/include/CubeProgram.h>
-
 #include "CubeProgram.h"
 #include "external/glm-0.9.7.1/glm/gtc/matrix_transform.hpp"
 #include "external/glm-0.9.7.1/glm/gtc/type_ptr.hpp"
@@ -17,13 +15,7 @@ CubeProgram::CubeProgram(
 
 void CubeProgram::onRender()
 {
-    GLCall(glEnable(GL_DEPTH_TEST));
-    GLCall(glDepthFunc(GL_LEQUAL));
-
-    glClearColor(0.0, 0.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     GLCall(glUseProgram(m_Program->resourceId()));
-
     for (const auto & object : m_Objects)
     {
         GLint vLoc;
