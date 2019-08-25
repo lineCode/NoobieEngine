@@ -41,6 +41,7 @@ add_definitions(
 FILE(COPY SimpleTransform.vertexshader DESTINATION "${CMAKE_BINARY_DIR}")
 FILE(COPY SingleColor.fragmentshader DESTINATION "${CMAKE_BINARY_DIR}")
 FILE(COPY MatrixUtil.glsl DESTINATION "${CMAKE_BINARY_DIR}")
+FILE(COPY vertShader.glsl DESTINATION "${CMAKE_BINARY_DIR}")
 
 
 target_link_libraries(NoobyEngine

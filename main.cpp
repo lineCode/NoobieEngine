@@ -6,7 +6,7 @@
 #include "Core/include/Renderer.h"
 #include "Interfaces/IRenderable.h"
 #include "Programs/include/CubeProgram.h"
-
+#include "Programs/include/PlanetProgram.h"
 
 int main()
 {
@@ -16,7 +16,7 @@ int main()
 
     auto program = createShaderProgram(
         {
-            ShaderFileInfo("SimpleTransform.vertexshader", GL_VERTEX_SHADER),
+            ShaderFileInfo("vertShader.glsl", GL_VERTEX_SHADER),
             ShaderFileInfo("SingleColor.fragmentshader", GL_FRAGMENT_SHADER)
         });
 
@@ -70,7 +70,7 @@ int main()
     int width, height;
     glfwGetFramebufferSize(handle, &width, &height);
     auto camera = std::make_shared<Camera>(
-        glm::vec3{0.0f, 0.0f, -90.0f}, //location
+        glm::vec3{0.0f, 0.0f, -20.0f}, //location
         glm::radians<float>(59.0f), //field of view
         (float)width/(float)height, //aspect ratio
         0.1f, //near plane
@@ -81,9 +81,10 @@ int main()
     auto cubeObj = std::make_shared<DrawableObject>(objLocation, objVertices, 1);
     auto pyramidObj = std::make_shared<DrawableObject>(pyramidLocation, pyramidVertices, 1);
 
-    auto cubeProgram = std::make_shared<CubeProgram>(std::move(program), camera);
-    cubeProgram->addObject(cubeObj);
+    auto cubeProgram = std::make_shared<PlanetProgram>(std::move(program), camera);
     cubeProgram->addObject(pyramidObj);
+    cubeProgram->addObject(cubeObj);
+    cubeProgram->addObject(cubeObj);
 
     Renderer renderer;
     renderer.setCamera(camera);
