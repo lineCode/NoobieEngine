@@ -21,6 +21,7 @@ include_directories(
         external/glm-0.9.7.1/
         external/glew-2.1.0/include/
         external/assimp-3.0.1270/include/
+		external/soil2/src
         .
 )
 
