@@ -9,8 +9,8 @@ void BaseProgram::onRender()
     GLCall(glUseProgram(m_Program->resourceId()));
 }
 
-BaseProgram::BaseProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera):
-m_Program(std::move(program)), m_Camera(camera)
+BaseProgram::BaseProgram(std::shared_ptr<Camera> camera) :
+ m_Camera(camera)
 {
 
 }

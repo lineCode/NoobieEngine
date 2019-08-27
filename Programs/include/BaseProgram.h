@@ -13,7 +13,7 @@
 class BaseProgram : public IRenderable
 {
 public:
-    BaseProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera);
+    BaseProgram(std::shared_ptr<Camera> camera);
 public:
     virtual void onRender();
 protected:

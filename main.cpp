@@ -14,12 +14,6 @@ int main()
     context->startContext();
     auto handle = static_cast<GLFWwindow*>(context->handle());
 
-    auto program = createShaderProgram(
-        {
-            ShaderFileInfo("vertShader.glsl", GL_VERTEX_SHADER),
-            ShaderFileInfo("SingleColor.fragmentshader", GL_FRAGMENT_SHADER)
-        });
-
     auto objVertices = std::initializer_list<float>{
         -1.0f,-1.0f,-1.0f, // triangle 1 : begin
     -1.0f,-1.0f, 1.0f,
@@ -81,7 +75,7 @@ int main()
     auto cubeObj = std::make_shared<DrawableObject>(objLocation, objVertices, 1);
     auto pyramidObj = std::make_shared<DrawableObject>(pyramidLocation, pyramidVertices, 1);
 
-    auto cubeProgram = std::make_shared<PlanetProgram>(std::move(program), camera);
+    auto cubeProgram = std::make_shared<PlanetProgram>(camera);
     cubeProgram->addObject(pyramidObj);
     cubeProgram->addObject(cubeObj);
     cubeProgram->addObject(cubeObj);
