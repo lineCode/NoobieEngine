@@ -7,12 +7,10 @@
 
 #include "Infrastructure/GLFWContext.h"
 #include "Infrastructure/GLResource.h"
-#include "Infrastructure/GLSafe.h"
-#include "Interfaces/IRenderable.h"
-#include "Core/include/Camera.h"
+#include "Programs/include/BaseProgram.h"
 #include "Core/include/DrawableObject.h"
 
-class CubeProgram : public IRenderable
+class CubeProgram : public BaseProgram
 {
 public:
     CubeProgram(
@@ -23,8 +21,6 @@ public:
     void addObject(std::shared_ptr<DrawableObject> object);
 private:
     std::vector<std::shared_ptr<DrawableObject>> m_Objects;
-    std::unique_ptr<GLResource> m_Program;
-    std::shared_ptr<Camera> m_Camera;
 };
 
 

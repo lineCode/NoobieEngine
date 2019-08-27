@@ -9,13 +9,13 @@
 CubeProgram::CubeProgram(
     std::unique_ptr<GLResource> program,
     std::shared_ptr<Camera> camera)
-:m_Program(std::move(program)), m_Camera(camera)
+:BaseProgram(std::move(program), camera)
 {
 }
 
 void CubeProgram::onRender()
 {
-    GLCall(glUseProgram(m_Program->resourceId()));
+    BaseProgram::onRender();
     for (const auto & object : m_Objects)
     {
         GLint vLoc;
