@@ -6,5 +6,6 @@ target_sources(NoobyEngine PUBLIC
         IModelLoader.h
         IRenderable.h
         IShaderLoader.h
+        ITextureLoader.h
         ShaderFileInfo.h
         )

@@ -9,7 +9,9 @@ target_sources(Infrastructure
         FileUtils.cpp
         AssimpModelLoader.cpp
 		GLResource.cpp
+		FileTextureLoader.cpp
         PUBLIC
+		FileTextureLoader.h
         GLSafe.h
         GLUtils.h
         ShaderLoader.h
