@@ -8,6 +8,11 @@
 #include "Programs/include/CubeProgram.h"
 #include "Programs/include/PlanetProgram.h"
 
+void window_reshape_callback(GLFWwindow * window, int newWidth, int newHeight)
+{
+    //todo: recalculate perspective matrix
+}
+
 int main()
 {
     std::unique_ptr<IContext> context = std::make_unique<GLFWContext>();
