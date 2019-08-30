@@ -3,7 +3,6 @@
 //
 
 #include "ShaderLoader.h"
-#include "../Infrastructure/GLResource.h"
 #include "../Infrastructure/FileUtils.h"
 #include "GLSafe.h"
 #include "GLUtils.h"
@@ -12,7 +11,7 @@ void compileSource(const std::string & source, unsigned int shaderId);
 void linkProgram(unsigned int programId, unsigned int shaderId);
 void cleanBuild(unsigned int programId, std::vector<GLuint> shaders);
 
-std::unique_ptr<GLResource> createShaderProgram(std::initializer_list<ShaderFileInfo> shaderInfoList)
+std::unique_ptr<GLResource> ShaderLoader::createProgram(std::initializer_list<ShaderFileInfo> shaderInfoList)
 {
     auto programId = glCreateProgram();
     auto program = std::make_unique<GLResource>(programId, [programId] ()

@@ -5,17 +5,21 @@
 #include "CubeProgram.h"
 #include "external/glm-0.9.7.1/glm/gtc/matrix_transform.hpp"
 #include "external/glm-0.9.7.1/glm/gtc/type_ptr.hpp"
+#include "Infrastructure/ShaderLoader.h"
 
-CubeProgram::CubeProgram(
-    std::unique_ptr<GLResource> program,
-    std::shared_ptr<Camera> camera)
-:m_Program(std::move(program)), m_Camera(camera)
+CubeProgram::CubeProgram(std::shared_ptr<Camera> camera)
+:BaseProgram(camera)
 {
+    ShaderLoader loader;
+    BaseProgram::m_Program = loader.createProgram({
+                                                      ShaderFileInfo("SimpleTransform.vertexshader", GL_VERTEX_SHADER),
+                                                      ShaderFileInfo("SingleColor.fragmentshader", GL_FRAGMENT_SHADER)
+                                                  });
 }
 
 void CubeProgram::onRender()
 {
-    GLCall(glUseProgram(m_Program->resourceId()));
+    BaseProgram::onRender();
     for (const auto & object : m_Objects)
     {
         GLint vLoc;
