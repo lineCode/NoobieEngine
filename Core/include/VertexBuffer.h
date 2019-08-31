@@ -31,6 +31,12 @@ public:
         GLenum bufferType,
         GLuint drawMode,
         BufferMode bufferMode);
+
+    template<typename T> void makeTexture(
+        const std::vector<T> & textureCoordinates,
+        unsigned int stride,
+        GLuint textureUnit);
+
     BufferMode bufferMode();
     void setNumberOfCopies(unsigned int numCopies);
     unsigned int numberOfCopies();

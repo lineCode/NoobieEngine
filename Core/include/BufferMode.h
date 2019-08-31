@@ -8,7 +8,8 @@
 enum class BufferMode
 {
     SingleCopy,
-    InstanceCopy
+    InstanceCopy,
+    Texture
 };
 
 #endif //NOOBYENGINE_VERTEXBUFFERMODE_H
