@@ -18,7 +18,7 @@ struct Vertex
     glm::vec2 TexCoords;
 };
 
-struct Texture
+struct TextureDto
 {
     unsigned int id;
     std::string type;
@@ -27,14 +27,14 @@ struct Texture
 class Mesh : IRenderable
 {
 public:
-    Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
+    Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<TextureDto> textures);
 private:
     void setupMesh(const std::vector<Vertex> & vertices, std::vector<unsigned int> indices);
     void onRender() override;
 private:
     std::vector<Vertex> m_Vertices;
     std::vector<unsigned int> m_Indices;
-    std::vector<Texture> m_Textures;
+    std::vector<TextureDto> m_Textures;
     std::unique_ptr<VertexArray> m_VertexArray;
 };
 

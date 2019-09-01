@@ -5,7 +5,6 @@
 #ifndef NOOBYENGINE_VERTEXBUFFERSCOPE_H
 #define NOOBYENGINE_VERTEXBUFFERSCOPE_H
 
-#include "BufferMode.h"
 #include "VertexBuffer.h"
 
 class VertexBufferScope

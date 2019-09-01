@@ -11,10 +11,24 @@ DrawableObject::DrawableObject(glm::vec3 location, const std::vector<float> & ve
     m_Vao->addBuffer(vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES, numCopies);
 }
 
+DrawableObject::DrawableObject(
+    glm::vec3 location,
+    const std::vector<float> & vertices,
+    const std::vector<float> & textureCoor,
+    unsigned int numCopies)
+{
+    m_Vao = std::make_unique<VertexArray>();
+    m_Vao->addBuffer(vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES, numCopies);
+    m_Texture = std::make_unique<Texture>();
+    m_Texture->addTexture(textureCoor, 3, GL_ARRAY_BUFFER);
+}
+
 void DrawableObject::onRender()
 {
     m_Vao->setAttributeIndex(m_attributeIndex);
     m_Vao->onRender();
+    m_Texture->setTextureUnit(m_activeTextureUnit);
+    m_Texture->onRender();
 }
 
 glm::vec3 DrawableObject::location()
@@ -25,4 +39,11 @@ glm::vec3 DrawableObject::location()
 void DrawableObject::setAttributeIndex(GLuint attributeLocation)
 {
     m_attributeIndex = attributeLocation;
+}
+
+
+
+void DrawableObject::setActiveTextureUnit(GLuint textureUnit)
+{
+    m_activeTextureUnit = textureUnit;
 }

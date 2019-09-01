@@ -4,6 +4,7 @@
 
 #include "VertexBuffer.h"
 #include "VertexBufferScope.h"
+#include "TextureScope.h"
 #include <GL/glew.h>
 
 VertexBuffer::VertexBuffer()
@@ -50,7 +51,6 @@ unsigned int VertexBuffer::numberOfCopies()
 
 void VertexBuffer::onRender()
 {
-    VertexBufferScope vertexScope(this);
     drawArrays();
 }
 
@@ -60,10 +60,19 @@ void VertexBuffer::drawArrays()
     switch (bufferMode())
     {
         case BufferMode::InstanceCopy:
+        {
+            VertexBufferScope vertexScope(this);
             GLCall(glDrawArraysInstanced(drawMode(), 0, elements, numberOfCopies()));
             break;
+        }
         case BufferMode::SingleCopy:
+        {
+            VertexBufferScope vertexScope(this);
             GLCall(glDrawArrays(drawMode(), 0, elements));
+            break;
+        }
+        case BufferMode::Texture:
+            TextureScope(this);
             break;
         default:
             throw std::invalid_argument("Unknown BufferMode");
@@ -78,4 +87,19 @@ GLuint VertexBuffer::attributeIndex()
 void VertexBuffer::setAttributeIndex(GLuint attributeIndex)
 {
     m_attributeIndex = attributeIndex;
+}
+
+void VertexBuffer::setDrawMode(GLuint drawMode)
+{
+    m_DrawMode = drawMode;
+}
+
+GLenum VertexBuffer::activeTextureUnit()
+{
+    return m_TextureUnit;
+}
+
+void VertexBuffer::setTextureUnit(GLuint textureUnit)
+{
+    m_TextureUnit = textureUnit;
 }

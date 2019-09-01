@@ -41,7 +41,7 @@ Mesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
 {
     std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
-    std::vector<Texture> textures;
+    std::vector<TextureDto> textures;
 
     for(unsigned int i = 0; i < mesh->mNumVertices; i++)
     {

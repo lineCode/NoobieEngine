@@ -23,19 +23,16 @@ public:
     template<typename T> void makeBuffer(
         const std::vector<T> & vertices,
         unsigned int stride,
-        GLenum bufferType,
-        GLuint drawMode);
+        GLenum bufferType);
     template<typename T> void makeBuffer(
         const std::vector<T> & vertices,
         unsigned int stride,
         GLenum bufferType,
-        GLuint drawMode,
         BufferMode bufferMode);
-
     template<typename T> void makeTexture(
         const std::vector<T> & textureCoordinates,
         unsigned int stride,
-        GLuint textureUnit);
+        GLenum bufferType);
 
     BufferMode bufferMode();
     void setNumberOfCopies(unsigned int numCopies);
@@ -45,6 +42,11 @@ public:
     void setAttributeIndex(GLuint attributeIndex);
 
     GLuint drawMode();
+    void setDrawMode(GLuint drawMode);
+
+    GLenum activeTextureUnit();
+    void setTextureUnit(GLuint textureUnit);
+
     void onRender() override;
 private:
     void drawArrays();
@@ -52,6 +54,7 @@ private:
     std::unique_ptr<GLResource> m_Buffer;
     unsigned int m_Count;
     unsigned int m_Stride;
+    GLuint m_TextureUnit;
     GLuint m_DrawMode;
     GLuint m_attributeIndex;
     unsigned int m_NumCopies;
