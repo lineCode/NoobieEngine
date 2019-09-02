@@ -8,33 +8,37 @@
 #include <GL/glew.h>
 
 VertexBuffer::VertexBuffer()
-    :m_DrawMode(GL_TRIANGLES)
 {
+    m_DrawMode = GL_TRIANGLES;
+    m_ActiveTextureUnit = GL_TEXTURE0;
+    m_Count = 0;
+    m_Stride = 0;
+    m_attributeIndex = 0;
     m_NumCopies = 1;
     m_BufferMode = BufferMode::SingleCopy;
 }
 
-GLuint VertexBuffer::handle()
+GLuint VertexBuffer::handle() const
 {
     return m_Buffer->resourceId();
 }
 
-unsigned int VertexBuffer::count()
+unsigned int VertexBuffer::count() const
 {
     return m_Count;
 }
 
-GLuint VertexBuffer::stride()
+GLuint VertexBuffer::stride() const
 {
     return m_Stride;
 }
 
-GLuint VertexBuffer::drawMode()
+GLuint VertexBuffer::drawMode() const
 {
     return m_DrawMode;
 }
 
-BufferMode VertexBuffer::bufferMode()
+BufferMode VertexBuffer::bufferMode() const
 {
     return m_BufferMode;
 }
@@ -44,7 +48,7 @@ void VertexBuffer::setNumberOfCopies(unsigned int numCopies)
     m_NumCopies = numCopies;
 }
 
-unsigned int VertexBuffer::numberOfCopies()
+unsigned int VertexBuffer::numberOfCopies() const
 {
     return m_NumCopies;
 }
@@ -81,7 +85,7 @@ void VertexBuffer::drawArrays()
     }
 }
 
-GLuint VertexBuffer::attributeIndex()
+GLuint VertexBuffer::attributeIndex() const
 {
     return m_attributeIndex;
 }
@@ -96,7 +100,7 @@ void VertexBuffer::setDrawMode(GLuint drawMode)
     m_DrawMode = drawMode;
 }
 
-GLenum VertexBuffer::activeTextureUnit()
+GLenum VertexBuffer::activeTextureUnit() const
 {
     return m_ActiveTextureUnit;
 }

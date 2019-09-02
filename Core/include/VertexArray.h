@@ -14,7 +14,7 @@ class VertexArray : IRenderable
 {
 public:
     VertexArray();
-    GLuint handle();
+    GLuint handle() const;
 public:
     template<typename T> void addBuffer(
         const T & buffer,
@@ -36,7 +36,7 @@ public:
     void onRender() override;
     void setAttributeIndex(GLuint attributeIndex);
     void setActiveTextureUnit(GLenum activeTextureUnit);
-    GLenum activeTextureUnit();
+    GLenum activeTextureUnit() const;
 private:
     std::unique_ptr<GLResource> makeArrayBuffer();
 private:

@@ -20,7 +20,7 @@ std::unique_ptr<GLResource> VertexArray::makeArrayBuffer()
     });
 }
 
-GLuint VertexArray::handle()
+GLuint VertexArray::handle() const
 {
     return m_ArrayBuffer->resourceId();
 }
@@ -46,7 +46,7 @@ void VertexArray::setActiveTextureUnit(GLenum activeTextureUnit)
     m_ActiveTextureUnit = activeTextureUnit;
 }
 
-GLenum VertexArray::activeTextureUnit()
+GLenum VertexArray::activeTextureUnit() const
 {
     return m_ActiveTextureUnit;
 }

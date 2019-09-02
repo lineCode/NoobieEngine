@@ -10,12 +10,12 @@ Camera::Camera(glm::vec3 location, float fov, float aspect, float nearPlane, flo
 {
 }
 
-glm::vec3 Camera::location()
+glm::vec3 Camera::location() const
 {
     return m_Location;
 }
 
-glm::mat4 Camera::perspectiveMatrix()
+glm::mat4 Camera::perspectiveMatrix() const
 {
     return glm::perspective(m_Fov, m_Aspect, m_NearPlane, m_FarPlane);
 }

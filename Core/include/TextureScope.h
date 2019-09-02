@@ -11,9 +11,7 @@ class TextureScope
 {
 public:
     TextureScope(VertexBuffer * vertexBuffer);
-    ~TextureScope(){}
-private:
-    VertexBuffer * m_VertexBuffer;
+    ~TextureScope() = default;
 };
 
 

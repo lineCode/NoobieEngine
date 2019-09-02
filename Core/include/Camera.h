@@ -10,8 +10,8 @@ class Camera
 public:
     Camera() = delete;
     explicit Camera(glm::vec3 location, float fov, float aspect, float nearPlane, float farPlane);
-    glm::vec3 location();
-    glm::mat4 perspectiveMatrix();
+    glm::vec3 location() const;
+    glm::mat4 perspectiveMatrix() const;
 private:
     glm::vec3 m_Location;
     float m_Aspect;

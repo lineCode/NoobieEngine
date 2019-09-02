@@ -10,11 +10,11 @@
 class VertexBufferScope
 {
 public:
-    VertexBufferScope(VertexBuffer * vertexBuffer);
+    VertexBufferScope(const VertexBuffer * vertexBuffer);
     void checkBuffer();
     ~VertexBufferScope();
 private:
-    VertexBuffer * m_VertexBuffer;
+    const VertexBuffer * m_VertexBuffer;
 };
 
 

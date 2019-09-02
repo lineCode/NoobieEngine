@@ -4,8 +4,8 @@
 
 #include "VertexBufferScope.h"
 
-VertexBufferScope::VertexBufferScope(VertexBuffer * vertexBuffer)
-:m_VertexBuffer(vertexBuffer)
+VertexBufferScope::VertexBufferScope(const VertexBuffer * vertexBuffer) :
+    m_VertexBuffer(vertexBuffer)
 {
     GLCall(glBindBuffer(vertexBuffer->drawMode(), vertexBuffer->handle()));
     GLCall(glVertexAttribPointer(

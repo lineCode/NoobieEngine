@@ -1,3 +1,4 @@
+#include "GLFWContext.h"
 //
 // Created by Rob on 2019-07-13.
 //
@@ -40,6 +41,11 @@ void GLFWContext::startContext() {
 
 void GLFWContext::endContext() {
     glfwTerminate();
+}
+
+GLFWContext::GLFWContext()
+{
+    m_Window = nullptr;
 }
 
 GLFWContext::~GLFWContext() {

@@ -11,7 +11,7 @@
 
 class GLFWContext : public IContext{
 public:
-    GLFWContext() = default;
+    GLFWContext();
     virtual ~GLFWContext();
 
     void * handle() override;

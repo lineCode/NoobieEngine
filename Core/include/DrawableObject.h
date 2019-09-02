@@ -11,8 +11,9 @@ class DrawableObject : public IRenderable
 {
 public:
     DrawableObject(glm::vec3 location, const std::vector<float> & vertices, unsigned int numCopies);
-    glm::vec3 location();
     virtual void onRender() override;
+
+    glm::vec3 location() const;
 
     void setTexture(std::unique_ptr<GLResource> loadedTexture, const std::vector<float>& textureCoordinates);
     void setActiveTextureUnit(GLenum textureUnit);

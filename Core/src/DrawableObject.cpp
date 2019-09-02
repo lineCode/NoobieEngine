@@ -24,7 +24,7 @@ void DrawableObject::setTexture(std::unique_ptr<GLResource> loadedTexture, const
     m_Vao->addTexture(std::move(loadedTexture), textureCoordinates, 2, GL_ARRAY_BUFFER);
 }
 
-glm::vec3 DrawableObject::location()
+glm::vec3 DrawableObject::location() const
 {
     return m_Location;
 }
