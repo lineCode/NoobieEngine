@@ -14,6 +14,16 @@ template<typename T> void VertexArray::addBuffer(
     addBuffer(buffer, stride, bufferType, drawMode, 1);
 }
 
+template<typename T> void VertexArray::addTexture(
+    std::unique_ptr<GLResource> loadedTexture, 
+    const std::vector<T>& textureCoordinates, 
+    unsigned int stride, GLenum bufferType)
+{
+    auto vbo = std::make_unique<VertexBuffer>();
+    vbo->makeTexture(std::move(loadedTexture), textureCoordinates, stride, bufferType);
+    m_VertexBuffer.push_back(std::move(vbo));
+}
+
 template<typename T> void VertexArray::addBuffer(
     const T & buffer,
     unsigned int stride,

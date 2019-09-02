@@ -27,14 +27,23 @@ public:
         GLuint bufferType,
         GLuint drawMode,
         unsigned int numCopies);
+    template<typename T> void addTexture(
+        std::unique_ptr<GLResource> loadedTexture,
+        const std::vector<T>& textureCoordinates,
+        unsigned int stride,
+        GLenum bufferType);
+
     void onRender() override;
     void setAttributeIndex(GLuint attributeIndex);
+    void setActiveTextureUnit(GLenum activeTextureUnit);
+    GLenum activeTextureUnit();
 private:
     std::unique_ptr<GLResource> makeArrayBuffer();
 private:
     std::vector<std::unique_ptr<VertexBuffer>> m_VertexBuffer;
     std::unique_ptr<GLResource> m_ArrayBuffer;
     GLuint m_AttributeIndex;
+    GLenum m_ActiveTextureUnit;
 };
 
 #include "VertexArray.hpp"

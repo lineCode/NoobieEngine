@@ -16,10 +16,12 @@ template<typename T> void VertexBuffer::makeBuffer(
 }
 
 template<typename T> void VertexBuffer::makeTexture(
+    std::unique_ptr<GLResource> loadedTexture,
     const std::vector<T> & textureCoordinates,
     unsigned int stride,
     GLenum bufferType)
 {
+    m_LoadedTexture = std::move(loadedTexture);
     makeBuffer(textureCoordinates, stride, bufferType, BufferMode::Texture);
 }
 

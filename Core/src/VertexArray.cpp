@@ -31,6 +31,7 @@ void VertexArray::onRender()
     for(auto & vertexBuffer : m_VertexBuffer)
     {
         vertexBuffer->setAttributeIndex(m_AttributeIndex);
+        vertexBuffer->setActiveTextureUnit(m_ActiveTextureUnit);
         vertexBuffer->onRender();
     }
 }
@@ -38,4 +39,14 @@ void VertexArray::onRender()
 void VertexArray::setAttributeIndex(GLuint attributeIndex)
 {
     m_AttributeIndex = attributeIndex;
+}
+
+void VertexArray::setActiveTextureUnit(GLenum activeTextureUnit)
+{
+    m_ActiveTextureUnit = activeTextureUnit;
+}
+
+GLenum VertexArray::activeTextureUnit()
+{
+    return m_ActiveTextureUnit;
 }

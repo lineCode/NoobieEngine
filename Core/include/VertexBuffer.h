@@ -30,6 +30,7 @@ public:
         GLenum bufferType,
         BufferMode bufferMode);
     template<typename T> void makeTexture(
+        std::unique_ptr<GLResource> loadedTexture,
         const std::vector<T> & textureCoordinates,
         unsigned int stride,
         GLenum bufferType);
@@ -45,16 +46,17 @@ public:
     void setDrawMode(GLuint drawMode);
 
     GLenum activeTextureUnit();
-    void setTextureUnit(GLuint textureUnit);
+    void setActiveTextureUnit(GLuint textureUnit);
 
     void onRender() override;
 private:
     void drawArrays();
 private:
     std::unique_ptr<GLResource> m_Buffer;
+    std::unique_ptr<GLResource> m_LoadedTexture;
     unsigned int m_Count;
     unsigned int m_Stride;
-    GLuint m_TextureUnit;
+    GLenum m_ActiveTextureUnit;
     GLuint m_DrawMode;
     GLuint m_attributeIndex;
     unsigned int m_NumCopies;

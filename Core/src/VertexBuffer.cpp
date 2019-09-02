@@ -72,8 +72,10 @@ void VertexBuffer::drawArrays()
             break;
         }
         case BufferMode::Texture:
-            TextureScope(this);
+        {
+            TextureScope textureScope(this);
             break;
+        }
         default:
             throw std::invalid_argument("Unknown BufferMode");
     }
@@ -96,10 +98,10 @@ void VertexBuffer::setDrawMode(GLuint drawMode)
 
 GLenum VertexBuffer::activeTextureUnit()
 {
-    return m_TextureUnit;
+    return m_ActiveTextureUnit;
 }
 
-void VertexBuffer::setTextureUnit(GLuint textureUnit)
+void VertexBuffer::setActiveTextureUnit(GLuint textureUnit)
 {
-    m_TextureUnit = textureUnit;
+    m_ActiveTextureUnit = textureUnit;
 }
