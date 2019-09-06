@@ -56,8 +56,9 @@ void TextureExample()
     auto pyramidLocation = glm::vec3{-8.0f, -8.0f, 0.0f};
     auto pyramidObj = std::make_shared<DrawableObject>(pyramidLocation, pyramidVertices, 1);
     pyramidObj->setTexture(std::move(texture), pyrTexCoords);
+    pyramidObj->setActiveTextureUnit(GL_TEXTURE0);
 
-    auto cubeProgram = std::make_shared<PlanetProgram>(camera);
+    auto cubeProgram = std::make_shared<CubeProgram>(camera);
     cubeProgram->addObject(pyramidObj);
 
     Renderer renderer;
