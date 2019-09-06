@@ -13,9 +13,8 @@ void Renderer::render(IContext * context)
 {
     GLCall(glEnable(GL_DEPTH_TEST));
     GLCall(glDepthFunc(GL_LEQUAL));
-
-    glClearColor(0.0, 0.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    GLCall(glClearColor(0.0, 0.0, 0.0, 1.0));
+    GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
     for(auto renderable : m_OrderedRenderables)
     {

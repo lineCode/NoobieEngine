@@ -7,7 +7,7 @@
 VertexBufferScope::VertexBufferScope(const VertexBuffer * vertexBuffer) :
     m_VertexBuffer(vertexBuffer)
 {
-    GLCall(glBindBuffer(vertexBuffer->drawMode(), vertexBuffer->handle()));
+    GLCall(glBindBuffer(vertexBuffer->bufferType(), vertexBuffer->handle()));
     GLCall(glVertexAttribPointer(
         vertexBuffer->attributeIndex(),
         vertexBuffer->stride(),                  // num components per vertex

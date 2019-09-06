@@ -48,6 +48,9 @@ public:
     GLenum activeTextureUnit() const;
     void setActiveTextureUnit(GLuint textureUnit);
 
+    GLenum bufferType() const;
+    void setBufferType(GLenum bufferType);
+
     void onRender() override;
 private:
     void drawArrays();
@@ -57,6 +60,7 @@ private:
     unsigned int m_Count;
     unsigned int m_Stride;
     GLenum m_ActiveTextureUnit;
+    GLenum m_BufferType;
     GLuint m_DrawMode;
     GLuint m_attributeIndex;
     unsigned int m_NumCopies;

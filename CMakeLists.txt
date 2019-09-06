@@ -12,6 +12,8 @@ add_subdirectory(Core)
 add_subdirectory(external)
 add_subdirectory(Interfaces)
 add_subdirectory(Programs)
+add_subdirectory(Samples)
+add_subdirectory(external/soil2)
 
 find_package(OpenGL REQUIRED)
 
@@ -29,6 +31,7 @@ set(ALL_LIBS
         ${OPENGL_LIBRARY}
         glfw
         GLEW_210
+		SOIL
         )
 
 add_definitions(

@@ -109,3 +109,13 @@ void VertexBuffer::setActiveTextureUnit(GLuint textureUnit)
 {
     m_ActiveTextureUnit = textureUnit;
 }
+
+GLenum VertexBuffer::bufferType() const
+{
+    return m_BufferType;
+}
+
+void VertexBuffer::setBufferType(GLenum bufferType)
+{
+    m_BufferType = bufferType;
+}
