@@ -23,7 +23,6 @@ void CubeProgram::onRender()
         auto tmatrix = glm::translate(glm::mat4(1.0f), object->location());
         auto vmatrix = glm::translate(glm::mat4(1.0f), m_Camera->location());
 
-        object->setAttributeIndex(0);
         GLCall(tLoc = glGetUniformLocation(m_Program->resourceId(), "t_matrix"));
         GLCall(vLoc = glGetUniformLocation(m_Program->resourceId(), "v_matrix"));
         GLCall(projLoc = glGetUniformLocation(m_Program->resourceId(), "proj_matrix"));

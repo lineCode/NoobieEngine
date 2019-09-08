@@ -16,34 +16,29 @@ public:
     VertexArray();
     GLuint handle() const;
 public:
-    template<typename T> void addBuffer(
+    template<typename T> VertexBuffer * addBuffer(
         const T & buffer,
         unsigned int stride,
         GLuint bufferType,
         GLuint drawMode);
-    template<typename T> void addBuffer(
+    template<typename T> VertexBuffer * addBuffer(
         const T & buffer,
         unsigned int stride,
         GLuint bufferType,
         GLuint drawMode,
         unsigned int numCopies);
-    template<typename T> void addTexture(
+    template<typename T> VertexBuffer * addTexture(
         std::unique_ptr<GLResource> loadedTexture,
         const std::vector<T>& textureCoordinates,
         unsigned int stride,
         GLenum bufferType);
 
     void onRender() override;
-    void setAttributeIndex(GLuint attributeIndex);
-    void setActiveTextureUnit(GLenum activeTextureUnit);
-    GLenum activeTextureUnit() const;
 private:
     std::unique_ptr<GLResource> makeArrayBuffer();
 private:
     std::vector<std::unique_ptr<VertexBuffer>> m_VertexBuffer;
     std::unique_ptr<GLResource> m_ArrayBuffer;
-    GLuint m_AttributeIndex;
-    GLenum m_ActiveTextureUnit;
 };
 
 #include "VertexArray.hpp"

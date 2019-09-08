@@ -5,16 +5,16 @@
 #ifndef NOOBYENGINE_VERTEXARRAY_HPP
 #define NOOBYENGINE_VERTEXARRAY_HPP
 
-template<typename T> void VertexArray::addBuffer(
+template<typename T> VertexBuffer * VertexArray::addBuffer(
     const T & buffer,
     unsigned int stride,
     GLuint bufferType,
     GLuint drawMode)
 {
-    addBuffer(buffer, stride, bufferType, drawMode, 1);
+    return addBuffer(buffer, stride, bufferType, drawMode, 1);
 }
 
-template<typename T> void VertexArray::addTexture(
+template<typename T> VertexBuffer * VertexArray::addTexture(
     std::unique_ptr<GLResource> loadedTexture, 
     const std::vector<T>& textureCoordinates, 
     unsigned int stride, GLenum bufferType)
@@ -22,9 +22,10 @@ template<typename T> void VertexArray::addTexture(
     auto vbo = std::make_unique<VertexBuffer>();
     vbo->makeTexture(std::move(loadedTexture), textureCoordinates, stride, bufferType);
     m_VertexBuffer.push_back(std::move(vbo));
+    return m_VertexBuffer.back().get();
 }
 
-template<typename T> void VertexArray::addBuffer(
+template<typename T> VertexBuffer * VertexArray::addBuffer(
     const T & buffer,
     unsigned int stride,
     GLuint bufferType,
@@ -36,6 +37,7 @@ template<typename T> void VertexArray::addBuffer(
     vbo->setDrawMode(drawMode);
     vbo->setNumberOfCopies(numCopies);
     m_VertexBuffer.push_back(std::move(vbo));
+    return m_VertexBuffer.back().get();
 }
 
 #endif //NOOBYENGINE_VERTEXARRAY_HPP
