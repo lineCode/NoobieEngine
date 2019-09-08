@@ -9,5 +9,9 @@
 GLuint FileTextureLoader::loadTexture(const std::string & texturePath)
 {
     GLuint textureID = SOIL_load_OGL_texture(texturePath.c_str(), SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y);
+    if (!textureID)
+    {
+        throw std::exception(SOIL_last_result());
+    }
     return textureID;
 }

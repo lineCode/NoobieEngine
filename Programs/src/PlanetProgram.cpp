@@ -7,8 +7,8 @@
 #include "Infrastructure/ShaderLoader.h"
 #include <stack>
 
-PlanetProgram::PlanetProgram(std::shared_ptr<Camera> camera) :
-    BaseProgram(camera)
+PlanetProgram::PlanetProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera) :
+    BaseProgram(std::move(program), camera)
 {
     ShaderLoader loader;
     BaseProgram::m_Program = loader.createProgram({

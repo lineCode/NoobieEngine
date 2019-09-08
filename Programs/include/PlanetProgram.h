@@ -11,7 +11,7 @@
 class PlanetProgram : public BaseProgram
 {
 public:
-    PlanetProgram(std::shared_ptr<Camera> camera);
+    PlanetProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera);
     void addObject(std::shared_ptr<DrawableObject> object);
     void onRender() override;
 private:
