@@ -23,6 +23,11 @@ GLuint VertexBuffer::handle() const
     return m_Buffer->resourceId();
 }
 
+GLuint VertexBuffer::textureHandle() const
+{
+    return m_LoadedTexture->resourceId();
+}
+
 unsigned int VertexBuffer::count() const
 {
     return m_Count;

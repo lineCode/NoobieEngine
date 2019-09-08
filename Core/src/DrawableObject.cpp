@@ -8,7 +8,7 @@ DrawableObject::DrawableObject(glm::vec3 location, const std::vector<float> & ve
     m_Location(location), m_Vertices(vertices), m_NumCopies(numCopies)
 {
     m_Vao = std::make_unique<VertexArray>();
-    m_Vao->addBuffer(vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES, numCopies);
+    m_Vao->addBuffer(vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
 }
 
 void DrawableObject::onRender()

@@ -19,6 +19,7 @@ public:
     VertexBuffer();
     unsigned int count() const;
     GLuint handle() const;
+    GLuint textureHandle() const;
     unsigned stride() const;
     template<typename T> void makeBuffer(
         const std::vector<T> & vertices,
