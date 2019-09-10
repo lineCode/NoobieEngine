@@ -21,8 +21,8 @@ template<typename T> VertexBuffer * VertexArray::addTexture(
 {
     auto vbo = std::make_unique<VertexBuffer>();
     vbo->makeTexture(std::move(loadedTexture), textureCoordinates, stride, bufferType);
-    m_VertexBuffer.push_back(std::move(vbo));
-    return m_VertexBuffer.back().get();
+    m_VertexBuffer.push_front(std::move(vbo));
+    return m_VertexBuffer.front().get();
 }
 
 template<typename T> VertexBuffer * VertexArray::addBuffer(

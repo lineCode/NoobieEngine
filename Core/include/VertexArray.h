@@ -37,7 +37,7 @@ public:
 private:
     std::unique_ptr<GLResource> makeArrayBuffer();
 private:
-    std::vector<std::unique_ptr<VertexBuffer>> m_VertexBuffer;
+    std::list<std::unique_ptr<VertexBuffer>> m_VertexBuffer;
     std::unique_ptr<GLResource> m_ArrayBuffer;
 };
 

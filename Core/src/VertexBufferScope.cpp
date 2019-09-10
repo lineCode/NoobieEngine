@@ -22,7 +22,6 @@ VertexBufferScope::VertexBufferScope(const VertexBuffer * vertexBuffer) :
 VertexBufferScope::~VertexBufferScope()
 {
     checkBuffer();
-    GLCall(glDisableVertexAttribArray(m_VertexBuffer->attributeIndex()));
 }
 
 void VertexBufferScope::checkBuffer()

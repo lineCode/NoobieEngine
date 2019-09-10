@@ -18,6 +18,7 @@ TextureScope::TextureScope(VertexBuffer * vertexBuffer)
     ));
 
     //texture object
+    GLCall(glEnableVertexAttribArray(vertexBuffer->attributeIndex()))
     GLCall(glActiveTexture(vertexBuffer->activeTextureUnit()))
     GLCall(glBindTexture(GL_TEXTURE_2D, vertexBuffer->textureHandle()))
 }
