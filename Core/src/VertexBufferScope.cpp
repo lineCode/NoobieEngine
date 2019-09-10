@@ -16,6 +16,7 @@ VertexBufferScope::VertexBufferScope(const VertexBuffer * vertexBuffer) :
         0,                  // stride
         (void*)0            // array buffer offset
     ));
+    GLCall(glEnableVertexAttribArray(vertexBuffer->attributeIndex()))
 }
 
 VertexBufferScope::~VertexBufferScope()

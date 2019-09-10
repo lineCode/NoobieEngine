@@ -17,24 +17,22 @@ void CubeProgram::onRender()
     BaseProgram::onRender();
     for (const auto & object : m_Objects)
     {
-        GLint vLoc;
         GLint projLoc;
-        GLint tLoc;
-        auto tmatrix = glm::translate(glm::mat4(1.0f), object->location());
-        auto vmatrix = glm::translate(glm::mat4(1.0f), m_Camera->location());
+        GLint mvLoc;
+        auto vMat = glm::translate(glm::mat4(1.0f), m_Camera->location());
+        auto mMat = glm::translate(glm::mat4(1.0f), m_Camera->location());
 
-        GLCall(tLoc = glGetUniformLocation(m_Program->resourceId(), "t_matrix"));
-        GLCall(vLoc = glGetUniformLocation(m_Program->resourceId(), "v_matrix"));
-        GLCall(projLoc = glGetUniformLocation(m_Program->resourceId(), "proj_matrix"));
-        GLCall(glUniformMatrix4fv(tLoc, 1, GL_FALSE, glm::value_ptr(tmatrix)));
-        GLCall(glUniformMatrix4fv(vLoc, 1, GL_FALSE, glm::value_ptr(vmatrix)));
-        GLCall(glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(m_Camera->perspectiveMatrix())));
+        mMat = glm::rotate(mMat, -0.45f, glm::vec3(1.0f, 0.0f, 0.0f));
+        mMat = glm::rotate(mMat, 0.61f, glm::vec3(0.0f, 1.0f, 0.0f));
+        mMat = glm::rotate(mMat, 0.00f, glm::vec3(0.0f, 0.0f, 1.0f));
 
-        double currentTime = glfwGetTime();
-        auto tf = currentTime;
-        GLint tfLoc;
-        GLCall(tfLoc = glGetUniformLocation(m_Program->resourceId(), "tf"));
-        GLCall(glUniform1f(tfLoc, (float)tf));
+        auto mvMat = vMat * mMat;
+
+        GLCall(mvLoc = glGetUniformLocation(m_Program->resourceId(), "mv_matrix"))
+        GLCall(projLoc = glGetUniformLocation(m_Program->resourceId(), "proj_matrix"))
+        GLCall(glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat)))
+        GLCall(glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(m_Camera->perspectiveMatrix())))
+
         object->onRender();
     }
 }

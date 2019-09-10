@@ -53,13 +53,13 @@ void TextureExample()
     int width, height;
     glfwGetFramebufferSize(handle, &width, &height);
     auto camera = std::make_shared<Camera>(
-        glm::vec3{0.0f, 0.0f, -20.0f}, //location
+        glm::vec3{0.0f, 0.0f, -8.0f}, //location
         glm::radians<float>(59.0f), //field of view
         (float)width/(float)height, //aspect ratio
         0.1f, //near plane
         1000.0f); //far plane
 
-    auto pyramidLocation = glm::vec3{-8.0f, -8.0f, 0.0f};
+    auto pyramidLocation = glm::vec3{0.0f, 0.0f, 0.0f};
     auto pyramidObj = std::make_shared<DrawableObject>(pyramidLocation, pyramidVertices, 1);
     pyramidObj->setTexture(std::move(texture), pyrTexCoords, GL_TEXTURE0);
 
