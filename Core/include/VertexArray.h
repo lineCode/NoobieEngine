@@ -9,6 +9,7 @@
 #include "VertexBuffer.h"
 #include "../Interfaces/IRenderable.h"
 #include "../Infrastructure/GLSafe.h"
+#include <list>
 
 class VertexArray : IRenderable
 {

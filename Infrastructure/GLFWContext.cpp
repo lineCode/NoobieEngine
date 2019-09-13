@@ -22,7 +22,7 @@ void GLFWContext::startContext() {
 
     auto window = glfwCreateWindow( 1024, 768, "Noobie Engine - Meh", NULL, NULL);
     if( window == NULL ){
-        fprintf( stderr, "Failed to open GLFW window. Intel GPU's are not 3.3 compatible :( \n" );
+        fprintf( stderr, "Failed to create the window\n" );
         endContext();
         exit(-1);
     }
