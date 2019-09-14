@@ -18,9 +18,12 @@ public:
     void swapBuffer() override;
     void startContext() override;
     void endContext() override;
+    int width() override;
+    int height() override;
 private:
     void * m_Window;
-
+    int m_ActualWidth;
+    int m_ActualHeight;
 };
 
 

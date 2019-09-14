@@ -12,6 +12,8 @@ public:
 
     virtual void *handle() = 0;
     virtual void swapBuffer() = 0;
+    virtual int width() = 0;
+    virtual int height() = 0;
     virtual void startContext() = 0;
     virtual void endContext() = 0;
 };

@@ -42,10 +42,11 @@ add_definitions(
         -D_CRT_SECURE_NO_WARNINGS
 )
 
-FILE(COPY SimpleTransform.vertexshader DESTINATION "${CMAKE_BINARY_DIR}")
-FILE(COPY SingleColor.fragmentshader DESTINATION "${CMAKE_BINARY_DIR}")
-FILE(COPY MatrixUtil.glsl DESTINATION "${CMAKE_BINARY_DIR}")
-FILE(COPY vertShader.glsl DESTINATION "${CMAKE_BINARY_DIR}")
+configure_file(SimpleTransform.vertexshader "${CMAKE_BINARY_DIR}" COPYONLY)
+configure_file(SingleColor.fragmentshader "${CMAKE_BINARY_DIR}" COPYONLY)
+configure_file(MatrixUtil.glsl "${CMAKE_BINARY_DIR}" COPYONLY)
+configure_file(vertShader.glsl "${CMAKE_BINARY_DIR}" COPYONLY)
+
 FILE(COPY Samples/images/brick1.jpg DESTINATION "${CMAKE_BINARY_DIR}")
 
 

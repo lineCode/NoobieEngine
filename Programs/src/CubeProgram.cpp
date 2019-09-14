@@ -19,6 +19,7 @@ void CubeProgram::onRender()
     {
         GLint projLoc;
         GLint mvLoc;
+        GLint samplerLoc;
         auto vMat = glm::translate(glm::mat4(1.0f), m_Camera->location());
         auto mMat = glm::translate(glm::mat4(1.0f), m_Camera->location());
 
@@ -30,6 +31,7 @@ void CubeProgram::onRender()
 
         GLCall(mvLoc = glGetUniformLocation(m_Program->resourceId(), "mv_matrix"))
         GLCall(projLoc = glGetUniformLocation(m_Program->resourceId(), "proj_matrix"))
+        GLCall(samplerLoc = glGetUniformLocation(m_Program->resourceId(), "samp"))
         GLCall(glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat)))
         GLCall(glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(m_Camera->perspectiveMatrix())))
 
