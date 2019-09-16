@@ -55,3 +55,17 @@ target_link_libraries(NoobyEngine
 		Infrastructure
         ${ALL_LIBS}
         )
+
+### Examples ###
+
+add_executable(texture_example
+		Samples/src/Texture.cpp
+		Programs/src/CubeProgram.cpp
+		Programs/src/BaseProgram.cpp
+		)
+target_link_libraries(texture_example
+		Core.Graphics
+		Infrastructure
+		${ALL_LIBS}
+		)
+
