@@ -2,7 +2,7 @@
 // Created by Rob on 2019-09-03.
 //
 
-#include "Samples/include/Texture.h"
+#include "Examples/include/Texture.h"
 
 #include <iostream>
 #include "Infrastructure/include/ShaderLoader.h"

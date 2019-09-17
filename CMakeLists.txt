@@ -12,7 +12,7 @@ add_subdirectory(Core)
 add_subdirectory(external)
 add_subdirectory(Interfaces)
 add_subdirectory(Programs)
-add_subdirectory(Samples)
+add_subdirectory(Examples)
 add_subdirectory(external/soil2)
 
 find_package(OpenGL REQUIRED)
@@ -47,7 +47,7 @@ configure_file(SingleColor.fragmentshader "${CMAKE_BINARY_DIR}" COPYONLY)
 configure_file(MatrixUtil.glsl "${CMAKE_BINARY_DIR}" COPYONLY)
 configure_file(vertShader.glsl "${CMAKE_BINARY_DIR}" COPYONLY)
 
-FILE(COPY Samples/images/brick1.jpg DESTINATION "${CMAKE_BINARY_DIR}")
+FILE(COPY Examples/images/brick1.jpg DESTINATION "${CMAKE_BINARY_DIR}")
 
 
 target_link_libraries(Engine
@@ -59,7 +59,7 @@ target_link_libraries(Engine
 ### Examples ###
 
 add_executable(Texture_Example
-		Samples/src/Texture.cpp
+		Examples/src/Texture.cpp
 		Programs/src/CubeProgram.cpp
 		Programs/src/BaseProgram.cpp
 		)

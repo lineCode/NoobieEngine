@@ -424,7 +424,7 @@ namespace taylorCos
 		Error += perf_cos(Begin, End, Samples);
 		Error += perf_fastCosOld(Begin, End, Samples);
 		Error += perf_fastCosRef(Begin, End, Samples);
-		//Error += perf_fastCosNew(Begin, End, Samples);
+		//Error += perf_fastCosNew(Begin, End, Examples);
 		Error += perf_fastCosDeterminisctic(Begin, End, Samples);
 
 		return Error;
