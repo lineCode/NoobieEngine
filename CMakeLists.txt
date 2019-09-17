@@ -5,7 +5,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D__DEBUG__")
 
-add_executable(NoobyEngine main.cpp)
+add_executable(Engine main.cpp)
 
 add_subdirectory(Infrastructure)
 add_subdirectory(Core)
@@ -50,7 +50,7 @@ configure_file(vertShader.glsl "${CMAKE_BINARY_DIR}" COPYONLY)
 FILE(COPY Samples/images/brick1.jpg DESTINATION "${CMAKE_BINARY_DIR}")
 
 
-target_link_libraries(NoobyEngine
+target_link_libraries(Engine
 		Core.Graphics
 		Infrastructure
         ${ALL_LIBS}

@@ -1,7 +1,7 @@
 
 
 
-target_sources(NoobyEngine PUBLIC
+target_sources(Engine PUBLIC
         IContext.h
         IModelLoader.h
         IRenderable.h

@@ -1,5 +1,5 @@
 
-target_sources(NoobyEngine PUBLIC
+target_sources(Engine PUBLIC
         include/CubeProgram.h
         include/PlanetProgram.h
         include/BaseProgram.h
