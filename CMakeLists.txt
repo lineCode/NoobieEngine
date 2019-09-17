@@ -29,7 +29,7 @@ include_directories(
 
 set(ALL_LIBS
         ${OPENGL_LIBRARY}
-        glfw
+		GLFW
         GLEW_210
 		SOIL
         )
@@ -58,12 +58,12 @@ target_link_libraries(Engine
 
 ### Examples ###
 
-add_executable(texture_example
+add_executable(Texture_Example
 		Samples/src/Texture.cpp
 		Programs/src/CubeProgram.cpp
 		Programs/src/BaseProgram.cpp
 		)
-target_link_libraries(texture_example
+target_link_libraries(Texture_Example
 		Core.Graphics
 		Infrastructure
 		${ALL_LIBS}
