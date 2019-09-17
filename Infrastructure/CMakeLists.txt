@@ -2,23 +2,23 @@ add_library(Infrastructure)
 
 target_sources(Infrastructure
         PRIVATE
-        GLUtils.cpp
-        GLSafe.cpp
-        GLFWContext.cpp
-        ShaderLoader.cpp
-        FileUtils.cpp
-        AssimpModelLoader.cpp
-		GLResource.cpp
-		FileTextureLoader.cpp
+		src/GLUtils.cpp
+		src/GLSafe.cpp
+		src/GLFWContext.cpp
+		src/ShaderLoader.cpp
+		src/FileUtils.cpp
+		src/AssimpModelLoader.cpp
+		src/GLResource.cpp
+		src/FileTextureLoader.cpp
         PUBLIC
-		FileTextureLoader.h
-        GLSafe.h
-        GLUtils.h
-        ShaderLoader.h
-        GLFWContext.h
-        FileUtils.h
-        AssimpModelLoader.h
-		GLResource.h
+		include/FileTextureLoader.h
+		include/GLSafe.h
+		include/GLUtils.h
+		include/ShaderLoader.h
+		include/GLFWContext.h
+		include/FileUtils.h
+		include/AssimpModelLoader.h
+		include/GLResource.h
         )
 		
 add_definitions(

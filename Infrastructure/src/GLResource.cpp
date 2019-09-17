@@ -2,7 +2,7 @@
 // Created by Rob on 2019-07-09.
 //
 
-#include "GLResource.h"
+#include "include/GLResource.h"
 
 GLResource::~GLResource() {
     m_Deleter();

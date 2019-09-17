@@ -6,8 +6,8 @@
 #define NOOBYENGINE_BASEPROGRAM_H
 
 #include "Interfaces/IRenderable.h"
-#include "Infrastructure/GLResource.h"
-#include "Infrastructure/GLSafe.h"
+#include "Infrastructure/include/GLResource.h"
+#include "Infrastructure/include/GLSafe.h"
 #include "Core/include/Camera.h"
 
 class BaseProgram : public IRenderable

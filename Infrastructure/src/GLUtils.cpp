@@ -1,7 +1,7 @@
 //
 // Created by Rob on 2019-07-14.
 //
-#include "GLUtils.h"
+#include "include/GLUtils.h"
 #include <GL/glew.h>
 #include <vector>
 

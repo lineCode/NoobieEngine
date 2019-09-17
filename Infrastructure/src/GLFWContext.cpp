@@ -1,9 +1,9 @@
-#include "GLFWContext.h"
+#include "include/GLFWContext.h"
 //
 // Created by Rob on 2019-07-13.
 //
 
-#include "GLFWContext.h"
+#include "include/GLFWContext.h"
 #include <stdio.h>
 #include <stdlib.h>
 

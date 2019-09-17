@@ -5,15 +5,15 @@
 #include "Samples/include/Texture.h"
 
 #include <iostream>
-#include "Infrastructure/ShaderLoader.h"
-#include "Infrastructure/GLFWContext.h"
+#include "Infrastructure/include/ShaderLoader.h"
+#include "Infrastructure/include/GLFWContext.h"
 #include "Interfaces/IContext.h"
 #include "Core/include/DrawableObject.h"
 #include "Core/include/Renderer.h"
 #include "Interfaces/IRenderable.h"
 #include "Programs/include/CubeProgram.h"
 #include "Programs/include/PlanetProgram.h"
-#include "Infrastructure/FileTextureLoader.h"
+#include "Infrastructure/include/FileTextureLoader.h"
 
 void window_reshape_callback(GLFWwindow * window, int newWidth, int newHeight)
 {

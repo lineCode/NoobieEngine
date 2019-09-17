@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <GL/glew.h>
-#include "../external/debugbreak.h"
+#include "../../external/debugbreak.h"
 
 void GLClearError();
 bool GLCheckError(const char *file, const char * function, int line);

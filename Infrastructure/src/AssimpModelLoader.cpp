@@ -2,7 +2,7 @@
 // Created by Rob on 2019-07-20.
 //
 
-#include "AssimpModelLoader.h"
+#include "include/AssimpModelLoader.h"
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <iostream>

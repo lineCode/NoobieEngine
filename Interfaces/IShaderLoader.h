@@ -6,7 +6,7 @@
 #define NOOBYENGINE_ISHADERLOADER_H
 
 #include "ShaderFileInfo.h"
-#include "../Infrastructure/GLResource.h"
+#include "include/GLResource.h"
 #include <vector>
 #include <memory>
 

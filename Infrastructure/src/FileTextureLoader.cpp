@@ -2,7 +2,7 @@
 // Created by Rob on 2019-08-28.
 //
 
-#include "FileTextureLoader.h"
+#include "include/FileTextureLoader.h"
 #include "../external/soil2/src/image_helper.h"
 #include "../external/soil2/src/SOIL2.h"
 

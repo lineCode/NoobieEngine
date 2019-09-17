@@ -3,8 +3,8 @@
 //
 
 #include "PlanetProgram.h"
-#include "Infrastructure/GLFWContext.h"
-#include "Infrastructure/ShaderLoader.h"
+#include "Infrastructure/include/GLFWContext.h"
+#include "Infrastructure/include/ShaderLoader.h"
 #include <stack>
 
 PlanetProgram::PlanetProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera) :

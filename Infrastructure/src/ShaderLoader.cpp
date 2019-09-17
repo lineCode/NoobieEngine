@@ -2,10 +2,10 @@
 // Created by Rob on 2019-06-29.
 //
 
-#include "ShaderLoader.h"
-#include "../Infrastructure/FileUtils.h"
-#include "GLSafe.h"
-#include "GLUtils.h"
+#include "include/ShaderLoader.h"
+#include "include/FileUtils.h"
+#include "include/GLSafe.h"
+#include "include/GLUtils.h"
 
 void compileSource(const std::string & source, unsigned int shaderId);
 void linkProgram(unsigned int programId, unsigned int shaderId);
