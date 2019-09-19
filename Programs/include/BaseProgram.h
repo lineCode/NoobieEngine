@@ -8,7 +8,7 @@
 #include "Interfaces/IRenderable.h"
 #include "Infrastructure/include/GLResource.h"
 #include "Infrastructure/include/GLSafe.h"
-#include "Core/include/Camera.h"
+#include "Core/Renderer/include/Camera.h"
 
 class BaseProgram : public IRenderable
 {

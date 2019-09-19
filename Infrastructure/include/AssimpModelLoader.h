@@ -5,7 +5,7 @@
 #ifndef NOOBYENGINE_ASSIMPMODELLOADER_H
 #define NOOBYENGINE_ASSIMPMODELLOADER_H
 
-#include "../Core/include/Mesh.h"
+#include "../Core/Renderer/include/Mesh.h"
 #include "../Interfaces/IModelLoader.h"
 #include <assimp/scene.h>
 #include <string>

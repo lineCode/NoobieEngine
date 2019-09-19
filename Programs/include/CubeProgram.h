@@ -8,7 +8,7 @@
 #include "Infrastructure/include/GLFWContext.h"
 #include "Infrastructure/include/GLResource.h"
 #include "Programs/include/BaseProgram.h"
-#include "Core/include/DrawableObject.h"
+#include "Core/Renderer/include/DrawableObject.h"
 
 class CubeProgram : public BaseProgram
 {

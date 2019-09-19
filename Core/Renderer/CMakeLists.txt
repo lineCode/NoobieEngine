@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(core.graphics VERSION 1.0.0 LANGUAGES CXX)
+project(core.renderer VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 add_definitions(
@@ -10,11 +10,11 @@ add_definitions(
     -D_CRT_SECURE_NO_WARNINGS
 )
 
-add_library(Core.Graphics 
+add_library(core.renderer
 		include/VertexBuffer.h
-        include/VertexArray.h
-        include/Renderer.h
-        include/Mesh.h
+		include/VertexArray.h
+		include/Renderer.h
+		include/Mesh.h
 		include/Camera.h
 		include/DrawableObject.h
 		include/VertexBufferScope.h
@@ -25,22 +25,22 @@ add_library(Core.Graphics
 		src/DrawableObject.cpp
 		src/Camera.cpp
 		src/VertexBuffer.cpp
-        src/VertexArray.cpp
-        src/Renderer.cpp
-        src/Mesh.cpp)
+		src/VertexArray.cpp
+		src/Renderer.cpp
+		src/Mesh.cpp)
 
-target_include_directories(Core.Graphics
+target_include_directories(core.renderer
     PUBLIC 
         $<INSTALL_INTERFACE:include>    
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/src
+		src
 )
 
 
 include_directories(
-		../external/glfw-3.3/include/
-        ../external/glm-0.9.7.1/
-        ../external/glew-2.1.0/include/
-		.
+		../../external/glfw-3.3/include
+		../../external/glm-0.9.7.1
+		../../external/glew-2.1.0/include
+		..
 		)

@@ -5,7 +5,7 @@
 #ifndef NOOBYENGINE_PLANETPROGRAM_H
 #define NOOBYENGINE_PLANETPROGRAM_H
 
-#include "Core/include/DrawableObject.h"
+#include "Core/Renderer/include/DrawableObject.h"
 #include "Programs/include/BaseProgram.h"
 
 class PlanetProgram : public BaseProgram

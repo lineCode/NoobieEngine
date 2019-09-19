@@ -7,15 +7,15 @@
 VertexBufferScope::VertexBufferScope(const VertexBuffer * vertexBuffer) :
     m_VertexBuffer(vertexBuffer)
 {
-    GLCall(glBindBuffer(vertexBuffer->bufferType(), vertexBuffer->handle()));
+    GLCall(glBindBuffer(vertexBuffer->bufferType(), vertexBuffer->handle()))
     GLCall(glVertexAttribPointer(
         vertexBuffer->attributeIndex(),
         vertexBuffer->stride(),                  // num components per vertex
         GL_FLOAT,           // type
         GL_FALSE,           // normalized?
         0,                  // stride
-        (void*)0            // array buffer offset
-    ));
+        nullptr            // array buffer offset
+    ))
     GLCall(glEnableVertexAttribArray(vertexBuffer->attributeIndex()))
 }
 

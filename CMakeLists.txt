@@ -8,7 +8,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D__DEBUG__")
 add_executable(Engine main.cpp)
 
 add_subdirectory(Infrastructure)
-add_subdirectory(Core)
+add_subdirectory(Core/Renderer)
 add_subdirectory(external)
 add_subdirectory(Interfaces)
 add_subdirectory(Programs)
@@ -51,8 +51,8 @@ FILE(COPY Examples/images/brick1.jpg DESTINATION "${CMAKE_BINARY_DIR}")
 
 
 target_link_libraries(Engine
-		Core.Graphics
-		Infrastructure
+		core.renderer
+		core.infrastructure
         ${ALL_LIBS}
         )
 
@@ -64,8 +64,8 @@ add_executable(Texture_Example
 		Programs/src/BaseProgram.cpp
 		)
 target_link_libraries(Texture_Example
-		Core.Graphics
-		Infrastructure
+		core.renderer
+		core.infrastructure
 		${ALL_LIBS}
 		)
 

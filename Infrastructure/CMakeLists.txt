@@ -1,6 +1,10 @@
-add_library(Infrastructure)
+cmake_minimum_required(VERSION 3.14)
+project(core.infrastructure VERSION 1.0.0 LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
 
-target_sources(Infrastructure
+add_library(core.infrastructure)
+
+target_sources(core.infrastructure
         PRIVATE
 		src/GLUtils.cpp
 		src/GLSafe.cpp
@@ -34,5 +38,5 @@ include_directories("../external/glew-2.1.0/include/")
 include_directories("../external/glfw-3.3/include/")
 include_directories("../external/glm-0.9.7.1/")
 
-target_compile_definitions(Infrastructure PUBLIC USE_NOOBY_LIB)
-target_include_directories(Infrastructure PUBLIC ${CMAKE_CURRENT_LIST_DIR})
+target_compile_definitions(core.infrastructure PUBLIC USE_NOOBY_LIB)
+target_include_directories(core.infrastructure PUBLIC ${CMAKE_CURRENT_LIST_DIR})
