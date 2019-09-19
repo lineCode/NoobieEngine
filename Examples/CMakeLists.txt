@@ -1,4 +1,4 @@
 
 
-include_directories("../Core/Infrastructure")
+include_directories("../")
 include_directories("../Interfaces")

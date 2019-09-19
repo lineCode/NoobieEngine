@@ -43,4 +43,5 @@ include_directories(
 		../../external/glm-0.9.7.1
 		../../external/glew-2.1.0/include
 		..
+		../..
 		)

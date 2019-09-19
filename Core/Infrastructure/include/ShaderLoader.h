@@ -5,7 +5,7 @@
 #ifndef TUTORIALS_SHADERLOADER_H
 #define TUTORIALS_SHADERLOADER_H
 
-#include "../../Interfaces/IShaderLoader.h"
+#include "Interfaces/IShaderLoader.h"
 
 class ShaderLoader : public IShaderLoader
 {

@@ -32,11 +32,12 @@ add_definitions(
     -DGLEW_STATIC
     -D_CRT_SECURE_NO_WARNINGS
 )
-		
+
 include_directories("../../external/assimp-3.0.1270/include")
 include_directories("../../external/glew-2.1.0/include")
 include_directories("../../external/glfw-3.3/include")
 include_directories("../../external/glm-0.9.7.1")
+include_directories("../../")
 
 target_compile_definitions(core.infrastructure PUBLIC USE_NOOBY_LIB)
 target_include_directories(core.infrastructure PUBLIC .)

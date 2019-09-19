@@ -63,6 +63,9 @@ add_executable(Texture_Example
 		Programs/src/CubeProgram.cpp
 		Programs/src/BaseProgram.cpp
 		)
+
+include_directories(Core)
+
 target_link_libraries(Texture_Example
 		core.renderer
 		core.infrastructure

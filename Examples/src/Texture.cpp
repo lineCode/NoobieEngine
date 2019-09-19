@@ -11,7 +11,7 @@
 #include "Interfaces/IContext.h"
 #include "Core/Renderer/include/DrawableObject.h"
 #include "Core/Renderer/include/Renderer.h"
-#include "Interfaces/IRenderable.h"
+#include "../../Interfaces/IRenderable.h"
 #include "Programs/include/CubeProgram.h"
 #include "Programs/include/PlanetProgram.h"
 

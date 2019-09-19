@@ -6,7 +6,7 @@
 #define NOOBYENGINE_MESH_H
 
 #include "VertexArray.h"
-#include "../../../Interfaces/IRenderable.h"
+#include "Interfaces/IRenderable.h"
 #include <glm/glm.hpp>
 #include <vector>
 #include <string>
