@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D__DEBUG__")
 
 add_executable(Engine main.cpp)
 
-add_subdirectory(Infrastructure)
+add_subdirectory(Core/Infrastructure)
 add_subdirectory(Core/Renderer)
 add_subdirectory(external)
 add_subdirectory(Interfaces)
@@ -18,7 +18,7 @@ add_subdirectory(external/soil2)
 find_package(OpenGL REQUIRED)
 
 include_directories(
-		Programs/Include
+		Programs/include
         external/glfw-3.3/include/
         external/glm-0.9.7.1/
         external/glew-2.1.0/include/

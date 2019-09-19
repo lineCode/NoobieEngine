@@ -5,8 +5,8 @@
 #ifndef NOOBYENGINE_CUBEPROGRAM_H
 #define NOOBYENGINE_CUBEPROGRAM_H
 
-#include "Infrastructure/include/GLFWContext.h"
-#include "Infrastructure/include/GLResource.h"
+#include "../../Infrastructure/include/GLFWContext.h"
+#include "../../Infrastructure/include/GLResource.h"
 #include "Programs/include/BaseProgram.h"
 #include "Core/Renderer/include/DrawableObject.h"
 

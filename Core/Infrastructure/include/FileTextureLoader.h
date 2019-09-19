@@ -5,7 +5,7 @@
 #ifndef NOOBYENGINE_FILETEXTURELOADER_H
 #define NOOBYENGINE_FILETEXTURELOADER_H
 
-#include "../Interfaces/ITextureLoader.h"
+#include "../../Interfaces/ITextureLoader.h"
 
 class FileTextureLoader : ITextureLoader
 {

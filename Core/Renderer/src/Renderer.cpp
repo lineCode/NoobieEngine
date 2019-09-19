@@ -3,7 +3,7 @@
 //
 
 #include "Renderer.h"
-#include "../../../Infrastructure/include/GLSafe.h"
+#include "../../Infrastructure/include/GLSafe.h"
 
 Renderer::Renderer()
 {

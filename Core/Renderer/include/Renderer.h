@@ -8,7 +8,7 @@
 #include "VertexArray.h"
 #include "Mesh.h"
 #include "Camera.h"
-#include "../../../Infrastructure/include/GLResource.h"
+#include "../../Infrastructure/include/GLResource.h"
 #include "../../../Interfaces/IContext.h"
 
 class Renderer

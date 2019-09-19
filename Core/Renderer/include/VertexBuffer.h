@@ -6,9 +6,9 @@
 #define NOOBYENGINE_VERTEXBUFFER_H
 
 #include "BufferMode.h"
-#include "../../../Infrastructure/include/GLResource.h"
+#include "../../Infrastructure/include/GLResource.h"
+#include "../../Infrastructure/include/GLSafe.h"
 #include "../../../Interfaces/IRenderable.h"
-#include "../../../Infrastructure/include/GLSafe.h"
 #include <glm/glm.hpp>
 #include <vector>
 #include <memory>
