@@ -20,6 +20,8 @@ add_library(core.renderer
 		include/VertexBufferScope.h
 		include/BufferMode.h
 		include/TextureScope.h
+		include/CircleObject.h
+		src/CircleObject.cpp
 		src/TextureScope.cpp
 		src/VertexBufferScope.cpp
 		src/DrawableObject.cpp
