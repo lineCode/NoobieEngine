@@ -11,39 +11,39 @@ add_definitions(
 )
 
 add_library(core.renderer
-		include/VertexBuffer.h
-		include/VertexArray.h
-		include/Renderer.h
-		include/Mesh.h
-		include/Camera.h
-		include/DrawableObject.h
-		include/VertexBufferScope.h
-		include/BufferMode.h
-		include/TextureScope.h
-		include/CircleObject.h
-		src/CircleObject.cpp
-		src/TextureScope.cpp
-		src/VertexBufferScope.cpp
-		src/DrawableObject.cpp
-		src/Camera.cpp
-		src/VertexBuffer.cpp
-		src/VertexArray.cpp
-		src/Renderer.cpp
-		src/Mesh.cpp)
+        include/VertexBuffer.h
+        include/VertexArray.h
+        include/Renderer.h
+        include/Mesh.h
+        include/Camera.h
+        include/DrawableObject.h
+        include/VertexBufferScope.h
+        include/BufferMode.h
+        include/TextureScope.h
+        include/SphereObject.h
+        src/SphereObject.cpp
+        src/TextureScope.cpp
+        src/VertexBufferScope.cpp
+        src/DrawableObject.cpp
+        src/Camera.cpp
+        src/VertexBuffer.cpp
+        src/VertexArray.cpp
+        src/Renderer.cpp
+        src/Mesh.cpp)
 
 target_include_directories(core.renderer
     PUBLIC 
         $<INSTALL_INTERFACE:include>    
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     PRIVATE
-		src
+        src
 )
 
 
 include_directories(
-		../../external/glfw-3.3/include
-		../../external/glm-0.9.7.1
-		../../external/glew-2.1.0/include
-		..
-		../..
-		)
+        add_compile_definitions../../external/glfw-3.3/include
+        ../../external/glm-0.9.7.1
+        ../../external/glew-2.1.0/include
+        ..
+        ../..
+        )

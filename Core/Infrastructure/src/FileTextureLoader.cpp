@@ -5,6 +5,7 @@
 #include "include/FileTextureLoader.h"
 #include "../../../external/soil2/src/image_helper.h"
 #include "../../../external/soil2/src/SOIL2.h"
+#include <stdexcept>
 
 GLuint FileTextureLoader::loadTexture(const std::string & texturePath)
 {

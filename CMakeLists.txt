@@ -18,20 +18,20 @@ add_subdirectory(external/soil2)
 find_package(OpenGL REQUIRED)
 
 include_directories(
-		Programs/include
+        Programs/include
         external/glfw-3.3/include/
         external/glm-0.9.7.1/
         external/glew-2.1.0/include/
         external/assimp-3.0.1270/include/
-		external/soil2/src
+        external/soil2/src
         .
 )
 
 set(ALL_LIBS
         ${OPENGL_LIBRARY}
-		GLFW
+        GLFW
         GLEW_210
-		SOIL
+        SOIL
         )
 
 add_definitions(
@@ -51,24 +51,38 @@ FILE(COPY Examples/images/brick1.jpg DESTINATION "${CMAKE_BINARY_DIR}")
 
 
 target_link_libraries(Engine
-		core.renderer
-		core.infrastructure
+        core.renderer
+        core.infrastructure
         ${ALL_LIBS}
         )
 
-### Examples ###
+### Texture Example ###
 
 add_executable(Texture_Example
-		Examples/src/Texture.cpp
-		Programs/src/CubeProgram.cpp
-		Programs/src/BaseProgram.cpp
-		)
+        Examples/src/Texture.cpp
+        Programs/src/CubeProgram.cpp
+        Programs/src/BaseProgram.cpp
+        )
 
 include_directories(Core)
 
 target_link_libraries(Texture_Example
-		core.renderer
-		core.infrastructure
-		${ALL_LIBS}
-		)
+        core.renderer
+        core.infrastructure
+        ${ALL_LIBS}
+        )
 
+### Sphere Example ###
+add_executable(Sphere_Example
+        Examples/src/Sphere.cpp
+        Programs/src/SphereProgram.cpp
+        Programs/src/BaseProgram.cpp
+        )
+
+include_directories(Core)
+
+target_link_libraries(Sphere_Example
+        core.renderer
+        core.infrastructure
+        ${ALL_LIBS}
+        )
