@@ -7,12 +7,14 @@
 
 #include "VertexArray.h"
 
-class SphereObject
+class SphereObject : public IRenderable
 {
 
 public:
     SphereObject();
     SphereObject(int prec);
+    virtual void onRender() override;
+
     int getNumVertices();
     int getNumIndices();
     std::vector<int> getIndices();

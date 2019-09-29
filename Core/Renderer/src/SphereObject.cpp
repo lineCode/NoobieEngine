@@ -100,9 +100,9 @@ void SphereObject::init(int prec)
     }
 
     m_Vao = std::make_unique<VertexArray>();
-    m_Vao->addBuffer(m_pvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
-    m_Vao->addBuffer(m_tvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
-    m_Vao->addBuffer(m_nvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
+    m_Vao->addBuffer(*m_pvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
+    m_Vao->addBuffer(*m_tvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
+    m_Vao->addBuffer(*m_nvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
 }
 
 int SphereObject::getNumVertices() 
@@ -138,4 +138,16 @@ std::vector<glm::vec3> SphereObject::getNormals()
 std::vector<glm::vec3> SphereObject::getTangents() 
 { 
     return tangents; 
+}
+
+void SphereObject::onRender()
+{
+    m_Vao->onRender();
+}
+
+void SphereObject::setTexture(std::unique_ptr<GLResource> loadedTexture, GLenum activeTextureUnit)
+{
+    auto buffer = m_Vao->addTexture(std::move(loadedTexture), *m_nvalues, 2, GL_ARRAY_BUFFER);
+    buffer->setAttributeIndex(1);
+    buffer->setActiveTextureUnit(activeTextureUnit);
 }
