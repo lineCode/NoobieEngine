@@ -9,7 +9,6 @@
 #include "Interfaces/IContext.h"
 #include "Core/Renderer/include/SphereObject.h"
 #include "Core/Renderer/include/Renderer.h"
-#include "../../Interfaces/IRenderable.h"
 #include "Programs/include/SphereProgram.h"
 
 void window_reshape_callback(GLFWwindow* window, int newWidth, int newHeight)
@@ -44,16 +43,15 @@ int main()
         0.1f, //near plane
         1000.0f); //far plane
 
-    auto pyramidLocation = glm::vec3{ 0.0f, 0.0f, 0.0f };
-    auto pyramidObj = std::make_shared<SphereObject>(48);
-    pyramidObj->setTexture(std::move(texture), GL_TEXTURE0);
+    auto sphereObject = std::make_shared<SphereObject>(48);
+    sphereObject->setTexture(std::move(texture), GL_TEXTURE0);
 
-    auto cubeProgram = std::make_shared<SphereProgram>(std::move(program), camera);
-    cubeProgram->addObject(pyramidObj);
+    auto sphereProgram = std::make_shared<SphereProgram>(std::move(program), camera);
+    sphereProgram->addObject(sphereObject);
 
     Renderer renderer;
     renderer.setCamera(camera);
-    renderer.addRenderable(cubeProgram);
+    renderer.addRenderable(sphereProgram);
     do {
         std::cout << "Start rendering" << std::endl;
         renderer.render(context.get());
