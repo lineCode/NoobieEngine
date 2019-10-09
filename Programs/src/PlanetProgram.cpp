@@ -8,7 +8,7 @@
 #include <stack>
 
 PlanetProgram::PlanetProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera) :
-    BaseProgram(std::move(program), camera)
+    BaseProgram(std::move(program)), m_Camera(camera)
 {
     ShaderLoader loader;
     BaseProgram::m_Program = loader.createProgram({

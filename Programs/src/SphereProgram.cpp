@@ -5,8 +5,8 @@
 
 #include "SphereProgram.h"
 
-SphereProgram::SphereProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera)
-    :BaseProgram(std::move(program), camera)
+SphereProgram::SphereProgram(std::unique_ptr<GLResource> program)
+    :BaseProgram(std::move(program))
 {
 
 }

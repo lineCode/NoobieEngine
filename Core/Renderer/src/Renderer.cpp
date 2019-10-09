@@ -16,20 +16,16 @@ void Renderer::render(IContext * context)
     GLCall(glClearColor(0.0, 0.0, 0.0, 1.0));
     GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 
-    for(auto renderable : m_OrderedRenderables)
+    for(auto scene : m_scenes)
     {
-        renderable->onRender();
+        scene->onRender();
     }
 
     context->swapBuffer();
 }
 
-void Renderer::setCamera(std::shared_ptr<Camera> camera)
+void Renderer::addScene(std::shared_ptr<Scene> scene)
 {
-    m_Camera = camera;
+    m_scenes.push_back(scene);
 }
 
-void Renderer::addRenderable(std::shared_ptr<IRenderable> renderableItem)
-{
-    m_OrderedRenderables.push_back(renderableItem);
-}

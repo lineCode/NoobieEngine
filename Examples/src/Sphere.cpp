@@ -36,22 +36,18 @@ int main()
 
     int width, height;
     glfwGetFramebufferSize(handle, &width, &height);
-    auto camera = std::make_shared<Camera>(
-        glm::vec3{ 0.0f, 0.0f, -8.0f }, //location
-        glm::radians<float>(59.0f), //field of view
-        (float)width / (float)height, //aspect ratio
-        0.1f, //near plane
-        1000.0f); //far plane
 
     auto sphereObject = std::make_shared<SphereObject>(48);
     sphereObject->setTexture(std::move(texture), GL_TEXTURE0);
 
-    auto sphereProgram = std::make_shared<SphereProgram>(std::move(program), camera);
+    auto sphereProgram = std::make_shared<SphereProgram>(std::move(program));
     sphereProgram->addObject(sphereObject);
 
+    auto sphereScene = std::make_shared<Scene>(width/height);
+    sphereScene->addRenderable(sphereObject);
+
     Renderer renderer;
-    renderer.setCamera(camera);
-    renderer.addRenderable(sphereProgram);
+    renderer.addScene(sphereScene);
     do {
         std::cout << "Start rendering" << std::endl;
         renderer.render(context.get());

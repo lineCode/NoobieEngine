@@ -8,17 +8,15 @@
 #include "Interfaces/IRenderable.h"
 #include "../../Infrastructure/include/GLResource.h"
 #include "../../Infrastructure/include/GLSafe.h"
-#include "Core/Renderer/include/Camera.h"
 
 class BaseProgram : public IRenderable
 {
 public:
-    BaseProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera);
+    BaseProgram(std::unique_ptr<GLResource> program);
 public:
     virtual void onRender();
 protected:
     std::unique_ptr<GLResource> m_Program;
-    std::shared_ptr<Camera> m_Camera;
 };
 
 

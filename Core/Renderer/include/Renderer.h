@@ -7,7 +7,7 @@
 
 #include "VertexArray.h"
 #include "Mesh.h"
-#include "Camera.h"
+#include "Scene.h"
 #include "Interfaces/IContext.h"
 #include "Infrastructure/include/GLResource.h"
 
@@ -15,14 +15,10 @@ class Renderer
 {
 public:
     explicit Renderer();
-
-    void addRenderable(std::shared_ptr<IRenderable> );
     void render(IContext * context);
-    void setCamera(std::shared_ptr<Camera> camera);
+    void addScene(std::shared_ptr<Scene> scene);
 private:
-    GLuint m_ProgramId;
-    std::vector<std::shared_ptr<IRenderable>> m_OrderedRenderables;
-    std::shared_ptr<Camera> m_Camera;
+    std::vector<std::shared_ptr<Scene>> m_scenes;
 };
 
 

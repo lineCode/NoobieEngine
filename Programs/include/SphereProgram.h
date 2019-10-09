@@ -12,7 +12,7 @@
 class SphereProgram : public BaseProgram
 {
 public:
-    SphereProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera);
+    SphereProgram(std::unique_ptr<GLResource> program);
     void onRender() override;
     void addObject(std::shared_ptr<SphereObject> object);
 private:

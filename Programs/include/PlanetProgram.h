@@ -7,6 +7,7 @@
 
 #include "Core/Renderer/include/DrawableObject.h"
 #include "Programs/include/BaseProgram.h"
+#include "Camera.h"
 
 class PlanetProgram : public BaseProgram
 {
@@ -16,6 +17,7 @@ public:
     void onRender() override;
 private:
     std::vector<std::shared_ptr<DrawableObject>> m_Objects;
+    std::shared_ptr<Camera> m_Camera;
 };
 
 

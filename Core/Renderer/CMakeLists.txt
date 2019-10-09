@@ -21,6 +21,8 @@ add_library(core.renderer
         include/BufferMode.h
         include/TextureScope.h
         include/SphereObject.h
+        include/Scene.h
+        src/Scene.cpp
         src/SphereObject.cpp
         src/TextureScope.cpp
         src/VertexBufferScope.cpp

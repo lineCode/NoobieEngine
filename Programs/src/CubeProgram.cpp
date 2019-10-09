@@ -8,7 +8,7 @@
 #include "../../Infrastructure/include/ShaderLoader.h"
 
 CubeProgram::CubeProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera) :
-    BaseProgram(std::move(program), camera)
+    BaseProgram(std::move(program)), m_Camera(camera)
 {
 }
 
