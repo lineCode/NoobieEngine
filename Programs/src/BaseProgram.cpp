@@ -4,13 +4,13 @@
 
 #include "BaseProgram.h"
 
-void BaseProgram::onRender()
+BaseProgram::BaseProgram(std::unique_ptr<GLResource> program) :
+    m_Program(std::move(program))
 {
-    GLCall(glUseProgram(m_Program->resourceId()));
+
 }
 
-BaseProgram::BaseProgram(std::unique_ptr<GLResource> program) :
- m_Program(std::move(program))
+void BaseProgram::useProgram()
 {
-
+    GLCall(glUseProgram(m_Program->resourceId()));
 }

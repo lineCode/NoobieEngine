@@ -10,13 +10,3 @@ SphereProgram::SphereProgram(std::unique_ptr<GLResource> program)
 {
 
 }
-
-void SphereProgram::addObject(std::shared_ptr<SphereObject> object)
-{
-    m_Objects.push_back(object);
-}
-
-void SphereProgram::onRender()
-{
-
-}

@@ -13,12 +13,6 @@ class SphereProgram : public BaseProgram
 {
 public:
     SphereProgram(std::unique_ptr<GLResource> program);
-    void onRender() override;
-    void addObject(std::shared_ptr<SphereObject> object);
-private:
-    void setupVertices();
-private:
-    std::vector<std::shared_ptr<SphereObject>> m_Objects;
 };
 
 

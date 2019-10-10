@@ -5,16 +5,14 @@
 #ifndef NOOBYENGINE_BASEPROGRAM_H
 #define NOOBYENGINE_BASEPROGRAM_H
 
-#include "Interfaces/IRenderable.h"
 #include "../../Infrastructure/include/GLResource.h"
 #include "../../Infrastructure/include/GLSafe.h"
 
-class BaseProgram : public IRenderable
+class BaseProgram
 {
 public:
     BaseProgram(std::unique_ptr<GLResource> program);
-public:
-    virtual void onRender();
+    void useProgram();
 protected:
     std::unique_ptr<GLResource> m_Program;
 };

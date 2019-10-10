@@ -151,3 +151,9 @@ void SphereObject::setTexture(std::unique_ptr<GLResource> loadedTexture, GLenum 
     buffer->setAttributeIndex(1);
     buffer->setActiveTextureUnit(activeTextureUnit);
 }
+
+void SphereObject::setProgram(std::shared_ptr<BaseProgram> program)
+{
+    m_program = program;
+    m_program->useProgram();
+}

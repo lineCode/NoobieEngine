@@ -5,6 +5,7 @@
 #ifndef NOOBYENGINE_CIRCLEOBJECT_H
 #define NOOBYENGINE_CIRCLEOBJECT_H
 
+#include "../../../Programs/include/BaseProgram.h"
 #include "VertexArray.h"
 
 class SphereObject : public IRenderable
@@ -22,7 +23,10 @@ public:
     std::vector<glm::vec2> getTexCoords();
     std::vector<glm::vec3> getNormals();
     std::vector<glm::vec3> getTangents();
+    //potential methods to abstract
     void setTexture(std::unique_ptr<GLResource> loadedTexture, GLenum activeTextureUnit);
+    void setProgram(std::shared_ptr<BaseProgram> program);
+    void init(int);
 private:
     std::unique_ptr<VertexArray> m_Vao;
     int m_numVertices;
@@ -37,7 +41,7 @@ private:
     std::unique_ptr<std::vector<float>> m_tvalues;
     std::unique_ptr<std::vector<float>> m_nvalues;
 
-    void init(int);
+    std::shared_ptr<BaseProgram> m_program;
     float toRadians(float degrees);
 };
 

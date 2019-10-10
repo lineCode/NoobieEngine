@@ -2,7 +2,6 @@
 // Created by Rob on 2019-09-29.
 //
 
-#include <iostream>
 #include "../../Infrastructure/include/ShaderLoader.h"
 #include "../../Infrastructure/include/GLFWContext.h"
 #include "../../Infrastructure/include/FileTextureLoader.h"
@@ -37,11 +36,11 @@ int main()
     int width, height;
     glfwGetFramebufferSize(handle, &width, &height);
 
+    auto sphereProgram = std::make_shared<SphereProgram>(std::move(program));
+
     auto sphereObject = std::make_shared<SphereObject>(48);
     sphereObject->setTexture(std::move(texture), GL_TEXTURE0);
-
-    auto sphereProgram = std::make_shared<SphereProgram>(std::move(program));
-    sphereProgram->addObject(sphereObject);
+    sphereObject->setProgram(sphereProgram);
 
     auto sphereScene = std::make_shared<Scene>(width/height);
     sphereScene->addRenderable(sphereObject);
@@ -49,8 +48,6 @@ int main()
     Renderer renderer;
     renderer.addScene(sphereScene);
     do {
-        std::cout << "Start rendering" << std::endl;
         renderer.render(context.get());
-        std::cout << "Done rendering" << std::endl;
     } while (glfwGetKey(handle, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(handle) == 0);
 }
