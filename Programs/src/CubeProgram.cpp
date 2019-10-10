@@ -12,7 +12,7 @@ CubeProgram::CubeProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Ca
 {
 }
 
-void CubeProgram::onRender()
+/*void CubeProgram::onRender()
 {
     BaseProgram::onRender();
     for (const auto & object : m_Objects)
@@ -37,7 +37,7 @@ void CubeProgram::onRender()
 
         object->onRender();
     }
-}
+}*/
 
 GLuint CubeProgram::programId()
 {

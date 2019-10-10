@@ -7,7 +7,7 @@
 #define NOOBYENGINE_SPHEREPROGRAM_H
 
 #include "BaseProgram.h"
-#include "Core/Renderer/include/SphereObject.h"
+#include "Core/Primitives/include/SphereObject.h"
 
 class SphereProgram : public BaseProgram
 {

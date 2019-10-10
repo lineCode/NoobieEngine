@@ -2,7 +2,7 @@
 // Created by Rob on 2019-09-25.
 //
 
-#include "SphereObject.h"
+#include "Primitives/include/SphereObject.h"
 
 
 SphereObject::SphereObject() 

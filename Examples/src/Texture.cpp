@@ -9,7 +9,7 @@
 #include "../../Infrastructure/include/GLFWContext.h"
 #include "../../Infrastructure/include/FileTextureLoader.h"
 #include "Interfaces/IContext.h"
-#include "Core/Renderer/include/DrawableObject.h"
+#include "Core/Primitives/include/DrawableObject.h"
 #include "Core/Renderer/include/Renderer.h"
 #include "../../Interfaces/IRenderable.h"
 #include "Programs/include/CubeProgram.h"
@@ -67,8 +67,6 @@ int main()
     cubeProgram->addObject(pyramidObj);
 
     Renderer renderer;
-    renderer.setCamera(camera);
-    renderer.addRenderable(cubeProgram);
     do{
         std::cout<<"Start rendering"<<std::endl;
         renderer.render(context.get());

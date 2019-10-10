@@ -17,7 +17,7 @@ PlanetProgram::PlanetProgram(std::unique_ptr<GLResource> program, std::shared_pt
                          });
 }
 
-void PlanetProgram::onRender()
+/*void PlanetProgram::onRender()
 {
     BaseProgram::onRender();
     GLint mvLoc;
@@ -64,7 +64,7 @@ void PlanetProgram::onRender()
     mvStack.pop();
     mvStack.pop();
     mvStack.pop();
-}
+}*/
 
 void PlanetProgram::addObject(std::shared_ptr<DrawableObject> object)
 {

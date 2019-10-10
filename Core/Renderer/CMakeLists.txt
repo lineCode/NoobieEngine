@@ -16,17 +16,17 @@ add_library(core.renderer
         include/Renderer.h
         include/Mesh.h
         include/Camera.h
-        include/DrawableObject.h
+        ../Primitives/include/DrawableObject.h
         include/VertexBufferScope.h
         include/BufferMode.h
         include/TextureScope.h
-        include/SphereObject.h
+        ../Primitives/include/SphereObject.h
         include/Scene.h
         src/Scene.cpp
-        src/SphereObject.cpp
+        ../Primitives/src/SphereObject.cpp
         src/TextureScope.cpp
         src/VertexBufferScope.cpp
-        src/DrawableObject.cpp
+        ../Primitives/src/DrawableObject.cpp
         src/Camera.cpp
         src/VertexBuffer.cpp
         src/VertexArray.cpp

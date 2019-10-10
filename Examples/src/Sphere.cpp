@@ -6,7 +6,7 @@
 #include "../../Infrastructure/include/GLFWContext.h"
 #include "../../Infrastructure/include/FileTextureLoader.h"
 #include "Interfaces/IContext.h"
-#include "Core/Renderer/include/SphereObject.h"
+#include "Core/Primitives/include/SphereObject.h"
 #include "Core/Renderer/include/Renderer.h"
 #include "Programs/include/SphereProgram.h"
 
