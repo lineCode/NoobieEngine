@@ -5,7 +5,7 @@
 #ifndef Object_h
 #define Object_h
 
-#include "VertexArray.h"
+#include "Renderer/include/VertexArray.h"
 
 class DrawableObject : public IRenderable
 {

@@ -10,7 +10,7 @@
 class ShaderLoader : public IShaderLoader
 {
 public:
-    std::unique_ptr<GLResource> createProgram(std::initializer_list<ShaderFileInfo> shaderInfoList) override;
+    static std::shared_ptr<GLResource> createProgram(std::initializer_list<ShaderFileInfo> shaderInfoList);
 };
 
 

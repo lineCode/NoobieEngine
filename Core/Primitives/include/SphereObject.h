@@ -6,7 +6,7 @@
 #define NOOBYENGINE_CIRCLEOBJECT_H
 
 #include "Programs/include/BaseProgram.h"
-#include "VertexArray.h"
+#include "Renderer/include/VertexArray.h"
 
 class SphereObject : public IRenderable
 {

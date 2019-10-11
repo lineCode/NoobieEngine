@@ -11,7 +11,7 @@ void compileSource(const std::string & source, unsigned int shaderId);
 void linkProgram(unsigned int programId, unsigned int shaderId);
 void cleanBuild(unsigned int programId, std::vector<GLuint> shaders);
 
-std::unique_ptr<GLResource> ShaderLoader::createProgram(std::initializer_list<ShaderFileInfo> shaderInfoList)
+std::shared_ptr<GLResource> ShaderLoader::createProgram(std::initializer_list<ShaderFileInfo> shaderInfoList)
 {
     auto programId = glCreateProgram();
     auto program = std::make_unique<GLResource>(programId, [programId] ()

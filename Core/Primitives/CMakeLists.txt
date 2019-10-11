@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(core.primitives VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
-dd_definitions(
+add_definitions(
         -DTW_STATIC
         -DTW_NO_LIB_PRAGMA
         -DTW_NO_DIRECT3D

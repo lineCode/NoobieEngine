@@ -11,7 +11,7 @@
 class ITextureLoader
 {
 public:
-    virtual GLuint loadTexture(const std::string & texturePath) = 0;
+    static GLuint loadTexture(const std::string & texturePath);
 };
 
 #endif //NOOBYENGINE_ITEXTURELOADER_H

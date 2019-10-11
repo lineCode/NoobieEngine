@@ -22,21 +22,17 @@ int main()
     context->startContext();
     auto handle = static_cast<GLFWwindow*>(context->handle());
 
-    ShaderLoader loader;
-    auto program = loader.createProgram({
-                                                      ShaderFileInfo("vertShader.glsl", GL_VERTEX_SHADER),
-                                                      ShaderFileInfo("fragShader.glsl", GL_FRAGMENT_SHADER)
+    auto program = ShaderLoader::createProgram({
+        ShaderFileInfo("vertShader.glsl", GL_VERTEX_SHADER),
+        ShaderFileInfo("SingleColor.fragmentshader", GL_FRAGMENT_SHADER)
         });
 
-    FileTextureLoader textureLoader;
-    auto texture = std::make_unique<GLResource>(textureLoader.loadTexture("earth.jpg"), []()
-        {
-        });
+    auto texture = FileTextureLoader::loadTexture("earth.jpg");
 
     int width, height;
     glfwGetFramebufferSize(handle, &width, &height);
 
-    auto sphereProgram = std::make_shared<SphereProgram>(std::move(program));
+    auto sphereProgram = std::make_shared<SphereProgram>(program);
 
     auto sphereObject = std::make_shared<SphereObject>(48);
     sphereObject->setTexture(std::move(texture), GL_TEXTURE0);

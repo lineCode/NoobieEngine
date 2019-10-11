@@ -12,7 +12,7 @@
 class SphereProgram : public BaseProgram
 {
 public:
-    SphereProgram(std::unique_ptr<GLResource> program);
+    SphereProgram(std::shared_ptr<GLResource> program);
 };
 
 

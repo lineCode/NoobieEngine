@@ -6,11 +6,12 @@
 #define NOOBYENGINE_FILETEXTURELOADER_H
 
 #include "Interfaces/ITextureLoader.h"
+#include "GLResource.h"
 
 class FileTextureLoader : ITextureLoader
 {
 public:
-    GLuint loadTexture(const std::string & texturePath) override ;
+    static std::unique_ptr<GLResource> loadTexture(const std::string & texturePath);
 };
 
 

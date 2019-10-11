@@ -16,17 +16,13 @@ add_library(core.renderer
         include/Renderer.h
         include/Mesh.h
         include/Camera.h
-        ../Primitives/include/DrawableObject.h
         include/VertexBufferScope.h
         include/BufferMode.h
         include/TextureScope.h
-        ../Primitives/include/SphereObject.h
         include/Scene.h
         src/Scene.cpp
-        ../Primitives/src/SphereObject.cpp
         src/TextureScope.cpp
         src/VertexBufferScope.cpp
-        ../Primitives/src/DrawableObject.cpp
         src/Camera.cpp
         src/VertexBuffer.cpp
         src/VertexArray.cpp
@@ -43,7 +39,6 @@ target_include_directories(core.renderer
 
 
 include_directories(
-        add_compile_definitions../../external/glfw-3.3/include
         ../../external/glm-0.9.7.1
         ../../external/glew-2.1.0/include
         ..

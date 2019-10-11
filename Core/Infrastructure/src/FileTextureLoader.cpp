@@ -7,12 +7,12 @@
 #include "../../../external/soil2/src/SOIL2.h"
 #include <stdexcept>
 
-GLuint FileTextureLoader::loadTexture(const std::string & texturePath)
+std::unique_ptr<GLResource> FileTextureLoader::loadTexture(const std::string & texturePath)
 {
     GLuint textureID = SOIL_load_OGL_texture(texturePath.c_str(), SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y);
     if (!textureID)
     {
         throw std::invalid_argument(SOIL_last_result());
     }
-    return textureID;
+    return std::make_unique<GLResource>(textureID, [](){});
 }

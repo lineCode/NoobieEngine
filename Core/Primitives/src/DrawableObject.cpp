@@ -2,7 +2,7 @@
 // Created by Rob on 2019-07-13.
 //
 
-#include "Primitives/include/DrawableObject.h"
+#include "DrawableObject.h"
 
 DrawableObject::DrawableObject(glm::vec3 location, const std::vector<float> & vertices, unsigned int numCopies):
     m_Location(location), m_Vertices(vertices), m_NumCopies(numCopies)

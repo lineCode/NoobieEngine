@@ -11,10 +11,10 @@
 class BaseProgram
 {
 public:
-    BaseProgram(std::unique_ptr<GLResource> program);
+    BaseProgram(std::shared_ptr<GLResource> program);
     void useProgram();
 protected:
-    std::unique_ptr<GLResource> m_Program;
+    std::shared_ptr<GLResource> m_Program;
 };
 
 

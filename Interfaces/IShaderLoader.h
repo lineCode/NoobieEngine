@@ -13,7 +13,7 @@
 class IShaderLoader
 {
 public:
-    virtual std::unique_ptr<GLResource> createProgram(std::initializer_list<ShaderFileInfo> shaderInfoList) = 0;
+    static std::unique_ptr<GLResource> createProgram(std::initializer_list<ShaderFileInfo> shaderInfoList);
 };
 
 #endif //NOOBYENGINE_ISHADERLOADER_H

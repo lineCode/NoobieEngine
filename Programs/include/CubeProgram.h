@@ -14,7 +14,7 @@
 class CubeProgram : public BaseProgram
 {
 public:
-    CubeProgram(std::unique_ptr<GLResource> program, std::shared_ptr<Camera> camera);
+    CubeProgram(std::shared_ptr<GLResource> program, std::shared_ptr<Camera> camera);
     GLuint programId();
     //remove
     void addObject(std::shared_ptr<DrawableObject> object);

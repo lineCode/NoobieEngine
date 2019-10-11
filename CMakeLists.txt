@@ -9,6 +9,7 @@ add_executable(Engine main.cpp)
 
 add_subdirectory(Core/Infrastructure)
 add_subdirectory(Core/Renderer)
+add_subdirectory(Core/Primitives)
 add_subdirectory(external)
 add_subdirectory(Interfaces)
 add_subdirectory(Programs)
@@ -52,6 +53,7 @@ FILE(COPY Examples/images/brick1.jpg DESTINATION "${CMAKE_BINARY_DIR}")
 
 target_link_libraries(Engine
         core.renderer
+        core.primitives
         core.infrastructure
         ${ALL_LIBS}
         )
@@ -68,6 +70,7 @@ include_directories(Core)
 
 target_link_libraries(Texture_Example
         core.renderer
+        core.primitives
         core.infrastructure
         ${ALL_LIBS}
         )
@@ -83,6 +86,7 @@ include_directories(Core)
 
 target_link_libraries(Sphere_Example
         core.renderer
+        core.primitives
         core.infrastructure
         ${ALL_LIBS}
         )

@@ -26,16 +26,12 @@ int main()
     context->startContext();
     auto handle = static_cast<GLFWwindow*>(context->handle());
 
-    ShaderLoader loader;
-    auto program = loader.createProgram({
-                                                      ShaderFileInfo("SimpleTransform.vertexshader", GL_VERTEX_SHADER),
-                                                      ShaderFileInfo("SingleColor.fragmentshader", GL_FRAGMENT_SHADER)
-        });
+    auto program = ShaderLoader::createProgram({
+        ShaderFileInfo("SimpleTransform.vertexshader", GL_VERTEX_SHADER),
+        ShaderFileInfo("SingleColor.fragmentshader", GL_FRAGMENT_SHADER)
+    });
 
-    FileTextureLoader textureLoader;
-    auto texture = std::make_unique<GLResource>(textureLoader.loadTexture("brick1.jpg"), []()
-        {
-        });
+    auto texture = FileTextureLoader::loadTexture("brick1.jpg");
 
     auto pyramidVertices = std::initializer_list<float>{ -1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 0.0f, 1.0f, 0.0f,    //front
                                                          1.0f, -1.0f, 1.0f, 1.0f, -1.0f, -1.0f, 0.0f, 1.0f, 0.0f,    //right
@@ -63,7 +59,7 @@ int main()
     auto pyramidObj = std::make_shared<DrawableObject>(pyramidLocation, pyramidVertices, 1);
     pyramidObj->setTexture(std::move(texture), pyrTexCoords, GL_TEXTURE0);
 
-    auto cubeProgram = std::make_shared<CubeProgram>(std::move(program),camera);
+    auto cubeProgram = std::make_shared<CubeProgram>(program,camera);
     cubeProgram->addObject(pyramidObj);
 
     Renderer renderer;

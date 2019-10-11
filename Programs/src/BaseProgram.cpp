@@ -4,7 +4,7 @@
 
 #include "BaseProgram.h"
 
-BaseProgram::BaseProgram(std::unique_ptr<GLResource> program) :
+BaseProgram::BaseProgram(std::shared_ptr<GLResource> program) :
     m_Program(std::move(program))
 {
 
