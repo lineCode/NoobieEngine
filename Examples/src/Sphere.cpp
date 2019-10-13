@@ -24,7 +24,7 @@ int main()
 
     auto program = ShaderLoader::createProgram({
         ShaderFileInfo("vertShader.glsl", GL_VERTEX_SHADER),
-        ShaderFileInfo("SingleColor.fragmentshader", GL_FRAGMENT_SHADER)
+        ShaderFileInfo("fragShader.glsl", GL_FRAGMENT_SHADER)
         });
 
     auto texture = FileTextureLoader::loadTexture("earth.jpg");

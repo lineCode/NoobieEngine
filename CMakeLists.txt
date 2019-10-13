@@ -43,14 +43,6 @@ add_definitions(
         -D_CRT_SECURE_NO_WARNINGS
 )
 
-configure_file(SimpleTransform.vertexshader "${CMAKE_BINARY_DIR}" COPYONLY)
-configure_file(SingleColor.fragmentshader "${CMAKE_BINARY_DIR}" COPYONLY)
-configure_file(MatrixUtil.glsl "${CMAKE_BINARY_DIR}" COPYONLY)
-configure_file(vertShader.glsl "${CMAKE_BINARY_DIR}" COPYONLY)
-
-FILE(COPY Examples/images/brick1.jpg DESTINATION "${CMAKE_BINARY_DIR}")
-
-
 target_link_libraries(Engine
         core.renderer
         core.primitives
@@ -81,9 +73,7 @@ add_executable(Sphere_Example
         Programs/src/SphereProgram.cpp
         Programs/src/BaseProgram.cpp
         )
-
 include_directories(Core)
-
 target_link_libraries(Sphere_Example
         core.renderer
         core.primitives
