@@ -70,9 +70,9 @@ void SphereObject::init(uint32_t prec)
         }
     }
 
-    m_pvalues = std::make_unique<std::vector<float>>();
-    m_tvalues = std::make_unique<std::vector<float>>();
-    m_nvalues = std::make_unique<std::vector<float>>();
+    m_pvalues = std::make_unique<std::vector<float>>(m_numIndices);
+    m_tvalues = std::make_unique<std::vector<float>>(m_numIndices);
+    m_nvalues = std::make_unique<std::vector<float>>(m_numIndices);
     for (int i = 0; i < m_numIndices; i++) {
         auto indices = *m_indices;
         auto vertices = *m_vertices;
