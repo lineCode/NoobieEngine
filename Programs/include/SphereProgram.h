@@ -13,6 +13,8 @@ class SphereProgram : public BaseProgram
 {
 public:
     SphereProgram(std::shared_ptr<GLResource> program);
+    GLuint projectionMatrixLocation();
+    GLuint modelViewMatrixLocation();
 };
 
 

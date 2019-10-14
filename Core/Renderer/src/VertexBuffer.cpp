@@ -15,6 +15,7 @@ VertexBuffer::VertexBuffer()
     m_Stride = 0;
     m_attributeIndex = 0;
     m_NumCopies = 1;
+    m_BufferType = GL_ARRAY_BUFFER;
     m_BufferMode = BufferMode::SingleCopy;
 }
 

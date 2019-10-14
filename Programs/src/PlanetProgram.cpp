@@ -11,7 +11,7 @@ PlanetProgram::PlanetProgram(std::unique_ptr<GLResource> program, std::shared_pt
     BaseProgram(std::move(program)), m_Camera(camera)
 {
     ShaderLoader loader;
-    BaseProgram::m_Program = loader.createProgram({
+    BaseProgram::m_program = loader.createProgram({
                              ShaderFileInfo("SimpleTransform.vertexshader", GL_VERTEX_SHADER),
                              ShaderFileInfo("SingleColor.fragmentshader", GL_FRAGMENT_SHADER)
                          });

@@ -28,4 +28,3 @@ void Renderer::addScene(std::shared_ptr<Scene> scene)
 {
     m_scenes.push_back(scene);
 }
-

@@ -12,9 +12,10 @@ class BaseProgram
 {
 public:
     BaseProgram(std::shared_ptr<GLResource> program);
+    GLuint programId();
     void useProgram();
 protected:
-    std::shared_ptr<GLResource> m_Program;
+    std::shared_ptr<GLResource> m_program;
 };
 
 

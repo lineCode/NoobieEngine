@@ -4,7 +4,11 @@
 #pragma warning( disable : 26451)
 
 #include "SphereObject.h"
-
+#include "Infrastructure/include/GLSafe.h"
+#include "external/glm-0.9.7.1/glm/gtc/matrix_transform.hpp"
+#include "external/glm-0.9.7.1/glm/gtc/matrix_transform.hpp"
+#include "external/glm-0.9.7.1/glm/gtc/type_ptr.hpp"
+#include "Programs/include/SphereProgram.h"
 
 SphereObject::SphereObject() 
 {
@@ -131,7 +135,35 @@ const std::vector<glm::vec3>& SphereObject::tangents()
 
 void SphereObject::onRender()
 {
+    m_mat = glm::translate(glm::mat4(1.0f), m_location);
+
+    auto mvMat = m_viewMatrix * m_mat;
+    auto sphereProgram = (SphereProgram*)m_program.get();
+    glUniformMatrix4fv(sphereProgram->modelViewMatrixLocation(), 1, GL_FALSE, glm::value_ptr(mvMat));
+    glUniformMatrix4fv(sphereProgram->projectionMatrixLocation(), 1, GL_FALSE, glm::value_ptr(m_projectionMatrix));
+
     m_Vao->onRender();
+}
+
+void SphereObject::setViewMatrix(glm::mat4 viewMatrix)
+{
+    m_viewMatrix = viewMatrix;
+}
+
+void SphereObject::setProjectionMatrix(glm::mat4 projectionMatrix)
+{
+    m_projectionMatrix = projectionMatrix;
+}
+
+void SphereObject::setLocation(glm::vec3 location)
+{
+    m_location = location;
+}
+
+void SphereObject::setProgram(std::shared_ptr<BaseProgram> program)
+{
+    m_program = program;
+    m_program->useProgram();
 }
 
 void SphereObject::setTexture(std::unique_ptr<GLResource> loadedTexture, GLenum activeTextureUnit)
@@ -139,10 +171,4 @@ void SphereObject::setTexture(std::unique_ptr<GLResource> loadedTexture, GLenum 
     auto buffer = m_Vao->addTexture(std::move(loadedTexture), *m_nvalues, 2, GL_ARRAY_BUFFER);
     buffer->setAttributeIndex(1);
     buffer->setActiveTextureUnit(activeTextureUnit);
-}
-
-void SphereObject::setProgram(std::shared_ptr<BaseProgram> program)
-{
-    m_program = program;
-    m_program->useProgram();
 }

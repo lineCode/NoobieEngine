@@ -41,7 +41,7 @@ CubeProgram::CubeProgram(std::shared_ptr<GLResource> program, std::shared_ptr<Ca
 
 GLuint CubeProgram::programId()
 {
-    return m_Program->resourceId();
+    return m_program->resourceId();
 }
 
 void CubeProgram::addObject(std::shared_ptr<DrawableObject> object)

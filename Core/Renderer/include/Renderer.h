@@ -17,6 +17,7 @@ public:
     explicit Renderer();
     void render(IContext * context);
     void addScene(std::shared_ptr<Scene> scene);
+    
 private:
     std::vector<std::shared_ptr<Scene>> m_scenes;
 };

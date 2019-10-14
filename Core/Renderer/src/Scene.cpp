@@ -15,15 +15,22 @@ Scene::Scene(float aspect)
         1000.0f); //far plane
 }
 
-void Scene::addRenderable(std::shared_ptr<IRenderable> renderableItem)
+void Scene::addRenderable(std::shared_ptr<IRenderableObject> renderableItem)
 {
     m_OrderedRenderables.push_back(renderableItem);
+}
+
+void Scene::setWorldCameraLocation(glm::vec3 location)
+{
+    m_camera->setLocation(location);
 }
 
 void Scene::onRender()
 {
     for(auto renderableObject : m_OrderedRenderables)
     {
+        renderableObject->setViewMatrix(m_camera->viewMatrix());
+        renderableObject->setProjectionMatrix(m_camera->perspectiveMatrix());
         renderableObject->onRender();
     }
 }

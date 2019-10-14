@@ -5,12 +5,17 @@
 #include "BaseProgram.h"
 
 BaseProgram::BaseProgram(std::shared_ptr<GLResource> program) :
-    m_Program(std::move(program))
+    m_program(std::move(program))
 {
 
 }
 
 void BaseProgram::useProgram()
 {
-    GLCall(glUseProgram(m_Program->resourceId()));
+    GLCall(glUseProgram(m_program->resourceId()));
+}
+
+GLuint BaseProgram::programId()
+{
+    return m_program->resourceId();
 }
