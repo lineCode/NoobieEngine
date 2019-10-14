@@ -93,9 +93,12 @@ void SphereObject::init(uint32_t prec)
     }
 
     m_Vao = std::make_unique<VertexArray>();
-    m_Vao->addBuffer(*m_pvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
-    m_Vao->addBuffer(*m_tvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
-    m_Vao->addBuffer(*m_nvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
+    auto vb = m_Vao->addBuffer(*m_pvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
+    vb->setAttributeIndex(0);
+    vb = m_Vao->addBuffer(*m_tvalues, 2, GL_ARRAY_BUFFER, GL_TRIANGLES);
+    vb->setAttributeIndex(1);
+    //vb = m_Vao->addBuffer(*m_nvalues, 2, GL_ARRAY_BUFFER, GL_TRIANGLES);
+    //vb->setAttributeIndex(2);
 }
 
 int SphereObject::numVertices() 
@@ -137,10 +140,12 @@ void SphereObject::onRender()
 {
     m_mat = glm::translate(glm::mat4(1.0f), m_location);
 
+    GLint samplerLoc;
     auto mvMat = m_viewMatrix * m_mat;
     auto sphereProgram = (SphereProgram*)m_program.get();
-    glUniformMatrix4fv(sphereProgram->modelViewMatrixLocation(), 1, GL_FALSE, glm::value_ptr(mvMat));
-    glUniformMatrix4fv(sphereProgram->projectionMatrixLocation(), 1, GL_FALSE, glm::value_ptr(m_projectionMatrix));
+    GLCall(glUniformMatrix4fv(sphereProgram->modelViewMatrixLocation(), 1, GL_FALSE, glm::value_ptr(mvMat)));
+    GLCall(glUniformMatrix4fv(sphereProgram->projectionMatrixLocation(), 1, GL_FALSE, glm::value_ptr(m_projectionMatrix)));
+    GLCall(samplerLoc = glGetUniformLocation(m_program->programId(), "samp"))
 
     m_Vao->onRender();
 }
@@ -169,6 +174,6 @@ void SphereObject::setProgram(std::shared_ptr<BaseProgram> program)
 void SphereObject::setTexture(std::unique_ptr<GLResource> loadedTexture, GLenum activeTextureUnit)
 {
     auto buffer = m_Vao->addTexture(std::move(loadedTexture), *m_nvalues, 2, GL_ARRAY_BUFFER);
-    buffer->setAttributeIndex(1);
+    //buffer->setAttributeIndex(2);
     buffer->setActiveTextureUnit(activeTextureUnit);
 }
