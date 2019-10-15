@@ -52,6 +52,9 @@ public:
     GLenum bufferType() const;
     void setBufferType(GLenum bufferType);
 
+    GLint textureUniformLocation() const;
+    void setTextureUniformLocation(GLint textureUniformLocation);
+
     void onRender() override;
 private:
     void drawArrays();
@@ -64,6 +67,7 @@ private:
     GLenum m_BufferType;
     GLuint m_DrawMode;
     GLuint m_attributeIndex;
+    GLint m_textureUniformLocation;
     unsigned int m_NumCopies;
     BufferMode m_BufferMode;
 };

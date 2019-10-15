@@ -55,8 +55,8 @@ int main()
     auto sphereProgram = std::make_shared<SphereProgram>(program);
 
     auto sphereObject = std::make_shared<SphereObject>(48);
-    sphereObject->setTexture(std::move(texture), GL_TEXTURE0);
     sphereObject->setProgram(sphereProgram);
+    sphereObject->setTexture(std::move(texture), GL_TEXTURE0);
     sphereObject->setLocation(glm::vec3(0.0f, 0.0f, 0.0f));
 
     auto sphereScene = std::make_shared<Scene>(width/height);

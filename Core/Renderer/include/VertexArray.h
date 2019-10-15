@@ -28,6 +28,13 @@ public:
         GLuint bufferType,
         GLuint drawMode,
         unsigned int numCopies);
+    template<typename T> VertexBuffer* addBuffer(
+        const T& buffer,
+        unsigned int stride,
+        GLuint bufferType,
+        GLuint drawMode,
+        unsigned int numCopies,
+        BufferMode bufferMode);
     template<typename T> VertexBuffer * addTexture(
         std::unique_ptr<GLResource> loadedTexture,
         const std::vector<T>& textureCoordinates,

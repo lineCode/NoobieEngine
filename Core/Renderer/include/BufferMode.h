@@ -7,6 +7,8 @@
 
 enum class BufferMode
 {
+    None,
+    NoDraw,
     SingleCopy,
     InstanceCopy,
     Texture

@@ -69,6 +69,15 @@ void VertexBuffer::drawArrays()
     auto elements = count() / stride();
     switch (bufferMode())
     {
+        case BufferMode::None:
+        {
+            break;
+        }
+        case BufferMode::NoDraw:
+        {
+            VertexBufferScope vertexScope(this);
+            break;
+        }
         case BufferMode::InstanceCopy:
         {
             VertexBufferScope vertexScope(this);
@@ -124,4 +133,14 @@ GLenum VertexBuffer::bufferType() const
 void VertexBuffer::setBufferType(GLenum bufferType)
 {
     m_BufferType = bufferType;
+}
+
+void VertexBuffer::setTextureUniformLocation(GLint textureUniformLocation)
+{
+    m_textureUniformLocation = textureUniformLocation;
+}
+
+GLint VertexBuffer::textureUniformLocation() const
+{
+    return m_textureUniformLocation;
 }

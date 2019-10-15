@@ -11,8 +11,10 @@ template<typename T> VertexBuffer * VertexArray::addBuffer(
     GLuint bufferType,
     GLuint drawMode)
 {
-    return addBuffer(buffer, stride, bufferType, drawMode, 1);
+    return addBuffer(buffer, stride, bufferType, drawMode, 1, BufferMode::SingleCopy);
 }
+
+
 
 template<typename T> VertexBuffer * VertexArray::addTexture(
     std::unique_ptr<GLResource> loadedTexture, 
@@ -21,8 +23,8 @@ template<typename T> VertexBuffer * VertexArray::addTexture(
 {
     auto vbo = std::make_unique<VertexBuffer>();
     vbo->makeTexture(std::move(loadedTexture), textureCoordinates, stride, bufferType);
-    m_VertexBuffer.push_back(std::move(vbo));
-    return m_VertexBuffer.back().get();
+    m_VertexBuffer.push_front(std::move(vbo));
+    return m_VertexBuffer.front().get();
 }
 
 template<typename T> VertexBuffer * VertexArray::addBuffer(
@@ -32,8 +34,19 @@ template<typename T> VertexBuffer * VertexArray::addBuffer(
     GLuint drawMode,
     unsigned int numCopies)
 {
+    return addBuffer(buffer, stride, bufferType, drawMode, 1, BufferMode::InstanceCopy);
+}
+
+template<typename T> VertexBuffer* VertexArray::addBuffer(
+    const T& buffer,
+    unsigned int stride,
+    GLuint bufferType,
+    GLuint drawMode,
+    unsigned int numCopies,
+    BufferMode bufferMode)
+{
     auto vbo = std::make_unique<VertexBuffer>();
-    vbo->makeBuffer(buffer, stride, bufferType, BufferMode::InstanceCopy);
+    vbo->makeBuffer(buffer, stride, bufferType, bufferMode);
     vbo->setDrawMode(drawMode);
     vbo->setNumberOfCopies(numCopies);
     m_VertexBuffer.push_back(std::move(vbo));

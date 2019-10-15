@@ -21,7 +21,7 @@ glm::mat4 Camera::perspectiveMatrix() const
 
 glm::mat4 Camera::viewMatrix() const
 {
-    return glm::translate(glm::mat4(1.0f), m_Location);
+    return glm::translate(glm::mat4(), m_Location);
 }
 
 void Camera::setLocation(glm::vec3 location)
