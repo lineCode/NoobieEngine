@@ -3,12 +3,15 @@
 //
 
 #include "DrawableObject.h"
+#include "Core/Renderer/include/VertexBufferBase.h"
 
 DrawableObject::DrawableObject(glm::vec3 location, const std::vector<float> & vertices, unsigned int numCopies):
     m_Location(location), m_Vertices(vertices), m_NumCopies(numCopies)
 {
     m_Vao = std::make_unique<VertexArray>();
-    auto buffer = m_Vao->addBuffer(vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
+    auto buffer = static_cast<VertexBufferBase*>(
+        m_Vao->addBuffer(vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES)
+        );
     buffer->setAttributeIndex(0);
 }
 
@@ -19,7 +22,9 @@ void DrawableObject::onRender()
 
 void DrawableObject::setTexture(std::unique_ptr<GLResource> loadedTexture, const std::vector<float>& textureCoordinates, GLenum activeTextureUnit)
 {
-    auto buffer = m_Vao->addTexture(std::move(loadedTexture), textureCoordinates, 2, GL_ARRAY_BUFFER);
+    auto buffer = static_cast<VertexBufferBase*>(
+        m_Vao->addTexture(std::move(loadedTexture), textureCoordinates, 2, GL_ARRAY_BUFFER)
+        );
     buffer->setAttributeIndex(1);
     buffer->setActiveTextureUnit(activeTextureUnit);
 }

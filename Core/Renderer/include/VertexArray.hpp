@@ -5,18 +5,21 @@
 #ifndef NOOBYENGINE_VERTEXARRAY_HPP
 #define NOOBYENGINE_VERTEXARRAY_HPP
 
-template<typename T> VertexBuffer * VertexArray::addBuffer(
+template<typename T> IRenderable * VertexArray::addBuffer(
     const T & buffer,
     unsigned int stride,
     GLuint bufferType,
     GLuint drawMode)
 {
-    return addBuffer(buffer, stride, bufferType, drawMode, 1, BufferMode::SingleCopy);
+    m_VertexBuffer.emplace_back(std::make_unique<VertexBufferRenderable>());
+    auto vbo = static_cast<VertexBufferRenderable*>(m_VertexBuffer.back().get());
+    vbo->makeBuffer(buffer, stride, bufferType);
+    vbo->setDrawMode(drawMode);
+    vbo->setNumberOfCopies(1);
+    return vbo;
 }
 
-
-
-template<typename T> VertexBuffer * VertexArray::addTexture(
+template<typename T> IRenderable* VertexArray::addTexture(
     std::unique_ptr<GLResource> loadedTexture, 
     const std::vector<T>& textureCoordinates, 
     unsigned int stride, GLenum bufferType)
@@ -27,7 +30,7 @@ template<typename T> VertexBuffer * VertexArray::addTexture(
     return m_VertexBuffer.front().get();
 }
 
-template<typename T> VertexBuffer * VertexArray::addBuffer(
+template<typename T> IRenderable * VertexArray::addBuffer(
     const T & buffer,
     unsigned int stride,
     GLuint bufferType,
@@ -37,7 +40,7 @@ template<typename T> VertexBuffer * VertexArray::addBuffer(
     return addBuffer(buffer, stride, bufferType, drawMode, 1, BufferMode::InstanceCopy);
 }
 
-template<typename T> VertexBuffer* VertexArray::addBuffer(
+template<typename T> IRenderable * VertexArray::addBuffer(
     const T& buffer,
     unsigned int stride,
     GLuint bufferType,

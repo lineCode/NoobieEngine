@@ -9,6 +9,7 @@
 #include "external/glm-0.9.7.1/glm/gtc/matrix_transform.hpp"
 #include "external/glm-0.9.7.1/glm/gtc/type_ptr.hpp"
 #include "Programs/include/SphereProgram.h"
+#include "Core/Renderer/include/VertexBufferBase.h"
 
 SphereObject::SphereObject() 
 {
@@ -85,9 +86,9 @@ void SphereObject::init(uint32_t prec)
     }
 
     m_Vao = std::make_unique<VertexArray>();
-    auto vb = m_Vao->addBuffer(m_tvalues, 2, GL_ARRAY_BUFFER, GL_TRIANGLES, 1, BufferMode::NoDraw);
+    auto vb = static_cast<VertexBufferBase*>(m_Vao->addBuffer(m_tvalues, 2, GL_ARRAY_BUFFER, GL_TRIANGLES, 1, BufferMode::NoDraw));
     vb->setAttributeIndex(1);
-    vb = m_Vao->addBuffer(m_nvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES,1, BufferMode::None);
+    m_Vao->addBuffer(m_nvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES,1, BufferMode::None);
     //vb->setAttributeIndex(2);
     m_Vao->addBuffer(m_pvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES, 1, BufferMode::SingleCopy);
     vb->setAttributeIndex(0);
@@ -165,7 +166,9 @@ void SphereObject::setProgram(std::shared_ptr<BaseProgram> program)
 void SphereObject::setTexture(std::unique_ptr<GLResource> loadedTexture, GLenum activeTextureUnit)
 {
     GLint samplerLoc;
-    auto buffer = m_Vao->addTexture(std::move(loadedTexture), m_nvalues, 2, GL_ARRAY_BUFFER);
+    auto buffer = static_cast<VertexBufferBase*>(
+        m_Vao->addTexture(std::move(loadedTexture), m_nvalues, 2, GL_ARRAY_BUFFER)
+        );
     //buffer->setAttributeIndex(2);
     GLCall(samplerLoc = glGetUniformLocation(m_program->programId(), "samp"))
     buffer->setActiveTextureUnit(activeTextureUnit);

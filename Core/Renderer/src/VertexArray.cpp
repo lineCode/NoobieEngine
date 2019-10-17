@@ -31,9 +31,4 @@ void VertexArray::onRender()
     {
         vertexBuffer->onRender();
     }
-
-    for (auto& vertexBuffer : m_VertexBuffer)
-    {
-        GLCall(glDisableVertexAttribArray(vertexBuffer->attributeIndex()));
-    }
 }

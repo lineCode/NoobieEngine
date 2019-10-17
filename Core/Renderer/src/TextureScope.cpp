@@ -3,6 +3,7 @@
 //
 
 #include "TextureScope.h"
+#include "Infrastructure/include/GLSafe.h"
 
 TextureScope::TextureScope(VertexBuffer * vertexBuffer)
 {

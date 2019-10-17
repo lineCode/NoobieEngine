@@ -20,6 +20,11 @@ add_library(core.renderer
         include/BufferMode.h
         include/TextureScope.h
         include/Scene.h
+        include/VertexBufferRenderable.h
+        include/VertexBufferRenderable.hpp
+        include/VertexBufferBase.h
+        src/VertexBufferBase.cpp
+        src/VertexBufferRenderable.cpp
         src/Scene.cpp
         src/TextureScope.cpp
         src/VertexBufferScope.cpp

@@ -3,6 +3,7 @@
 //
 
 #include "VertexBufferScope.h"
+#include "Infrastructure/include/GLSafe.h"
 
 VertexBufferScope::VertexBufferScope(const VertexBuffer * vertexBuffer) :
     m_VertexBuffer(vertexBuffer)
