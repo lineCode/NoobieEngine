@@ -35,15 +35,15 @@ private:
     std::unique_ptr<VertexArray> m_Vao;
     int m_numVertices;
     int m_numIndices;
-    std::unique_ptr<std::vector<int>> m_indices;
-    std::unique_ptr<std::vector<glm::vec3>> m_vertices;
-    std::unique_ptr<std::vector<glm::vec2>> m_texCoords;
-    std::unique_ptr<std::vector<glm::vec3>> m_normals;
-    std::unique_ptr<std::vector<glm::vec3>> m_tangents;
 
-    std::unique_ptr<std::vector<float>> m_pvalues;
-    std::unique_ptr<std::vector<float>> m_tvalues;
-    std::unique_ptr<std::vector<float>> m_nvalues;
+    std::vector<int> m_indices;
+    std::vector<glm::vec3> m_vertices;
+    std::vector<glm::vec2> m_texCoords;
+    std::vector<glm::vec3> m_normals;
+    std::vector<glm::vec3> m_tangents;
+    std::vector<float> m_pvalues;
+    std::vector<float> m_tvalues;
+    std::vector<float> m_nvalues;
     std::shared_ptr<BaseProgram> m_program;
     glm::mat4 m_mat;
     glm::mat4 m_viewMatrix;
