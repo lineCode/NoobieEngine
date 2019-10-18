@@ -59,7 +59,7 @@ int main()
     sphereObject->setTexture(std::move(texture), GL_TEXTURE0);
     sphereObject->setLocation(glm::vec3(0.0f, 0.0f, 0.0f));
 
-    auto sphereScene = std::make_shared<Scene>(width/height);
+    auto sphereScene = std::make_shared<Scene>((float)width/(float)height);
     sphereScene->addRenderable(sphereObject);
     sphereScene->setWorldCameraLocation(glm::vec3{ 0.0f, 0.0f, -8.0f });
 

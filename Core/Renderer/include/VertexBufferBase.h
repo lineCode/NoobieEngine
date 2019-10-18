@@ -7,7 +7,7 @@
 class VertexBufferBase : public IRenderable
 {
 public:
-    VertexBufferBase() = default;
+    VertexBufferBase();
     virtual GLuint drawMode() const;
     virtual GLuint stride() const;
     virtual GLuint attributeIndex() const;

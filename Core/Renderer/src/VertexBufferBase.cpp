@@ -1,5 +1,12 @@
 #include "VertexBufferBase.h"
 
+VertexBufferBase::VertexBufferBase() :
+    m_Count(0), m_Stride(0), m_ActiveTextureUnit(GL_TEXTURE0), 
+    m_BufferType(GL_ARRAY_BUFFER), m_DrawMode(GL_TRIANGLES), m_attributeIndex(0), 
+    m_textureUniformLocation(0), m_NumCopies(0), m_BufferMode(BufferMode::NoDraw)
+{
+}
+
 GLuint VertexBufferBase::attributeIndex() const
 {
     return m_attributeIndex;

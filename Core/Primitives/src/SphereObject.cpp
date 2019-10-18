@@ -89,9 +89,7 @@ void SphereObject::init(uint32_t prec)
     auto vb = static_cast<VertexBufferBase*>(m_Vao->addBuffer(m_tvalues, 2, GL_ARRAY_BUFFER, GL_TRIANGLES, 1, BufferMode::NoDraw));
     vb->setAttributeIndex(1);
     m_Vao->addBuffer(m_nvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES,1, BufferMode::None);
-    //vb->setAttributeIndex(2);
-    m_Vao->addBuffer(m_pvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES, 1, BufferMode::SingleCopy);
-    vb->setAttributeIndex(0);
+    m_Vao->addBuffer(m_pvalues, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
 }
 
 int SphereObject::numVertices() 

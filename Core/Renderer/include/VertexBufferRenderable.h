@@ -17,14 +17,6 @@ public:
         unsigned int stride,
         GLenum bufferType);
 
-private:
-    GLuint m_attributeIndex;
-    GLuint m_Stride;
-    GLuint m_DrawMode;
-    GLenum m_BufferType;
-    unsigned int m_Count;
-    unsigned int m_NumCopies;
-    std::unique_ptr<GLResource> m_Buffer;
 };
 
 #include "VertexBufferRenderable.hpp"

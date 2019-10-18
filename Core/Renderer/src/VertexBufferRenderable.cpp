@@ -15,16 +15,16 @@ VertexBufferRenderable::VertexBufferRenderable()
 
 void VertexBufferRenderable::onRender()
 {
-    auto elements = count() / stride();
-    GLCall(glBindBuffer(bufferType(), handle()))
+    auto elements = VertexBufferBase::count() / VertexBufferBase::stride();
+    GLCall(glBindBuffer(VertexBufferBase::bufferType(), VertexBufferBase::handle()))
     GLCall(glVertexAttribPointer(
-        attributeIndex(),
-        stride(),                  // num components per vertex
+        VertexBufferBase::attributeIndex(),
+        VertexBufferBase::stride(),                  // num components per vertex
         GL_FLOAT,           // type
         GL_FALSE,           // normalized?
         0,                  // stride
         nullptr            // array buffer offset
         ))
-    GLCall(glEnableVertexAttribArray(attributeIndex()))
-    GLCall(glDrawArrays(drawMode(), 0, elements));
+    GLCall(glEnableVertexAttribArray(VertexBufferBase::attributeIndex()))
+    GLCall(glDrawArrays(VertexBufferBase::drawMode(), 0, elements));
 }
