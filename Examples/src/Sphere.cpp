@@ -10,7 +10,7 @@
 #include "Core/Renderer/include/Renderer.h"
 #include "Programs/include/SphereProgram.h"
 
-#define GL_DEBUG_CALLBACK 1
+#define GL_DEBUG_CALLBACK 0
 
 void window_reshape_callback(GLFWwindow* window, int newWidth, int newHeight)
 {
@@ -26,8 +26,10 @@ void GLAPIENTRY MessageCallback(GLenum source, GLenum type, GLuint id, GLenum se
 
 void enableGlDebugCallBack()
 {
-    glEnable(GL_DEBUG_OUTPUT);
-    glDebugMessageCallback(MessageCallback, 0);
+#if !MACOSX
+    GLCall(glEnable(GL_DEBUG_OUTPUT))
+    GLCall(glDebugMessageCallback(MessageCallback, 0))
+#endif
 }
 
 int main()

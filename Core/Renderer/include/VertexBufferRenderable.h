@@ -2,6 +2,7 @@
 
 #include "VertexBufferBase.h"
 #include "../../Infrastructure/include/GLResource.h"
+#include "../../Infrastructure/include/GLSafe.h"
 #include <GL/glew.h>
 #include <vector>
 #include <memory>
