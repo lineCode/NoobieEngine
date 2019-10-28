@@ -21,10 +21,10 @@ find_package(OpenGL REQUIRED)
 
 include_directories(
         Programs/include
-        external/glfw-3.3/include/
-        external/glm-0.9.7.1/
-        external/glew-2.1.0/include/
         external/assimp-3.0.1270/include/
+        external/glfw-3.3/include
+        external/glm-0.9.7.1
+        external/glew-2.1.0/include
         external/soil2/src
         .
 )
@@ -76,6 +76,17 @@ add_executable(Sphere_Example
         )
 include_directories(Core)
 target_link_libraries(Sphere_Example
+        core.renderer
+        core.primitives
+        core.infrastructure
+        ${ALL_LIBS}
+        )
+
+### Model loader ###
+add_executable(Model_Loader_Example
+        Examples/src/ModelLoader.cpp
+        )
+target_link_libraries(Model_Loader_Example
         core.renderer
         core.primitives
         core.infrastructure
