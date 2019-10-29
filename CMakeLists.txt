@@ -19,9 +19,11 @@ add_subdirectory(external/soil2)
 
 find_package(OpenGL REQUIRED)
 
+link_directories(${CMAKE_SOURCE_DIR}/external/assimp-5.0/lib)
+
 include_directories(
         Programs/include
-        external/assimp-3.0.1270/include/
+        external/assimp-5.0/include/
         external/glfw-3.3/include
         external/glm-0.9.7.1
         external/glew-2.1.0/include
@@ -43,6 +45,8 @@ add_definitions(
         -DGLEW_STATIC
         -D_CRT_SECURE_NO_WARNINGS
 )
+
+### Main Engine Executable ###
 
 target_link_libraries(Engine
         core.renderer
@@ -90,5 +94,6 @@ target_link_libraries(Model_Loader_Example
         core.renderer
         core.primitives
         core.infrastructure
+        assimp
         ${ALL_LIBS}
         )
