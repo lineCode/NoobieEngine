@@ -5,7 +5,7 @@
 # Commands may need to know the format version.
 set(CMAKE_IMPORT_FILE_VERSION 1)
 
-set(ASSIMP_BUILD_SHARED_LIBS ON)
+set(ASSIMP_BUILD_SHARED_LIBS OFF)
 
 if(MSVC)
   if(MSVC_TOOLSET_VERSION)
@@ -86,7 +86,7 @@ endif()
 # Commands beyond this point should not need to know the version.
 set(CMAKE_IMPORT_FILE_VERSION)
 
-get_filename_component(ASSIMP_ROOT_DIR "C:/Program Files (x86)/Assimp" REALPATH)
+get_filename_component(ASSIMP_ROOT_DIR "C:\work\NoobieEngine\external\assimp-5.0" REALPATH)
 set( ASSIMP_CXX_FLAGS ) # dynamically linked library
 set( ASSIMP_LINK_FLAGS "" )
 set( ASSIMP_LIBRARY_DIRS "${ASSIMP_ROOT_DIR}/lib")

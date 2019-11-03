@@ -19,8 +19,6 @@ add_subdirectory(external/soil2)
 
 find_package(OpenGL REQUIRED)
 
-link_directories(${CMAKE_SOURCE_DIR}/external/assimp-5.0/lib)
-
 include_directories(
         Programs/include
         external/assimp-5.0/include/
@@ -87,13 +85,18 @@ target_link_libraries(Sphere_Example
         )
 
 ### Model loader ###
+link_directories(${CMAKE_SOURCE_DIR}/external/assimp-5.0/lib)
+
 add_executable(Model_Loader_Example
         Examples/src/ModelLoader.cpp
         )
+
 target_link_libraries(Model_Loader_Example
         core.renderer
         core.primitives
         core.infrastructure
         assimp
+        IrrXML
+        zlibstatic
         ${ALL_LIBS}
         )
