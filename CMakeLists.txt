@@ -86,7 +86,7 @@ target_link_libraries(Sphere_Example
         )
 
 ### Model loader ###
-link_directories(${CMAKE_SOURCE_DIR}/external/assimp-5.0/lib)
+link_directories(${ASSIMP_LIBRARY_DIRS})
 
 add_executable(Model_Loader_Example
         Examples/src/ModelLoader.cpp
