@@ -63,7 +63,14 @@ if(MSVC)
 else()
   set(ASSIMP_LIBRARY_SUFFIX "" CACHE STRING "the suffix for the assimp libraries" )
   if(ASSIMP_BUILD_SHARED_LIBS)
-    set(sharedLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}.dll.5")
+    if(WIN32)
+      # Handle MinGW compiler.
+      set(sharedLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}d.dll.lib")
+    elseif(APPLE)
+      set(sharedLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}.5.dll")
+    else()
+      set(sharedLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}.dll.5")
+    endif()
     set_target_properties(assimp::assimp PROPERTIES
       IMPORTED_SONAME_RELEASE "${sharedLibraryName}"
       IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/${sharedLibraryName}"
@@ -83,7 +90,7 @@ endif()
 # Commands beyond this point should not need to know the version.
 set(CMAKE_IMPORT_FILE_VERSION)
 
-get_filename_component(ASSIMP_ROOT_DIR "C:\work\NoobieEngine\external\assimp-5.0" REALPATH)
+get_filename_component(ASSIMP_ROOT_DIR "C:/work/NoobieEngine/external/assimp-5.0" REALPATH)
 
 set( ASSIMP_CXX_FLAGS ) # dynamically linked library
 set( ASSIMP_LINK_FLAGS "" )
