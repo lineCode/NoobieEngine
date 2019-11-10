@@ -1,0 +1,11 @@
+prefix=/Users/Rob/Documents/NoobyEngine/external/assimp-5.0.framework
+exec_prefix=/Users/Rob/Documents/NoobyEngine/external/assimp-5.0.framework/
+libdir=/Users/Rob/Documents/NoobyEngine/external/assimp-5.0.framework/lib
+includedir=/Users/Rob/Documents/NoobyEngine/external/assimp-5.0.framework/../include/include
+
+Name: Assimp
+Description: Import various well-known 3D model formats in an uniform manner.
+Version: 5.0.0
+Libs: -L${libdir} -lassimp
+Libs.private:  -lz
+Cflags: -I${includedir}

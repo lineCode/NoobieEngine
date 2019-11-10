@@ -9,5 +9,6 @@ class IRenderable
 {
 public:
     virtual void onRender() = 0;
+    virtual ~IRenderable() {}
 };
 #endif //NOOBYENGINE_IRENDERABLE_H
