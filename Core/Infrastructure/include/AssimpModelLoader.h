@@ -15,10 +15,13 @@
 class AssimpModelLoader : IModelLoader
 {
 public:
+    AssimpModelLoader() = default;
+    virtual ~AssimpModelLoader() = default;
     void loadFromFile(const std::string & path) override;
 private:
     void processNode(aiNode *node, const aiScene *scene);
     Mesh processMesh(aiMesh *mesh, const aiScene *scene);
+    std::vector<TextureDto> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName);
 private:
     std::vector<Mesh> meshes;
 };

@@ -22,6 +22,7 @@ struct TextureDto
 {
     unsigned int id;
     std::string type;
+    std::string path;
 };
 
 class Mesh : IRenderable
