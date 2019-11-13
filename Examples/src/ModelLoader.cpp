@@ -6,6 +6,6 @@
 
 int main()
 {
-    AssimpModelLoader loader;
-    loader.loadFromFile("monkey.obj");
+    std::unique_ptr<IModelLoader> loader = std::make_unique<AssimpModelLoader>();
+    loader->loadFromFile("monkey.obj");
 }

@@ -3,11 +3,12 @@
 //
 
 #include "include/AssimpModelLoader.h"
+#include "include/FileTextureLoader.h"
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <iostream>
 
-void AssimpModelLoader::loadFromFile(const std::string & path)
+std::vector<MeshDto> AssimpModelLoader::loadFromFile(const fs::path & path)
 {
     Assimp::Importer import;
     const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -15,37 +16,37 @@ void AssimpModelLoader::loadFromFile(const std::string & path)
     if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
     {
         std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
-        return;
+        return std::vector<MeshDto>();
     }
-    auto directory = path.substr(0, path.find_last_of('/'));
 
-    processNode(scene->mRootNode, scene);
+    return processNode(scene->mRootNode, scene, path);
 }
 
-void AssimpModelLoader::processNode(aiNode *node, const aiScene *scene)
+std::vector<MeshDto> AssimpModelLoader::processNode(aiNode *node, const aiScene *scene, const fs::path & assetDir)
 {
+    std::vector<MeshDto> meshes;
     // process all the node's meshes (if any)
     for(unsigned int i = 0; i < node->mNumMeshes; i++)
     {
         aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
-        meshes.push_back(processMesh(mesh, scene));
+        meshes.push_back(processMesh(mesh, scene, assetDir));
     }
     // then do the same for each of its children
     for(unsigned int i = 0; i < node->mNumChildren; i++)
     {
-        processNode(node->mChildren[i], scene);
+        processNode(node->mChildren[i], scene, assetDir);
     }
+
+    return meshes;
 }
 
-Mesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
+MeshDto AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene, const fs::path & assetDir)
 {
-    std::vector<Vertex> vertices;
-    std::vector<unsigned int> indices;
-    std::vector<TextureDto> textures;
+    MeshDto meshDto;
 
     for(unsigned int i = 0; i < mesh->mNumVertices; i++)
     {
-        Vertex vertex;
+        VertexDto vertex;
         glm::vec3 vector;
         vector.x = mesh->mVertices[i].x;
         vector.y = mesh->mVertices[i].y;
@@ -71,31 +72,29 @@ Mesh AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene)
 
         vertex.Position = vector;
         vertex.Normal = normal;
-        vertices.push_back(vertex);
+        meshDto.Vertices.push_back(vertex);
     }
 
     for(unsigned int i = 0; i < mesh->mNumFaces; i++)
     {
         aiFace face = mesh->mFaces[i];
         for(unsigned int j = 0; j < face.mNumIndices; j++)
-            indices.push_back(face.mIndices[j]);
+            meshDto.Indices.push_back(face.mIndices[j]);
     }
 
-    if(mesh->mMaterialIndex >= 0)
+    if(mesh->mMaterialIndex > 0)
     {
         aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
-        auto diffuseMaps = loadMaterialTextures(material,
-                                            aiTextureType_DIFFUSE, "texture_diffuse");
-        textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-        auto specularMaps = loadMaterialTextures(material,
-                                            aiTextureType_SPECULAR, "texture_specular");
-        textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+        auto diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse", assetDir);
+        meshDto.Textures.insert(meshDto.Textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+        auto specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular", assetDir);
+        meshDto.Textures.insert(meshDto.Textures.end(), specularMaps.begin(), specularMaps.end());
     }
 
-    return Mesh(vertices, indices, textures);
+    return meshDto;
 }
 
-std::vector<TextureDto> AssimpModelLoader::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName)
+std::vector<TextureDto> AssimpModelLoader::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName, const fs::path & assetDir)
 {
     std::vector<TextureDto> textures;
     for(unsigned int i = 0; i < mat->GetTextureCount(type); i++)
@@ -103,8 +102,8 @@ std::vector<TextureDto> AssimpModelLoader::loadMaterialTextures(aiMaterial *mat,
         aiString str;
         mat->GetTexture(type, i, &str);
         TextureDto texture;
-        //todo - use SOIL to load texture
-        //texture.id = TextureFromFile(str.C_Str(), directory);
+        //todo: should actually store the resource pointer
+        texture.id = FileTextureLoader::loadTexture(assetDir.parent_path())->resourceId();
         texture.type = typeName;
         texture.path = str.C_Str();
         textures.push_back(texture);

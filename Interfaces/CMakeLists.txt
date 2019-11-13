@@ -8,4 +8,5 @@ target_sources(Engine PUBLIC
         IShaderLoader.h
         ITextureLoader.h
         ShaderFileInfo.h
+        GraphicTypes.h
         )

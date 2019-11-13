@@ -14,7 +14,7 @@ add_library(core.renderer
         include/VertexBuffer.h
         include/VertexArray.h
         include/Renderer.h
-        include/Mesh.h
+        include/MeshRenderer.h
         include/Camera.h
         include/VertexBufferScope.h
         include/BufferMode.h
@@ -32,7 +32,7 @@ add_library(core.renderer
         src/VertexBuffer.cpp
         src/VertexArray.cpp
         src/Renderer.cpp
-        src/Mesh.cpp)
+        src/MeshRenderer.cpp)
 
 target_include_directories(core.renderer
     PUBLIC 

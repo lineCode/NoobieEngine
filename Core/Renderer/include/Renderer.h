@@ -6,7 +6,7 @@
 #define NOOBYENGINE_RENDERER_H
 
 #include "VertexArray.h"
-#include "Mesh.h"
+#include "MeshRenderer.h"
 #include "Scene.h"
 #include "Interfaces/IContext.h"
 #include "Infrastructure/include/GLResource.h"

@@ -5,10 +5,16 @@
 #ifndef NOOBYENGINE_IMODELLOADER_H
 #define NOOBYENGINE_IMODELLOADER_H
 
+#include "GraphicTypes.h"
+#include <string>
+#include <filesystem>
+namespace fs = std::filesystem;
+
 class IModelLoader
 {
 public:
-    virtual void loadFromFile(const std::string & fileName) = 0;
+    virtual std::vector<MeshDto> loadFromFile(const fs::path & fileName) = 0;
+    virtual ~IModelLoader() {}
 };
 
 #endif //NOOBYENGINE_IMODELLOADER_H

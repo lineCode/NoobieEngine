@@ -5,25 +5,22 @@
 #ifndef NOOBYENGINE_ASSIMPMODELLOADER_H
 #define NOOBYENGINE_ASSIMPMODELLOADER_H
 
-#include "Core/Renderer/include/Mesh.h"
+#include "Core/Renderer/include/MeshRenderer.h"
 #include "Interfaces/IModelLoader.h"
 #include <assimp/scene.h>
 #include <string>
 #include <vector>
 
-
-class AssimpModelLoader : IModelLoader
+class AssimpModelLoader : public IModelLoader
 {
 public:
     AssimpModelLoader() = default;
-    virtual ~AssimpModelLoader() = default;
-    void loadFromFile(const std::string & path) override;
+    virtual ~AssimpModelLoader() override = default;
+    std::vector<MeshDto> loadFromFile(const fs::path & path) override;
 private:
-    void processNode(aiNode *node, const aiScene *scene);
-    Mesh processMesh(aiMesh *mesh, const aiScene *scene);
-    std::vector<TextureDto> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName);
-private:
-    std::vector<Mesh> meshes;
+    std::vector<MeshDto> processNode(aiNode *node, const aiScene *scene, const fs::path & assetDir);
+    MeshDto processMesh(aiMesh *mesh, const aiScene *scene, const fs::path & assetDir);
+    std::vector<TextureDto> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName, const fs::path & assetDir);
 };
 
 
