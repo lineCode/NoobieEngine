@@ -6,7 +6,6 @@
 #include "SphereObject.h"
 #include "Infrastructure/include/GLSafe.h"
 #include "external/glm-0.9.7.1/glm/gtc/matrix_transform.hpp"
-#include "external/glm-0.9.7.1/glm/gtc/matrix_transform.hpp"
 #include "external/glm-0.9.7.1/glm/gtc/type_ptr.hpp"
 #include "Programs/include/SphereProgram.h"
 #include "Core/Renderer/include/VertexBufferBase.h"

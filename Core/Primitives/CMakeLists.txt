@@ -13,6 +13,8 @@ add_definitions(
 add_library(core.primitives
         include/DrawableObject.h
         include/SphereObject.h
+        include/MeshObject.h
+        src/MeshObject.cpp
         src/SphereObject.cpp
         src/DrawableObject.cpp)
 

@@ -4,17 +4,17 @@
 
 #include "MeshRenderer.h"
 
-MeshRenderer::MeshRenderer(std::unique_ptr<MeshDto> meshDto)
+MeshRenderer::MeshRenderer(const MeshDto & meshDto)
+    :m_MeshDto(meshDto)
 {
-    m_MeshDto = std::move(meshDto);
-    setupMesh(m_MeshDto.get());
+    setupMesh(meshDto);
 }
 
-void MeshRenderer::setupMesh(MeshDto * meshDto)
+void MeshRenderer::setupMesh(const MeshDto & meshDto)
 {
     m_VertexArray = std::make_unique<VertexArray>();
-    m_VertexArray->addBuffer(meshDto->Vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
-    m_VertexArray->addBuffer<std::vector<unsigned int>>(meshDto->Indices, 3, GL_ELEMENT_ARRAY_BUFFER, GL_TRIANGLES);
+    m_VertexArray->addBuffer(meshDto.Vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
+    m_VertexArray->addBuffer<std::vector<unsigned int>>(meshDto.Indices, 3, GL_ELEMENT_ARRAY_BUFFER, GL_TRIANGLES);
 }
 
 void MeshRenderer::onRender()

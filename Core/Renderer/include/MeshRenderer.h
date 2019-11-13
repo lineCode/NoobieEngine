@@ -15,12 +15,12 @@
 class MeshRenderer : IRenderable
 {
 public:
-    MeshRenderer(std::unique_ptr<MeshDto> meshDto);
+    MeshRenderer(const MeshDto & meshDto);
     void onRender() override;
 private:
-    void setupMesh(MeshDto * meshDto);
+    void setupMesh(const MeshDto & meshDto);
 private:
-    std::unique_ptr<MeshDto> m_MeshDto;
+    MeshDto m_MeshDto;
     std::unique_ptr<VertexArray> m_VertexArray;
 };
 

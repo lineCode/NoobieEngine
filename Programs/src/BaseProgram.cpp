@@ -12,6 +12,7 @@ BaseProgram::BaseProgram(std::shared_ptr<GLResource> program) :
 
 void BaseProgram::useProgram()
 {
+    //todo should move to constructor?
     GLCall(glUseProgram(m_program->resourceId()));
 }
 

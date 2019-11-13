@@ -16,9 +16,10 @@ class AssimpModelLoader : public IModelLoader
 public:
     AssimpModelLoader() = default;
     virtual ~AssimpModelLoader() override = default;
-    std::vector<MeshDto> loadFromFile(const fs::path & path) override;
+    std::shared_ptr<std::vector<MeshDto>> loadFromFile(const fs::path & path) override;
 private:
-    std::vector<MeshDto> processNode(aiNode *node, const aiScene *scene, const fs::path & assetDir);
+    std::shared_ptr<std::vector<MeshDto>> m_meshes;
+    std::shared_ptr<std::vector<MeshDto>> processNode(aiNode *node, const aiScene *scene, const fs::path & assetDir);
     MeshDto processMesh(aiMesh *mesh, const aiScene *scene, const fs::path & assetDir);
     std::vector<TextureDto> loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName, const fs::path & assetDir);
 };

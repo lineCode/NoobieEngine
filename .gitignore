@@ -33,6 +33,7 @@
 
 #CMake
 CMakeLists.txt.user
+*.cpp.autosave
 
 #exclude dirs
 /.idea/*

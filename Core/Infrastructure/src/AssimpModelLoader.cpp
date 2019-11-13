@@ -8,7 +8,7 @@
 #include <assimp/postprocess.h>
 #include <iostream>
 
-std::vector<MeshDto> AssimpModelLoader::loadFromFile(const fs::path & path)
+std::shared_ptr<std::vector<MeshDto>> AssimpModelLoader::loadFromFile(const fs::path & path)
 {
     Assimp::Importer import;
     const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -16,20 +16,21 @@ std::vector<MeshDto> AssimpModelLoader::loadFromFile(const fs::path & path)
     if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
     {
         std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
-        return std::vector<MeshDto>();
+        return std::make_shared<std::vector<MeshDto>>();
     }
+
+    m_meshes = std::make_shared<std::vector<MeshDto>>();
 
     return processNode(scene->mRootNode, scene, path);
 }
 
-std::vector<MeshDto> AssimpModelLoader::processNode(aiNode *node, const aiScene *scene, const fs::path & assetDir)
+std::shared_ptr<std::vector<MeshDto>> AssimpModelLoader::processNode(aiNode *node, const aiScene *scene, const fs::path & assetDir)
 {
-    std::vector<MeshDto> meshes;
     // process all the node's meshes (if any)
     for(unsigned int i = 0; i < node->mNumMeshes; i++)
     {
         aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
-        meshes.push_back(processMesh(mesh, scene, assetDir));
+        m_meshes->push_back(processMesh(mesh, scene, assetDir));
     }
     // then do the same for each of its children
     for(unsigned int i = 0; i < node->mNumChildren; i++)
@@ -37,7 +38,7 @@ std::vector<MeshDto> AssimpModelLoader::processNode(aiNode *node, const aiScene 
         processNode(node->mChildren[i], scene, assetDir);
     }
 
-    return meshes;
+    return m_meshes;
 }
 
 MeshDto AssimpModelLoader::processMesh(aiMesh *mesh, const aiScene *scene, const fs::path & assetDir)

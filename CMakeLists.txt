@@ -87,6 +87,8 @@ target_link_libraries(Sphere_Example
 ### Model loader ###
 add_executable(Model_Loader_Example
         Examples/src/ModelLoader.cpp
+        Programs/src/MeshProgram.cpp
+        Programs/src/BaseProgram.cpp
         )
 
 if (WIN32)

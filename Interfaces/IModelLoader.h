@@ -13,7 +13,7 @@ namespace fs = std::filesystem;
 class IModelLoader
 {
 public:
-    virtual std::vector<MeshDto> loadFromFile(const fs::path & fileName) = 0;
+    virtual std::shared_ptr<std::vector<MeshDto>> loadFromFile(const fs::path & fileName) = 0;
     virtual ~IModelLoader() {}
 };
 
