@@ -11,7 +11,7 @@
 std::shared_ptr<std::vector<MeshDto>> AssimpModelLoader::loadFromFile(const fs::path & path)
 {
     Assimp::Importer import;
-    const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+    const aiScene *scene = import.ReadFile(path.string(), aiProcess_Triangulate | aiProcess_FlipUVs);
 
     if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
     {
@@ -104,7 +104,7 @@ std::vector<TextureDto> AssimpModelLoader::loadMaterialTextures(aiMaterial *mat,
         mat->GetTexture(type, i, &str);
         TextureDto texture;
         //todo: should actually store the resource pointer
-        texture.id = FileTextureLoader::loadTexture(assetDir.parent_path())->resourceId();
+        texture.id = FileTextureLoader::loadTexture(assetDir.parent_path().string())->resourceId();
         texture.type = typeName;
         texture.path = str.C_Str();
         textures.push_back(texture);

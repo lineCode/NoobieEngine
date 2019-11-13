@@ -92,16 +92,16 @@ add_executable(Model_Loader_Example
         )
 
 if (WIN32)
-    link_directories(${ASSIMP_LIBRARY_DIRS})
+    
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         set(D_FLAG "d")
     endif()
 
-    message("Running win32")
     find_package(Assimp REQUIRED CONFIG HINTS external/assimp-5.0/lib/cmake/assimp-5.0)
     set(ASSIMP_LIB_NAME "assimp${ASSIMP_LIBRARY_SUFFIX}${D_FLAG}.lib")
     set(IrrXML_LIB_NAME "IrrXML${D_FLAG}.lib")
     set(ZLIB_LIB_NAME "zlibstatic${D_FLAG}.lib")
+    target_link_directories(Model_Loader_Example PUBLIC ${ASSIMP_LIBRARY_DIRS}/)
     target_link_libraries(Model_Loader_Example ${ASSIMP_LIB_NAME} ${IrrXML_LIB_NAME} ${ZLIB_LIB_NAME})
 endif ()
 
