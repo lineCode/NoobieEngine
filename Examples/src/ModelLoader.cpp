@@ -15,7 +15,7 @@ int main()
     context->startContext();
 
     std::unique_ptr<IModelLoader> loader = std::make_unique<AssimpModelLoader>();
-    auto mesh = loader->loadFromFile("monkey.obj");
+    auto mesh = loader->loadFromFile("box.obj");
 
     auto program = ShaderLoader::createProgram({
         ShaderFileInfo("vertShader.glsl", GL_VERTEX_SHADER),

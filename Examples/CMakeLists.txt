@@ -11,4 +11,5 @@ configure_file(fragShader.glsl "${CMAKE_BINARY_DIR}" COPYONLY)
 
 FILE(COPY images/brick1.jpg DESTINATION "${CMAKE_BINARY_DIR}")
 FILE(COPY images/earth.jpg DESTINATION "${CMAKE_BINARY_DIR}")
-FILE(COPY models/monkey.obj DESTINATION "${CMAKE_BINARY_DIR}")
+FILE(COPY models/suzzane/monkey.obj DESTINATION "${CMAKE_BINARY_DIR}")
+FILE(COPY models/box/box.obj DESTINATION "${CMAKE_BINARY_DIR}")
