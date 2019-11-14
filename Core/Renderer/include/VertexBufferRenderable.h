@@ -10,14 +10,13 @@
 class VertexBufferRenderable : public VertexBufferBase
 {
 public:
-    VertexBufferRenderable();
+    VertexBufferRenderable() = default;
     void onRender() override;
 
     template<typename T> void makeBuffer(
         const std::vector<T>& vertices,
         unsigned int stride,
         GLenum bufferType);
-
 };
 
 #include "VertexBufferRenderable.hpp"

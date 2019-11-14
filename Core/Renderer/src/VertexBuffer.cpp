@@ -8,18 +8,6 @@
 #include "Infrastructure/include/GLSafe.h"
 #include <GL/glew.h>
 
-VertexBuffer::VertexBuffer()
-{
-    m_DrawMode = GL_TRIANGLES;
-    m_ActiveTextureUnit = GL_TEXTURE0;
-    m_components = 0;
-    m_elementsPerComponent = 0;
-    m_attributeIndex = 0;
-    m_NumCopies = 1;
-    m_BufferType = GL_ARRAY_BUFFER;
-    m_BufferMode = BufferMode::SingleCopy;
-}
-
 void VertexBuffer::onRender()
 {
     drawArrays();

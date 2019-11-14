@@ -19,6 +19,23 @@ template<typename T> IRenderable * VertexArray::addBuffer(
     return vbo;
 }
 
+template<typename T> IRenderable* VertexArray::addBuffer(
+    const T& buffer,
+    unsigned int elementsPerComponent,
+    unsigned int bytesToNextComponent,
+    GLuint bufferType,
+    GLuint drawMode,
+    unsigned int numberOfCopies)
+{
+    m_VertexBuffer.emplace_back(std::make_unique<VertexBufferRenderable>());
+    auto vbo = static_cast<VertexBufferRenderable*>(m_VertexBuffer.back().get());
+    vbo->makeBuffer(buffer, elementsPerComponent, bufferType);
+    vbo->setBytesToNextComponent(bytesToNextComponent);
+    vbo->setDrawMode(drawMode);
+    vbo->setNumberOfCopies(numberOfCopies);
+    return vbo;
+}
+
 template<typename T> IRenderable* VertexArray::addTexture(
     std::unique_ptr<GLResource> loadedTexture, 
     const std::vector<T>& textureCoordinates, 

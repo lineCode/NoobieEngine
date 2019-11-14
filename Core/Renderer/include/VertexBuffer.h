@@ -16,7 +16,7 @@
 class VertexBuffer : public VertexBufferBase 
 {
 public:
-    VertexBuffer();
+    VertexBuffer() = default;
     template<typename T> void makeBuffer(
         const std::vector<T> & vertices,
         unsigned int elementsPerComponent,

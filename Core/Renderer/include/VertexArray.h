@@ -23,6 +23,13 @@ public:
         unsigned int elementsPerComponent,
         GLuint bufferType,
         GLuint drawMode);
+    template<typename T> IRenderable* addBuffer(
+        const T& buffer,
+        unsigned int elementsPerComponent,
+        unsigned int bytesToNextComponent,
+        GLuint bufferType,
+        GLuint drawMode,
+        unsigned int numberOfCopies);
     template<typename T> IRenderable * addBuffer(
         const T & buffer,
         unsigned int elementsPerComponent,

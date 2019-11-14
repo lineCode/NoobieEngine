@@ -19,6 +19,8 @@ public:
     virtual unsigned int components() const;
     virtual unsigned int numberOfCopies() const;
     virtual BufferMode bufferMode() const;
+    virtual unsigned int bytesToNextComponent() const;
+    virtual void setBytesToNextComponent(unsigned int bytesToNextComponent);
     virtual void setNumberOfCopies(unsigned int numCopies);
     virtual void setAttributeIndex(GLuint attributeIndex);
     virtual void setDrawMode(GLuint drawMode);
@@ -35,6 +37,7 @@ protected:
     GLuint m_DrawMode;
     GLuint m_attributeIndex;
     GLint m_textureUniformLocation;
+    unsigned int m_bytesToNextComponent;
     unsigned int m_NumCopies;
     BufferMode m_BufferMode;
 };
