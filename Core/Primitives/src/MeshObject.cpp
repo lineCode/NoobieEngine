@@ -16,6 +16,8 @@ void MeshObject::unpackMesh(std::shared_ptr<std::vector<MeshDto> > meshDto)
     for(const auto & mesh: *meshDto)
     {
         m_vao->addBuffer(mesh.Vertices, 3, sizeof(VertexDto), offsetof(VertexDto, Position), GL_ARRAY_BUFFER, GL_TRIANGLES, 1);
+        //todo: add element buffer
+        //m_vao->addBuffer(mesh.Indices, 1, sizeof(unsigned int), 0, GL_ELEMENT_ARRAY_BUFFER, BufferMode);
     }
 
 }
