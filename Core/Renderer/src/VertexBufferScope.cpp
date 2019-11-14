@@ -11,7 +11,7 @@ VertexBufferScope::VertexBufferScope(const VertexBuffer * vertexBuffer) :
     GLCall(glBindBuffer(vertexBuffer->bufferType(), vertexBuffer->handle()))
     GLCall(glVertexAttribPointer(
         vertexBuffer->attributeIndex(),
-        vertexBuffer->stride(),                  // num components per vertex
+        vertexBuffer->elementsPerComponent(),                  // num components per vertex
         GL_FLOAT,           // type
         GL_FALSE,           // normalized?
         0,                  // stride

@@ -9,14 +9,14 @@ class VertexBufferBase : public IRenderable
 public:
     VertexBufferBase();
     virtual GLuint drawMode() const;
-    virtual GLuint stride() const;
+    virtual GLuint elementsPerComponent() const;
     virtual GLuint attributeIndex() const;
     GLuint textureHandle() const;
     virtual GLint textureUniformLocation() const;
     virtual GLenum bufferType() const;
     virtual GLenum activeTextureUnit() const;
     virtual GLuint handle() const;
-    virtual unsigned int count() const;
+    virtual unsigned int components() const;
     virtual unsigned int numberOfCopies() const;
     virtual BufferMode bufferMode() const;
     virtual void setNumberOfCopies(unsigned int numCopies);
@@ -28,8 +28,8 @@ public:
 protected:
     std::unique_ptr<GLResource> m_LoadedTexture;
     std::unique_ptr<GLResource> m_Buffer;
-    unsigned int m_Count;
-    unsigned int m_Stride;
+    unsigned int m_components;
+    unsigned int m_elementsPerComponent;
     GLenum m_ActiveTextureUnit;
     GLenum m_BufferType;
     GLuint m_DrawMode;

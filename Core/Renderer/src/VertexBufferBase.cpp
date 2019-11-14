@@ -1,7 +1,7 @@
 #include "VertexBufferBase.h"
 
 VertexBufferBase::VertexBufferBase() :
-    m_Count(0), m_Stride(0), m_ActiveTextureUnit(GL_TEXTURE0), 
+    m_components(0), m_elementsPerComponent(0), m_ActiveTextureUnit(GL_TEXTURE0),
     m_BufferType(GL_ARRAY_BUFFER), m_DrawMode(GL_TRIANGLES), m_attributeIndex(0), 
     m_textureUniformLocation(0), m_NumCopies(0), m_BufferMode(BufferMode::NoDraw)
 {
@@ -12,9 +12,9 @@ GLuint VertexBufferBase::attributeIndex() const
     return m_attributeIndex;
 }
 
-GLuint VertexBufferBase::stride() const
+GLuint VertexBufferBase::elementsPerComponent() const
 {
-    return m_Stride;
+    return m_elementsPerComponent;
 }
 
 GLuint VertexBufferBase::drawMode() const
@@ -52,9 +52,9 @@ BufferMode VertexBufferBase::bufferMode() const
     return m_BufferMode;
 }
 
-unsigned int VertexBufferBase::count() const
+unsigned int VertexBufferBase::components() const
 {
-    return m_Count;
+    return m_components;
 }
 
 unsigned int VertexBufferBase::numberOfCopies() const

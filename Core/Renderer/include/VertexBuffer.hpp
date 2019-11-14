@@ -27,12 +27,12 @@ template<typename T> void VertexBuffer::makeTexture(
 
 template<typename T> void VertexBuffer::makeBuffer(
     const std::vector<T> & vertices,
-    unsigned int stride,
+    unsigned int elementsPerComponent,
     GLenum bufferType,
     BufferMode bufferMode)
 {
-    m_Count = static_cast<unsigned int>(vertices.size());
-    m_Stride = stride;
+    m_components = static_cast<unsigned int>(vertices.size());
+    m_elementsPerComponent = elementsPerComponent;
     m_BufferType = bufferType;
     m_BufferMode = bufferMode;
     GLuint vertexBuffer;

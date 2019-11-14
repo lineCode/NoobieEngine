@@ -20,18 +20,18 @@ public:
 public:
     template<typename T> IRenderable * addBuffer(
         const T & buffer,
-        unsigned int stride,
+        unsigned int elementsPerComponent,
         GLuint bufferType,
         GLuint drawMode);
     template<typename T> IRenderable * addBuffer(
         const T & buffer,
-        unsigned int stride,
+        unsigned int elementsPerComponent,
         GLuint bufferType,
         GLuint drawMode,
         unsigned int numCopies);
     template<typename T> IRenderable * addBuffer(
         const T& buffer,
-        unsigned int stride,
+        unsigned int elementsPerComponent,
         GLuint bufferType,
         GLuint drawMode,
         unsigned int numCopies,
@@ -39,7 +39,7 @@ public:
     template<typename T> IRenderable * addTexture(
         std::unique_ptr<GLResource> loadedTexture,
         const std::vector<T>& textureCoordinates,
-        unsigned int stride,
+        unsigned int elementsPerComponent,
         GLenum bufferType);
 
     void onRender() override;

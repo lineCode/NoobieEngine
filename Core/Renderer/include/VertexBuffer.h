@@ -19,17 +19,17 @@ public:
     VertexBuffer();
     template<typename T> void makeBuffer(
         const std::vector<T> & vertices,
-        unsigned int stride,
+        unsigned int elementsPerComponent,
         GLenum bufferType);
     template<typename T> void makeBuffer(
         const std::vector<T> & vertices,
-        unsigned int stride,
+        unsigned int elementsPerComponent,
         GLenum bufferType,
         BufferMode bufferMode);
     template<typename T> void makeTexture(
         std::unique_ptr<GLResource> loadedTexture,
         const std::vector<T> & textureCoordinates,
-        unsigned int stride,
+        unsigned int elementsPerComponent,
         GLenum bufferType);
 
     void onRender() override;
