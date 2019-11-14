@@ -15,16 +15,9 @@ void MeshObject::unpackMesh(std::shared_ptr<std::vector<MeshDto> > meshDto)
     m_vao = std::make_unique<VertexArray>();
     for(const auto & mesh: *meshDto)
     {
-        //auto vb = static_cast<VertexBufferBase*>(m_vao->addBuffer(mesh.Vertices, 2, GL_ARRAY_BUFFER, GL_TRIANGLES, 1, BufferMode::NoDraw));
-        //vb->setAttributeIndex(1);
-        for(auto vertex: mesh.Vertices)
-        {
-            //todo: make this a stride argument in vbo so no need to create extra copy
-            m_vertices.push_back(vertex.Position);
-        }
+        m_vao->addBuffer(mesh.Vertices, 3, sizeof(VertexDto), offsetof(VertexDto, Position), GL_ARRAY_BUFFER, GL_TRIANGLES, 1);
     }
 
-    m_vao->addBuffer(m_vertices, 3, GL_ARRAY_BUFFER, GL_TRIANGLES);
 }
 
 void MeshObject::onRender()

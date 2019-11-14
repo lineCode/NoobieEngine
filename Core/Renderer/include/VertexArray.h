@@ -25,6 +25,7 @@ public:
         GLuint drawMode);
     template<typename T> IRenderable* addBuffer(
         const T& buffer,
+        unsigned int strideToNextComponent,
         unsigned int elementsPerComponent,
         unsigned int bytesToNextComponent,
         GLuint bufferType,

@@ -22,6 +22,7 @@ template<typename T> IRenderable * VertexArray::addBuffer(
 template<typename T> IRenderable* VertexArray::addBuffer(
     const T& buffer,
     unsigned int elementsPerComponent,
+    unsigned int strideToNextComponent,
     unsigned int bytesToNextComponent,
     GLuint bufferType,
     GLuint drawMode,
@@ -31,6 +32,7 @@ template<typename T> IRenderable* VertexArray::addBuffer(
     auto vbo = static_cast<VertexBufferRenderable*>(m_VertexBuffer.back().get());
     vbo->makeBuffer(buffer, elementsPerComponent, bufferType);
     vbo->setBytesToNextComponent(bytesToNextComponent);
+    vbo->setStrideToNextComponent(strideToNextComponent);
     vbo->setDrawMode(drawMode);
     vbo->setNumberOfCopies(numberOfCopies);
     return vbo;

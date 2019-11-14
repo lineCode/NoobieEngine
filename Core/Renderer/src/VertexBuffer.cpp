@@ -15,6 +15,7 @@ void VertexBuffer::onRender()
 
 void VertexBuffer::drawArrays()
 {
+    //todo, replace the following with their own renderable classes
     auto elements = components() / elementsPerComponent();
     switch (bufferMode())
     {

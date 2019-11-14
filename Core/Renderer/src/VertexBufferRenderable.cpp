@@ -11,7 +11,7 @@ void VertexBufferRenderable::onRender()
         VertexBufferBase::elementsPerComponent(),                   // num components per vertex
         GL_FLOAT,                                                   // type
         GL_FALSE,                                                   // normalized?
-        0,                                                          // stride
+        VertexBufferBase::strideToNextComponent(),                                                          // stride
         (void*)VertexBufferBase::bytesToNextComponent()             // array buffer offset
         ))
     GLCall(glEnableVertexAttribArray(VertexBufferBase::attributeIndex()))

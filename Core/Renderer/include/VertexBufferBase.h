@@ -20,6 +20,8 @@ public:
     virtual unsigned int numberOfCopies() const;
     virtual BufferMode bufferMode() const;
     virtual unsigned int bytesToNextComponent() const;
+    virtual unsigned int strideToNextComponent() const;
+    virtual void setStrideToNextComponent(unsigned int strideToNextComponent);
     virtual void setBytesToNextComponent(unsigned int bytesToNextComponent);
     virtual void setNumberOfCopies(unsigned int numCopies);
     virtual void setAttributeIndex(GLuint attributeIndex);
@@ -27,6 +29,7 @@ public:
     virtual void setActiveTextureUnit(GLuint textureUnit);
     virtual void setTextureUniformLocation(GLint textureUniformLocation);
     virtual void onRender() = 0;
+//todo: should turn this to private
 protected:
     std::unique_ptr<GLResource> m_LoadedTexture;
     std::unique_ptr<GLResource> m_Buffer;
@@ -39,5 +42,6 @@ protected:
     GLint m_textureUniformLocation;
     unsigned int m_bytesToNextComponent;
     unsigned int m_NumCopies;
+    unsigned int m_strideToNextComponent;
     BufferMode m_BufferMode;
 };
