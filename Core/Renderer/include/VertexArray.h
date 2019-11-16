@@ -8,6 +8,8 @@
 #include "BufferMode.h"
 #include "VertexBuffer.h"
 #include "VertexBufferRenderable.h"
+#include "BufferDataRenderable.h"
+#include "BufferIndexRenderable.h"
 #include "../../../Interfaces/IRenderable.h"
 #include "../../Infrastructure/include/GLSafe.h"
 #include <list>
@@ -23,13 +25,18 @@ public:
         unsigned int elementsPerComponent,
         GLuint bufferType,
         GLuint drawMode);
-    template<typename T> IRenderable* addBuffer(
+    template<typename T> IRenderable* addBufferIndices(
         const T& buffer,
-        unsigned int strideToNextComponent,
         unsigned int elementsPerComponent,
-        unsigned int bytesToNextComponent,
+        unsigned int strideToNextComponent,
         GLuint bufferType,
-        GLuint drawMode,
+        GLuint drawMode);
+    template<typename T> IRenderable* addBufferData(
+        const T& buffer,
+        unsigned int elementsPerComponent,
+        unsigned int strideToNextComponent,
+        unsigned int bytesToNextElement,
+        GLuint bufferType,
         unsigned int numberOfCopies);
     template<typename T> IRenderable * addBuffer(
         const T & buffer,

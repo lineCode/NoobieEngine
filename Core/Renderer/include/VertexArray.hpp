@@ -19,23 +19,37 @@ template<typename T> IRenderable * VertexArray::addBuffer(
     return vbo;
 }
 
-template<typename T> IRenderable* VertexArray::addBuffer(
+template<typename T> IRenderable* VertexArray::addBufferData(
     const T& buffer,
     unsigned int elementsPerComponent,
     unsigned int strideToNextComponent,
-    unsigned int bytesToNextComponent,
+    unsigned int bytesToNextElement,
     GLuint bufferType,
-    GLuint drawMode,
     unsigned int numberOfCopies)
 {
-    m_VertexBuffer.emplace_back(std::make_unique<VertexBufferRenderable>());
-    auto vbo = static_cast<VertexBufferRenderable*>(m_VertexBuffer.back().get());
+    auto vbo = std::make_unique<BufferDataRenderable>();
     vbo->makeBuffer(buffer, elementsPerComponent, bufferType);
-    vbo->setBytesToNextComponent(bytesToNextComponent);
+    vbo->setStrideToNextComponent(strideToNextComponent);
+    vbo->setBytesToNextComponent(bytesToNextElement);
+    vbo->setNumberOfCopies(numberOfCopies);
+    m_VertexBuffer.push_front(std::move(vbo));
+    return m_VertexBuffer.front().get();
+}
+
+template<typename T> IRenderable* VertexArray::addBufferIndices(
+    const T& buffer,
+    unsigned int elementsPerComponent,
+    unsigned int strideToNextComponent,
+    GLuint bufferType,
+    GLuint drawMode)
+{
+    auto vbo = std::make_unique<BufferIndexRenderable>();
+    vbo->makeBuffer(buffer, elementsPerComponent, bufferType);
+    vbo->setBytesToNextComponent(0);
     vbo->setStrideToNextComponent(strideToNextComponent);
     vbo->setDrawMode(drawMode);
-    vbo->setNumberOfCopies(numberOfCopies);
-    return vbo;
+    m_VertexBuffer.push_back(std::move(vbo));
+    return m_VertexBuffer.back().get();
 }
 
 template<typename T> IRenderable* VertexArray::addTexture(

@@ -23,6 +23,12 @@ add_library(core.renderer
         include/VertexBufferRenderable.h
         include/VertexBufferRenderable.hpp
         include/VertexBufferBase.h
+        include/BufferDataRenderable.h
+        include/BufferDataRenderable.hpp
+        include/BufferIndexRenderable.h
+        include/BufferIndexRenderable.hpp
+        src/BufferIndexRenderable.cpp
+        src/BufferDataRenderable.cpp
         src/VertexBufferBase.cpp
         src/VertexBufferRenderable.cpp
         src/Scene.cpp
