@@ -17,7 +17,7 @@ void MeshObject::unpackMesh(std::shared_ptr<std::vector<MeshDto> > meshDto)
     {
         //todo buffer data must be bound first, establish relationship between buffer data and buffer indices
         //for now, the ordering of adding buffers matters
-        m_vao->addBufferData(mesh.Vertices, 3, sizeof(mesh.Vertices), offsetof(VertexDto, Position), GL_ARRAY_BUFFER, 1);
+        m_vao->addBufferData(mesh.Vertices, 3, sizeof(VertexDto), offsetof(VertexDto, Position), GL_ARRAY_BUFFER, 1);
         m_vao->addBufferIndices(mesh.Indices, 1, sizeof(mesh.Indices[0]), GL_ELEMENT_ARRAY_BUFFER, GL_TRIANGLES);
     }
 

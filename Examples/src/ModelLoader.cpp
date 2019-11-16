@@ -15,7 +15,7 @@ int main()
     context->startContext();
 
     std::unique_ptr<IModelLoader> loader = std::make_unique<AssimpModelLoader>();
-    auto mesh = loader->loadFromFile("box.obj");
+    auto mesh = loader->loadFromFile("monkey.obj");
 
     auto program = ShaderLoader::createProgram({
         ShaderFileInfo("vertShader.glsl", GL_VERTEX_SHADER),
@@ -33,7 +33,7 @@ int main()
 
     auto mainScene = std::make_shared<Scene>(static_cast<float>(width)/static_cast<float>(height));
     mainScene->addRenderable(meshObject);
-    mainScene->setWorldCameraLocation(glm::vec3{ 0.0f, 0.0f, -8.0f });
+    mainScene->setWorldCameraLocation(glm::vec3{ 0.0f, 2.0f, -8.0f });
     Renderer renderer;
     renderer.addScene(mainScene);
     do {
