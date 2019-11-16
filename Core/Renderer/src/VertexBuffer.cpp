@@ -31,7 +31,7 @@ void VertexBuffer::drawArrays()
         case BufferMode::InstanceCopy:
         {
             VertexBufferScope vertexScope(this);
-            GLCall(glDrawArraysInstanced(drawMode(), 0, elements, numberOfCopies()));
+            GLCall(glDrawArraysInstanced(primitiveDrawMode(), 0, elements, numberOfCopies()));
             break;
         }
         case BufferMode::Texture:

@@ -9,12 +9,12 @@ template<typename T> IRenderable * VertexArray::addBuffer(
     const T & buffer,
     unsigned int elementsPerComponent,
     GLuint bufferType,
-    GLuint drawMode)
+    GLuint primitiveDrawMode)
 {
     m_VertexBuffer.emplace_back(std::make_unique<VertexBufferRenderable>());
     auto vbo = static_cast<VertexBufferRenderable*>(m_VertexBuffer.back().get());
     vbo->makeBuffer(buffer, elementsPerComponent, bufferType);
-    vbo->setDrawMode(drawMode);
+    vbo->setPrimitiveDrawMode(primitiveDrawMode);
     vbo->setNumberOfCopies(1);
     return vbo;
 }
@@ -41,13 +41,13 @@ template<typename T> IRenderable* VertexArray::addBufferIndices(
     unsigned int elementsPerComponent,
     unsigned int strideToNextComponent,
     GLuint bufferType,
-    GLuint drawMode)
+    GLuint primitiveDrawMode)
 {
     auto vbo = std::make_unique<BufferIndexRenderable>();
     vbo->makeBuffer(buffer, elementsPerComponent, bufferType);
     vbo->setBytesToNextComponent(0);
     vbo->setStrideToNextComponent(strideToNextComponent);
-    vbo->setDrawMode(drawMode);
+    vbo->setPrimitiveDrawMode(primitiveDrawMode);
     m_VertexBuffer.push_back(std::move(vbo));
     return m_VertexBuffer.back().get();
 }
@@ -67,23 +67,23 @@ template<typename T> IRenderable * VertexArray::addBuffer(
     const T & buffer,
     unsigned int elementsPerComponent,
     GLuint bufferType,
-    GLuint drawMode,
+    GLuint primitiveDrawMode,
     unsigned int numCopies)
 {
-    return addBuffer(buffer, elementsPerComponent, bufferType, drawMode, 1, BufferMode::InstanceCopy);
+    return addBuffer(buffer, elementsPerComponent, bufferType, primitiveDrawMode, 1, BufferMode::InstanceCopy);
 }
 
 template<typename T> IRenderable * VertexArray::addBuffer(
     const T& buffer,
     unsigned int elementsPerComponent,
     GLuint bufferType,
-    GLuint drawMode,
+    GLuint primitiveDrawMode,
     unsigned int numCopies,
     BufferMode bufferMode)
 {
     auto vbo = std::make_unique<VertexBuffer>();
     vbo->makeBuffer(buffer, elementsPerComponent, bufferType, bufferMode);
-    vbo->setDrawMode(drawMode);
+    vbo->setPrimitiveDrawMode(primitiveDrawMode);
     vbo->setNumberOfCopies(numCopies);
     m_VertexBuffer.push_back(std::move(vbo));
     return m_VertexBuffer.back().get();

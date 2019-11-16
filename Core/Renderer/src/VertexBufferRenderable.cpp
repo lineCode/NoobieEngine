@@ -15,5 +15,5 @@ void VertexBufferRenderable::onRender()
         (void*)VertexBufferBase::bytesToNextComponent()             // array buffer offset
         ))
     GLCall(glEnableVertexAttribArray(VertexBufferBase::attributeIndex()))
-    GLCall(glDrawArrays(VertexBufferBase::drawMode(), 0, elements));
+    GLCall(glDrawArrays(VertexBufferBase::primitiveDrawMode(), 0, elements));
 }

@@ -24,13 +24,13 @@ public:
         const T & buffer,
         unsigned int elementsPerComponent,
         GLuint bufferType,
-        GLuint drawMode);
+        GLuint primitiveDrawMode);
     template<typename T> IRenderable* addBufferIndices(
         const T& buffer,
         unsigned int elementsPerComponent,
         unsigned int strideToNextComponent,
         GLuint bufferType,
-        GLuint drawMode);
+        GLuint primitiveDrawMode);
     template<typename T> IRenderable* addBufferData(
         const T& buffer,
         unsigned int elementsPerComponent,
@@ -42,13 +42,13 @@ public:
         const T & buffer,
         unsigned int elementsPerComponent,
         GLuint bufferType,
-        GLuint drawMode,
+        GLuint primitiveDrawMode,
         unsigned int numCopies);
     template<typename T> IRenderable * addBuffer(
         const T& buffer,
         unsigned int elementsPerComponent,
         GLuint bufferType,
-        GLuint drawMode,
+        GLuint primitiveDrawMode,
         unsigned int numCopies,
         BufferMode bufferMode);
     template<typename T> IRenderable * addTexture(

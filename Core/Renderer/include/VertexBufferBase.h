@@ -8,7 +8,7 @@ class VertexBufferBase : public IRenderable
 {
 public:
     VertexBufferBase();
-    virtual GLuint drawMode() const;
+    virtual GLuint primitiveDrawMode() const;
     virtual GLuint elementsPerComponent() const;
     virtual GLuint attributeIndex() const;
     GLuint textureHandle() const;
@@ -25,7 +25,7 @@ public:
     virtual void setBytesToNextComponent(unsigned int bytesToNextComponent);
     virtual void setNumberOfCopies(unsigned int numCopies);
     virtual void setAttributeIndex(GLuint attributeIndex);
-    virtual void setDrawMode(GLuint drawMode);
+    virtual void setPrimitiveDrawMode(GLuint primitiveDrawMode);
     virtual void setActiveTextureUnit(GLuint textureUnit);
     virtual void setTextureUniformLocation(GLint textureUniformLocation);
     virtual void onRender() = 0;
@@ -37,7 +37,7 @@ protected:
     unsigned int m_elementsPerComponent;
     GLenum m_ActiveTextureUnit;
     GLenum m_BufferType;
-    GLuint m_DrawMode;
+    GLuint m_primitiveDrawMode;
     GLuint m_attributeIndex;
     GLint m_textureUniformLocation;
     unsigned int m_bytesToNextComponent;

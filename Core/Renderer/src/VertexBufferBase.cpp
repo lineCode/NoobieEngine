@@ -2,7 +2,7 @@
 
 VertexBufferBase::VertexBufferBase() :
     m_components(0), m_bytesToNextComponent(0), m_strideToNextComponent(0), m_elementsPerComponent(0), m_ActiveTextureUnit(GL_TEXTURE0),
-    m_BufferType(GL_ARRAY_BUFFER), m_DrawMode(GL_TRIANGLES), m_attributeIndex(0), 
+    m_BufferType(GL_ARRAY_BUFFER), m_primitiveDrawMode(GL_TRIANGLES), m_attributeIndex(0),
     m_textureUniformLocation(0), m_NumCopies(1), m_BufferMode(BufferMode::NoDraw)
 {
 }
@@ -22,9 +22,9 @@ GLuint VertexBufferBase::elementsPerComponent() const
     return m_elementsPerComponent;
 }
 
-GLuint VertexBufferBase::drawMode() const
+GLuint VertexBufferBase::primitiveDrawMode() const
 {
-    return m_DrawMode;
+    return m_primitiveDrawMode;
 }
 
 GLenum VertexBufferBase::bufferType() const
@@ -92,9 +92,9 @@ void VertexBufferBase::setAttributeIndex(GLuint attributeIndex)
     m_attributeIndex = attributeIndex;
 }
 
-void VertexBufferBase::setDrawMode(GLuint drawMode)
+void VertexBufferBase::setPrimitiveDrawMode(GLuint primitiveDrawMode)
 {
-    m_DrawMode = drawMode;
+    m_primitiveDrawMode = primitiveDrawMode;
 }
 
 void VertexBufferBase::setTextureUniformLocation(GLint textureUniformLocation)
