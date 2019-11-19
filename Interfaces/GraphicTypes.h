@@ -6,6 +6,7 @@
 #include <memory>
 #include <vector>
 
+//todo: some types may be candiates to be moved to their own file
 struct VertexDto
 {
     glm::vec3 Position;

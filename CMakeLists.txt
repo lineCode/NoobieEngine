@@ -10,9 +10,9 @@ add_executable(Engine main.cpp)
 
 add_subdirectory(Core/Infrastructure)
 add_subdirectory(Core/Renderer)
+add_subdirectory(Core/Lighting)
 add_subdirectory(Core/Primitives)
 add_subdirectory(external)
-add_subdirectory(Interfaces)
 add_subdirectory(Programs)
 add_subdirectory(Examples)
 add_subdirectory(external/soil2)
@@ -115,5 +115,6 @@ target_link_libraries(Model_Loader_Example
         core.renderer
         core.primitives
         core.infrastructure
+        core.lighting
         ${ALL_LIBS}
         )

@@ -8,6 +8,7 @@
 #include "Programs/include/MeshProgram.h"
 #include "Core/Primitives/include/MeshObject.h"
 #include "Core/Renderer/include/Renderer.h"
+#include "Lighting/include/PositionalLightObject.h"
 
 int main()
 {
@@ -34,6 +35,7 @@ int main()
     auto mainScene = std::make_shared<Scene>(static_cast<float>(width)/static_cast<float>(height));
     mainScene->addRenderable(meshObject);
     mainScene->setWorldCameraLocation(glm::vec3{ 0.0f, 2.0f, -8.0f });
+    mainScene->addPositionalLightModel(std::make_unique<PositionalLightObject>());
     Renderer renderer;
     renderer.addScene(mainScene);
     do {

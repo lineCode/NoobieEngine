@@ -34,3 +34,8 @@ void Scene::onRender()
         renderableObject->onRender();
     }
 }
+
+void Scene::addPositionalLightModel(std::unique_ptr<IRenderableObject> lightModel)
+{
+    m_positionalLightModels.push_back(std::move(lightModel));
+}
