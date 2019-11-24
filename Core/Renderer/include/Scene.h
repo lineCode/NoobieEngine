@@ -16,12 +16,12 @@ public:
     explicit Scene(float aspect);
     void addRenderable(std::shared_ptr<IRenderableObject> renderable);
     void setWorldCameraLocation(glm::vec3 location);
-    void addPositionalLightModel(std::unique_ptr<IRenderableObject> lightModel);
+    void addPositionalLightModel(std::shared_ptr<IRenderableObject> lightModel);
     void onRender() override;
 private:
     std::unique_ptr<Camera> m_camera;
     std::vector<std::shared_ptr<IRenderableObject>> m_OrderedRenderables;
-    std::vector<std::unique_ptr<IRenderableObject>> m_positionalLightModels;
+    std::vector<std::shared_ptr<IRenderableObject>> m_positionalLightModels;
 };
 
 

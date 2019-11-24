@@ -16,7 +16,6 @@ public:
     glm::vec3 location() const;
 
     void setTexture(std::unique_ptr<GLResource> loadedTexture, const std::vector<float>& textureCoordinates, GLenum activeTextureUnit);
-    void setActiveTextureUnit(GLenum textureUnit);
     void setAttributeIndex(GLuint attributeLocation);
 private:
     std::vector<float> m_Vertices;

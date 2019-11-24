@@ -48,6 +48,8 @@ void GLFWContext::endContext() {
 
 GLFWContext::GLFWContext()
 {
+    m_ActualHeight = 0;
+    m_ActualWidth = 0;
     m_Window = nullptr;
 }
 
