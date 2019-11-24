@@ -3,7 +3,6 @@
 
 
 #include "BaseProgram.h"
-#include "Core/Primitives/include/SphereObject.h"
 
 class MeshProgram : public BaseProgram
 {

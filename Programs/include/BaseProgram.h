@@ -7,11 +7,13 @@
 
 #include "../../Infrastructure/include/GLResource.h"
 #include "../../Infrastructure/include/GLSafe.h"
+#include <glm/glm.hpp>
 
 class BaseProgram
 {
 public:
     BaseProgram(std::shared_ptr<GLResource> program);
+    void setMatrix(std::string uniformName, glm::mat4 matrix);
     GLuint programId();
     void useProgram();
 protected:

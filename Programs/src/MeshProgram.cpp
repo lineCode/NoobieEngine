@@ -19,3 +19,4 @@ GLint MeshProgram::modelViewMatrixLocation()
     GLCall(mvLoc = glGetUniformLocation(m_program->resourceId(), "mv_matrix"))
     return mvLoc;
 }
+
